@@ -1,0 +1,7 @@
+[Pp]ackages/
+bin/
+obj/
+install/*.nupkg
+*.user
+*.suo
+.vs/
