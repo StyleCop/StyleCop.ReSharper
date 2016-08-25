@@ -50,10 +50,7 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
         /// <param name="highlight">
         /// <see cref="StyleCopHighlightingBase"/> that has been detected. 
         /// </param>
-        /// <param name="initialise">
-        /// True to initialize. 
-        /// </param>
-        public SuppressStyleCopQuickFix(StyleCopHighlightingBase highlight, bool initialise)
+        public SuppressStyleCopQuickFix(StyleCopHighlighting highlight)
         {
             this.highlighting = highlight;
             this.InitialiseBulbItems();
