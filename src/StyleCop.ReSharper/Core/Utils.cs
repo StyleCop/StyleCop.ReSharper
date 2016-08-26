@@ -996,14 +996,14 @@ namespace StyleCop.ReSharper.Core
             CodeProject[] codeProjects = new CodeProject[projectFiles.Count];
             int i = 0;
 
-            foreach (IProjectFile projectfile in projectFiles)
+            foreach (IProjectFile file in projectFiles)
             {
-                string path = projectfile.Location.Directory.FullPath;
+                string path = file.Location.Directory.FullPath;
 
-                CodeProject codeProject = new CodeProject(projectfile.GetHashCode(), path, configuration);
+                CodeProject codeProject = new CodeProject(file.GetHashCode(), path, configuration);
 
                 string documentTextToPass = i == 0 ? document.GetText() : null;
-                core.Environment.AddSourceCode(codeProject, projectFile.Location.FullPath, documentTextToPass);
+                core.Environment.AddSourceCode(codeProject, file.Location.FullPath, documentTextToPass);
 
                 codeProjects[i++] = codeProject;
             }
