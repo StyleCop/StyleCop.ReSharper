@@ -371,6 +371,8 @@ namespace StyleCop.ReSharper.Core
 
             bool parentIsStruct = IsContainingTypeAStruct(constructorDeclaration);
 
+            CachedCodeStrings.Initialise(constructorDeclaration.GetSolution());
+
             string structOrClass = parentIsStruct ? CachedCodeStrings.StructText : CachedCodeStrings.ClassText;
 
             string xmlWeShouldInsert;
@@ -429,6 +431,8 @@ namespace StyleCop.ReSharper.Core
             {
                 return summaryText;
             }
+
+            CachedCodeStrings.Initialise(destructorDeclaration.GetSolution());
 
             string destructorDescriptionText = CreateDestructorDescriptionText(destructorDeclaration, true);
 
@@ -1009,15 +1013,6 @@ namespace StyleCop.ReSharper.Core
             }
 
             return StyleCopTrace.Out(codeProjects);
-        }
-
-        /// <summary>
-        /// Returns the currently active solution.
-        /// </summary>
-        /// <returns>Returns null if no active solution.</returns>
-        public static ISolution GetSolution()
-        {
-            return Shell.Instance.GetComponent<SolutionManagerImpl>().CurrentSolution;
         }
 
         /// <summary>

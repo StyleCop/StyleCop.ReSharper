@@ -283,6 +283,8 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
                 return;
             }
 
+            CachedCodeStrings.Initialise(destructorDeclaration.GetSolution());
+
             string destructorDescriptionText = Utils.CreateDestructorDescriptionText(destructorDeclaration, true);
 
             string xmlComment = Utils.GetTextFromDeclarationHeader(declarationHeader.XmlNode);

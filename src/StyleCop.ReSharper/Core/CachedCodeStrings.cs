@@ -105,13 +105,16 @@ namespace StyleCop.ReSharper.Core
 
         public static void Initialise(ISolution solution)
         {
-            Lifetimes.Using(
-                l =>
-                    {
-                        var styleCopApi = solution.GetComponent<StyleCopApiPool>().GetInstance(l);
-                        var sourceAnalyzer = styleCopApi.Core.GetAnalyzer("StyleCop.CSharp.NamingRules");
-                        rulesAssembly = sourceAnalyzer.GetType().Assembly;
-                    });
+            if (rulesAssembly == null)
+            {
+                Lifetimes.Using(
+                    l =>
+                        {
+                            var styleCopApi = solution.GetComponent<StyleCopApiPool>().GetInstance(l);
+                            var sourceAnalyzer = styleCopApi.Core.GetAnalyzer("StyleCop.CSharp.NamingRules");
+                            rulesAssembly = sourceAnalyzer.GetType().Assembly;
+                        });
+            }
         }
     }
 }
