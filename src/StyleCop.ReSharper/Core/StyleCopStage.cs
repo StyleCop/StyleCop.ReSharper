@@ -143,7 +143,16 @@ namespace StyleCop.ReSharper.Core
 
                 IDaemon daemon = file.GetSolution().GetComponent<IDaemon>();
 
-                return StyleCopTrace.Out(new StyleCopStageProcess(this.lifetime, this.apiPool, daemon, process, this.threading, file));
+                return
+                    StyleCopTrace.Out(
+                        new StyleCopStageProcess(
+                            this.lifetime,
+                            this.apiPool,
+                            daemon,
+                            process,
+                            this.threading,
+                            settingsStore,
+                            file));
             }
             catch (JetBrains.Application.Progress.ProcessCancelledException)
             {

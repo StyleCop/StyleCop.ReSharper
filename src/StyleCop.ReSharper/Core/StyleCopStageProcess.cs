@@ -20,9 +20,8 @@
 namespace StyleCop.ReSharper.Core
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
 
+    using JetBrains.Application.Settings;
     using JetBrains.DataFlow;
     using JetBrains.DocumentModel;
     using JetBrains.ReSharper.Feature.Services.Daemon;
@@ -57,6 +56,8 @@ namespace StyleCop.ReSharper.Core
 
         private readonly IThreading threading;
 
+        private readonly IContextBoundSettingsStore settings;
+
         private readonly ICSharpFile file;
 
         /// <summary>
@@ -77,10 +78,13 @@ namespace StyleCop.ReSharper.Core
         /// <param name="threading">
         /// A reference to the <see cref="IThreading"/> instance for timed actions.
         /// </param>
+        /// <param name="settings">
+        /// The current settings.
+        /// </param>
         /// <param name="file">
         /// The file to analyze.
         /// </param>
-        public StyleCopStageProcess(Lifetime lifetime, StyleCopApiPool apiPool, IDaemon daemon, IDaemonProcess daemonProcess, IThreading threading, ICSharpFile file)
+        public StyleCopStageProcess(Lifetime lifetime, StyleCopApiPool apiPool, IDaemon daemon, IDaemonProcess daemonProcess, IThreading threading, IContextBoundSettingsStore settings, ICSharpFile file)
         {
             StyleCopTrace.In(daemonProcess, file);
 
@@ -89,6 +93,7 @@ namespace StyleCop.ReSharper.Core
             this.daemon = daemon;
             this.daemonProcess = daemonProcess;
             this.threading = threading;
+            this.settings = settings;
             this.file = file;
 
             StyleCopTrace.Out();
@@ -149,13 +154,14 @@ namespace StyleCop.ReSharper.Core
                                     this.daemonProcess.Document,
                                     this.file);
 
-                                // TODO: Why is this a copy?
-                                // Uh-oh. Looks like StyleCopRunnerInt shouldn't be shared. Need to check history
-                                List<HighlightingInfo> violations =
-                                    (from info in runner.ViolationHighlights
-                                     select new HighlightingInfo(info.Range, info.Highlighting)).ToList();
+                                // This filters the highlights, based on "ReSharper disable" comments, etc.
+                                var filteringConsumer = new FilteringHighlightingConsumer(this, this.settings, this.file);
+                                foreach (var highlightingInfo in runner.ViolationHighlights)
+                                {
+                                    filteringConsumer.ConsumeHighlighting(highlightingInfo);
+                                }
 
-                                committer(new DaemonStageResult(violations));
+                                committer(new DaemonStageResult(filteringConsumer.Highlightings));
                             });
                 }
                 else
@@ -192,8 +198,9 @@ namespace StyleCop.ReSharper.Core
 
             public bool OnDaemonCalled()
             {
-                var hasExpired = DateTime.UtcNow.Ticks - PauseDuration.Ticks > this.lastCalledTimestamp.Ticks;
-                this.lastCalledTimestamp = DateTime.UtcNow;
+                var calledTimestamp = DateTime.UtcNow;
+                var hasExpired = calledTimestamp.Ticks - PauseDuration.Ticks > this.lastCalledTimestamp.Ticks;
+                this.lastCalledTimestamp = calledTimestamp;
                 return hasExpired;
             }
 
