@@ -12,7 +12,7 @@
 //   notice, or any other, from this software.
 // </license>
 // <summary>
-//   Highlighting class for a StyleCop Violation set to severity level Error.
+//   Highlighting class for all configurable StyleCop Violations.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 namespace StyleCop.ReSharper.Violations

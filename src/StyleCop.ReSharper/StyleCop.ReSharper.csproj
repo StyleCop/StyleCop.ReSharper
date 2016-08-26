@@ -436,6 +436,7 @@
     <Compile Include="ShellComponents\StyleCopApiPool.cs" />
     <Compile Include="ShellComponents\VisualStudio2015\ReferencedAnalyzersCache.cs" />
     <Compile Include="ShellComponents\VisualStudio2015\ZoneMarker.cs" />
+    <Compile Include="Violations\StyleCopErrorHighlighting.cs" />
     <Compile Include="Violations\StyleCopHighlighting.cs" />
     <Compile Include="Violations\StyleCopHighlightingBase.cs" />
     <Compile Include="Violations\StyleCopHighlightingFactory.cs" />

@@ -48,6 +48,11 @@ namespace StyleCop.ReSharper.Violations
             string ruleID = violation.Violation.Rule.CheckId;
             string highlightID = HighlightingRegistering.GetHighlightID(ruleID);
 
+            if (ruleID == "SA0102") // Syntax error from parser
+            {
+                return new StyleCopErrorHighlighting(violation, documentRange);
+            }
+
             Severity severity = HighlightingSettingsManager.Instance.GetConfigurableSeverity(highlightID, solution);
 
             return new StyleCopHighlighting(violation, documentRange, severity, highlightID);
