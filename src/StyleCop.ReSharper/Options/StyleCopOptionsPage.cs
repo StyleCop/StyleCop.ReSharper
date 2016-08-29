@@ -18,6 +18,9 @@
 
 namespace StyleCop.ReSharper.Options
 {
+    using System.Diagnostics;
+    using System.Reflection;
+
     using JetBrains.Application.Components;
     using JetBrains.Application.Settings;
     using JetBrains.Application.UI.Commands;
@@ -122,6 +125,13 @@ namespace StyleCop.ReSharper.Options
             this.AddBoolOption(
                 (StyleCopOptionsSettingsKey options) => options.PluginsEnabled,
                 "Enable StyleCop plugins");
+            Assembly assembly = typeof(StyleCopEnvironment).Assembly;
+            string fileVersion = "";
+            if (assembly.Location != null)
+            {
+                fileVersion = FileVersionInfo.GetVersionInfo(assembly.Location).FileVersion;
+            }
+            this.AddText(string.Format("Plugins need to target StyleCop {0}", fileVersion));
             this.AddText("Location of StyleCop plugins:");
             Property<FileSystemPath> pluginsPath = this.SetupPluginsPathProperty(lifetime);
             FileChooserViewModel fileChooser = this.AddFolderChooserOption(
