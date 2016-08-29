@@ -3,18 +3,25 @@
   <metadata>
     <id>StyleCop.StyleCop</id>
     <title>StyleCop by JetBrains</title>
-    <version>2016.1.1-stylecop4749</version>
+    <version>2016.1.1</version>
     <authors>Matt Ellis, Andy Reeves</authors>
     <owners>JetBrains, Matt Ellis</owners>
     <summary>StyleCop analyzes C# source code to enforce a set of style and consistency rules. Maintained by JetBrains</summary>
     <description>StyleCop analyzes C# source code to enforce a set of style and consistency rules. This plugin is compatible with StyleCop 4.7.49, and maintained by JetBrains.</description>
     <releaseNotes>
+&#8226; Suppress message quick fix available again (#59)
+&#8226; Fix duplicate warning tooltips (#34)
+&#8226; Fix insert header documentation quick fix (#57)
+&#8226; Disable inspection warnings with ReSharper comments (#60)
+&#8226; Don't add trailing space after last comma on line (#25)
+&#8226; Display StyleCop parse errors
+&#8226; Display StyleCop.dll version in plugin options page
+
+From previous releases:
 &#8226; Support for ReSharper 2016.1 (#47)
 &#8226; Fix to allow filtering by StyleCop issues in code inspection window (#37)
 &#8226; Fix error messages in installer (#32)
 &#8226; Fix to stop code cleanup opening unedited files (#27)
-
-From previous releases:
 &#8226; Automatically disable analysis if StyleCop.Analyzers is referenced in VS2015 (#20)
 &#8226; Supports loading custom StyleCop addins. Specify location in settings (#18)
 &#8226; Fix duplication of constructor summary XML doc element in Code Cleanup (#17)
