@@ -150,7 +150,7 @@
     </Reference>
     <Reference Include="StyleCop, Version=4.7.1000.0, Culture=neutral, PublicKeyToken=f904653c63bc2738, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\StyleCop.4.7.49\StyleCop.dll</HintPath>
+      <HintPath>..\..\lib\StyleCop.4.7.54\StyleCop.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
