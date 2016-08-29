@@ -448,7 +448,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\ReorderingPatterns.xml" />
+    <EmbeddedResource Include="Resources\ReorderingPatterns.xml" />
     <Content Include="Resources\ShowQuickFix.png" />
     <Content Include="Resources\StyleCopIcons\Logo.png" />
     <Content Include="Resources\SuppressQuickFix.png" />
