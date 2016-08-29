@@ -18,7 +18,9 @@
 
 namespace StyleCop.ReSharper.Options
 {
+    using System;
     using System.Diagnostics;
+    using System.Drawing;
     using System.Reflection;
 
     using JetBrains.Application.Components;
@@ -31,6 +33,7 @@ namespace StyleCop.ReSharper.Options
     using JetBrains.UI.Options;
     using JetBrains.UI.Options.OptionsDialog2.SimpleOptions;
     using JetBrains.UI.Options.OptionsDialog2.SimpleOptions.ViewModel;
+    using JetBrains.UI.RichText;
     using JetBrains.Util;
     using JetBrains.VsIntegration.Shell;
 
@@ -75,6 +78,25 @@ namespace StyleCop.ReSharper.Options
                 settingsContext.GetValue((StyleCopOptionsSettingsKey options) => options.PluginsEnabled);
             this.originalPluginsPath =
                 settingsContext.GetValue((StyleCopOptionsSettingsKey options) => options.PluginsPath);
+
+            this.AddHeader("Version");
+
+            Assembly assembly = typeof(StyleCopEnvironment).Assembly;
+            string styleCopFileVersion = GetFileVersionInfo(assembly);
+            this.AddText(string.Format("StyleCop.dll {0} ({1})", assembly.GetName().Version, styleCopFileVersion));
+
+            assembly = this.GetType().Assembly;
+            string ourFileVersion = GetFileVersionInfo(assembly);
+            this.AddText(string.Format("StyleCop.ReSharper.dll {0} ({1})", assembly.GetName().Version, ourFileVersion));
+
+            if (ourFileVersion != styleCopFileVersion)
+            {
+                TextStyle style = new TextStyle(FontStyle.Bold, Color.Empty, Color.Empty);
+                this.AddRichText(
+                    new RichText(
+                        "Mismatched StyleCop.dll version! Are you running an older version of the Visual Studio plugin?",
+                        style));
+            }
 
             this.AddHeader("Options");
 
@@ -125,13 +147,6 @@ namespace StyleCop.ReSharper.Options
             this.AddBoolOption(
                 (StyleCopOptionsSettingsKey options) => options.PluginsEnabled,
                 "Enable StyleCop plugins");
-            Assembly assembly = typeof(StyleCopEnvironment).Assembly;
-            string fileVersion = "";
-            if (assembly.Location != null)
-            {
-                fileVersion = FileVersionInfo.GetVersionInfo(assembly.Location).FileVersion;
-            }
-            this.AddText(string.Format("Plugins need to target StyleCop {0}", fileVersion));
             this.AddText("Location of StyleCop plugins:");
             Property<FileSystemPath> pluginsPath = this.SetupPluginsPathProperty(lifetime);
             FileChooserViewModel fileChooser = this.AddFolderChooserOption(
@@ -179,6 +194,16 @@ namespace StyleCop.ReSharper.Options
             }
 
             return base.OnOk();
+        }
+
+        private static string GetFileVersionInfo(Assembly assembly)
+        {
+            if (assembly.Location != null)
+            {
+                return FileVersionInfo.GetVersionInfo(assembly.Location).FileVersion;
+            }
+
+            return String.Empty;
         }
 
         private static bool DoesHostSupportRoslynAnalzyers(IComponentContainer container)
