@@ -30,7 +30,6 @@ namespace StyleCop.ReSharper.Core
     using JetBrains.DocumentManagers;
     using JetBrains.DocumentModel;
     using JetBrains.ProjectModel;
-    using JetBrains.ProjectModel.Impl;
     using JetBrains.ReSharper.Psi;
     using JetBrains.ReSharper.Psi.Caches;
     using JetBrains.ReSharper.Psi.CodeStyle;
@@ -73,12 +72,32 @@ namespace StyleCop.ReSharper.Core
 
         private static string valueText;
 
+        private static readonly Func<int, string, Configuration, CodeProject> CodeProjectCreatorFunc;
+
         /// <summary>
         /// Initializes static members of the <see cref="Utils"/> class. 
         /// </summary>
         static Utils()
         {
             OurNewLineTokens = new NodeTypeSet(new NodeType[] { CSharpTokenType.NEW_LINE });
+
+            // 4.7.49 has a constructor with 3 parameters, 4.7.54 has a constructor with 4. This
+            // causes problems if an older VS plugin is installed - we can get the wrong StyleCop.dll
+            // Strong naming doesn't help, as both versions of the dll have the assembly version of
+            // 4.7.1000, it's only the (ignored) file version that changes
+            if (typeof(CodeProject).GetConstructor(
+                    new[] { typeof(int), typeof(string), typeof(Configuration), typeof(double) }) != null)
+            {
+                // We've bound against the 4.7.54 dll, we can just use normal code
+                CodeProjectCreatorFunc = (k, p, c) => new CodeProject(k, p, c);
+            }
+            else
+            {
+                // We've bound to the 4.7.49 dll, which only has three parameters
+                CodeProjectCreatorFunc =
+                    (k, p, c) => (CodeProject)Activator.CreateInstance(typeof(CodeProject), k, p, c);
+            }
+
         }
 
         /// <summary>
@@ -1004,7 +1023,7 @@ namespace StyleCop.ReSharper.Core
             {
                 string path = file.Location.Directory.FullPath;
 
-                CodeProject codeProject = new CodeProject(file.GetHashCode(), path, configuration);
+                CodeProject codeProject = CodeProjectCreatorFunc(file.GetHashCode(), path, configuration);
 
                 string documentTextToPass = i == 0 ? document.GetText() : null;
                 core.Environment.AddSourceCode(codeProject, file.Location.FullPath, documentTextToPass);
