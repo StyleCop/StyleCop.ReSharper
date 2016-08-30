@@ -25,7 +25,6 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
     using JetBrains.ReSharper.Psi.CodeStyle;
     using JetBrains.ReSharper.Psi.CSharp;
     using JetBrains.ReSharper.Psi.CSharp.CodeStyle;
-    using JetBrains.ReSharper.Psi.CSharp.Impl.Tree;
     using JetBrains.ReSharper.Psi.CSharp.Parsing;
     using JetBrains.ReSharper.Psi.CSharp.Tree;
     using JetBrains.ReSharper.Psi.Impl.CodeStyle;
@@ -337,25 +336,21 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
         /// </param>
         private static void CommentsMustBePreceededByBlankLine(ITreeNode node)
         {
-            ITreeNode siblingMinus2;
-            ITreeNode siblingMinus1;
-            ITreeNode siblingMinus3;
-
             for (ITreeNode currentNode = node; currentNode != null; currentNode = currentNode.NextSibling)
             {
                 if (currentNode is ICommentNode && !(currentNode is IDocCommentNode))
                 {
                     if (Utils.IsFirstNodeOnLine(currentNode) && !(currentNode.Parent is ICSharpFile))
                     {
-                        siblingMinus1 = currentNode.PrevSibling;
+                        ITreeNode siblingMinus1 = currentNode.PrevSibling;
 
                         if (siblingMinus1 != null)
                         {
-                            siblingMinus2 = siblingMinus1.PrevSibling;
+                            ITreeNode siblingMinus2 = siblingMinus1.PrevSibling;
 
                             if (siblingMinus2 != null)
                             {
-                                siblingMinus3 = siblingMinus2.PrevSibling;
+                                ITreeNode siblingMinus3 = siblingMinus2.PrevSibling;
 
                                 ITokenNode siblingMinus3Token = siblingMinus3 as ITokenNode;
                                 IWhitespaceNode siblingMinus2WhitespaceNode = siblingMinus2 as IWhitespaceNode;
@@ -368,7 +363,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
                                     continue;
                                 }
 
-                                if (siblingMinus3Token != null && siblingMinus3Token.GetTokenType() == TokenType.LBRACE)
+                                if (siblingMinus3Token != null && siblingMinus3Token.GetTokenType() == CSharpTokenType.LBRACE)
                                 {
                                     // if we're the start of a code block then don't insert a new line.
                                     continue;
@@ -380,8 +375,15 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
                                     currentNode.InsertNewLineBefore();
 
                                     ////CSharpFormatterHelper.FormatterInstance.Format(currentNode.Parent);
-                                    ICSharpCodeFormatter codeFormatter = (ICSharpCodeFormatter)CSharpLanguage.Instance.LanguageService().CodeFormatter;
-                                    codeFormatter.Format(currentNode.Parent);
+                                    LanguageService languageService = CSharpLanguage.Instance.LanguageService();
+                                    if (languageService != null)
+                                    {
+                                        ICSharpCodeFormatter codeFormatter = (ICSharpCodeFormatter)languageService.CodeFormatter;
+                                        if (codeFormatter != null)
+                                        {
+                                            codeFormatter.Format(currentNode.Parent);
+                                        }
+                                    }
                                 }
                             }
                         }

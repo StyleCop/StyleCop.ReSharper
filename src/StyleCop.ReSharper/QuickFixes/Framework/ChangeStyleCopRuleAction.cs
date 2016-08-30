@@ -26,7 +26,7 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
     using JetBrains.ReSharper.Feature.Services.Bulbs;
     using JetBrains.ReSharper.Feature.Services.Daemon;
     using JetBrains.TextControl;
-    using JetBrains.UI.CrossFramework;
+    using JetBrains.UI.Application;
     using JetBrains.UI.Icons;
 
     /// <summary>

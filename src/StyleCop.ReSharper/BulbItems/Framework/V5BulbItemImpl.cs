@@ -32,7 +32,7 @@ namespace StyleCop.ReSharper.BulbItems.Framework
     /// <summary>
     /// BulbItem Implementation for ReSharper build items.
     /// </summary>
-    public abstract class V5BulbItemImpl : BulbItemImpl
+    public abstract class V5BulbItemImpl : BulbActionBase
     {
         /// <summary>
         /// Gets or sets the description of the BulbItem.
