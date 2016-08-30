@@ -21,7 +21,9 @@ namespace StyleCop.ReSharper.BulbItems.Framework
     using JetBrains.Application.Settings;
     using JetBrains.ProjectModel;
     using JetBrains.ReSharper.Psi;
+    using JetBrains.ReSharper.Psi.CodeStyle;
     using JetBrains.ReSharper.Psi.CSharp;
+    using JetBrains.ReSharper.Psi.CSharp.CodeStyle;
     using JetBrains.ReSharper.Psi.CSharp.Tree;
     using JetBrains.TextControl;
 
@@ -61,8 +63,6 @@ namespace StyleCop.ReSharper.BulbItems.Framework
 
                 string justificationText = settingsStore.GetValue((StyleCopOptionsSettingsKey key) => key.SuppressStyleCopAttributeJustificationText);
 
-                IAttributesOwnerDeclaration attributesOwnerDeclaration = declaration as IAttributesOwnerDeclaration;
-
                 CSharpElementFactory factory = CSharpElementFactory.GetInstance(declaration.GetPsiModule());
 
                 ITypeElement typeElement = Utils.GetTypeElement(declaration, "System.Diagnostics.CodeAnalysis.SuppressMessageAttribute");
@@ -73,9 +73,12 @@ namespace StyleCop.ReSharper.BulbItems.Framework
 
                 ICSharpArgument newArg2 = attribute.AddArgumentAfter(Utils.CreateConstructorArgumentValueExpression(declaration.GetPsiModule(), ruleText), newArg1);
 
-                attribute.AddArgumentAfter(Utils.CreateArgumentValueExpression(declaration.GetPsiModule(), "Justification = \"" + justificationText + "\""), newArg2);
+                IPropertyAssignment propertyAssignment = factory.CreatePropertyAssignment(
+                    "Justification",
+                    factory.CreateExpression("\"$0\"", justificationText));
+                attribute.AddPropertyAssignmentAfter(propertyAssignment, null);
 
-                attributesOwnerDeclaration.AddAttributeAfter(attribute, null);
+                declaration.AddAttributeAfter(attribute, null);
             }
         }
     }

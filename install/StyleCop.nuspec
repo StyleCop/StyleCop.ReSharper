@@ -9,6 +9,7 @@
     <summary>StyleCop analyzes C# source code to enforce a set of style and consistency rules. Maintained by JetBrains</summary>
     <description>StyleCop analyzes C# source code to enforce a set of style and consistency rules. This plugin is compatible with StyleCop 4.7.54, and maintained by JetBrains.</description>
     <releaseNotes>
+&#8226; Create SuppressMessage attribute parameters more reliably
 &#8226; Works properly if StyleCop 4.7.49 is already loaded in Visual Studio
 
 From 2016.1.3:
