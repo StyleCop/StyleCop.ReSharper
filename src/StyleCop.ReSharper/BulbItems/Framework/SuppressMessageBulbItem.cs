@@ -21,9 +21,7 @@ namespace StyleCop.ReSharper.BulbItems.Framework
     using JetBrains.Application.Settings;
     using JetBrains.ProjectModel;
     using JetBrains.ReSharper.Psi;
-    using JetBrains.ReSharper.Psi.CodeStyle;
     using JetBrains.ReSharper.Psi.CSharp;
-    using JetBrains.ReSharper.Psi.CSharp.CodeStyle;
     using JetBrains.ReSharper.Psi.CSharp.Tree;
     using JetBrains.TextControl;
 
@@ -51,7 +49,7 @@ namespace StyleCop.ReSharper.BulbItems.Framework
         /// </param>
         public override void ExecuteTransactionInner(ISolution solution, ITextControl textControl)
         {
-            ICSharpModifiersOwnerDeclaration declaration = Utils.GetTypeClosestToTextControl<ICSharpModifiersOwnerDeclaration>(solution, textControl);
+            IAttributesOwnerDeclaration declaration = Utils.GetTypeClosestToTextControl<IAttributesOwnerDeclaration>(solution, textControl);
 
             if (declaration != null)
             {

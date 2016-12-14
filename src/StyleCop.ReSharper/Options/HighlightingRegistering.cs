@@ -125,6 +125,7 @@ namespace StyleCop.ReSharper.Options
                         Severity.WARNING,
                         false,
                         false,
+                        null,
                         null);
                     configurableSeverityItems.Add(Tuple.Create((PsiLanguageType)CSharpLanguage.Instance, severityItem));
                 }

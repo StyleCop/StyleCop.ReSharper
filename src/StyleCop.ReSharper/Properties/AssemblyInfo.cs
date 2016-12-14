@@ -34,4 +34,4 @@ using JetBrains.ReSharper.Feature.Services.Daemon;
 // Many of the R# base types are not CLS compliant so we can't be.
 [assembly: CLSCompliant(false)]
 [assembly: Guid("1064F4C2-0AB3-43EA-AE01-0408B2D4DDFE")]
-[assembly: RegisterConfigurableSeverity("StyleCop.DefaultSeverity", null, HighlightingGroupIds.CodeSmell, "item title", "item description", Severity.WARNING, false)]
+[assembly: RegisterConfigurableSeverity("StyleCop.DefaultSeverity", null, HighlightingGroupIds.CodeSmell, "item title", "item description", Severity.WARNING)]
