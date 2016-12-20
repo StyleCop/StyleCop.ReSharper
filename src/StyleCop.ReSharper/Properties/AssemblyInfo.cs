@@ -21,8 +21,8 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using JetBrains.ReSharper.Feature.Services.Daemon;
 
-[assembly: AssemblyTitle("StyleCop R# 8.0.0 Plugin")]
-[assembly: AssemblyDescription("R# plugin for StyleCop")]
+[assembly: AssemblyTitle("StyleCop for ReSharper")]
+[assembly: AssemblyDescription("StyleCop for ReSharper")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct(StyleCop.Constants.ProductName)]

@@ -3,12 +3,13 @@
   <metadata>
     <id>StyleCop.StyleCop</id>
     <title>StyleCop by JetBrains</title>
-    <version>2016.3.0</version>
+    <version>2016.3.1</version>
     <authors>Matt Ellis, Andy Reeves</authors>
     <owners>JetBrains, Matt Ellis</owners>
     <summary>StyleCop analyzes C# source code to enforce a set of style and consistency rules. Maintained by JetBrains</summary>
     <description>StyleCop analyzes C# source code to enforce a set of style and consistency rules. This plugin is compatible with StyleCop 4.7.54, and maintained by JetBrains.</description>
     <releaseNotes>
+&#8226; Fix crash if the file doesn't have a header (StyleCop/StyleCop#78)
 &#8226; Updated to ReSharper 2016.3
 
 From 2016.2.1:

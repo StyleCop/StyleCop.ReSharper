@@ -662,7 +662,13 @@ namespace StyleCop.ReSharper.Core
         /// </returns>
         public static string GetFileHeader(ICSharpFile file)
         {
-            return GetFileHeaderTreeRange(file).GetDocumentRange().GetText();
+            var documentRange = GetFileHeaderTreeRange(file).GetDocumentRange();
+            if (!documentRange.IsValid())
+            {
+                return string.Empty;
+            }
+
+            return documentRange.GetText();
         }
 
         /// <summary>
