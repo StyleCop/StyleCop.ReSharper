@@ -363,6 +363,12 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
                                     continue;
                                 }
 
+                                if (siblingMinus3 is ISwitchLabelStatement)
+                                {
+                                    // if we're the start of a switch block then don't insert a new line. 
+                                    continue;
+                                }
+
                                 if (siblingMinus3Token != null && siblingMinus3Token.GetTokenType() == CSharpTokenType.LBRACE)
                                 {
                                     // if we're the start of a code block then don't insert a new line.
@@ -423,7 +429,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
                             {
                                 ITokenNode nextNextNextToken = Utils.GetFirstNonWhitespaceTokenToRight(nextNextToken);
 
-                                if (nextNextToken.IsNewLine() && !(nextNextNextToken is ICommentNode))
+                                if (nextNextToken.IsNewLine() && !(nextNextNextToken is ICommentNode) && !Utils.IsCommentInFileHeader(currentNode))
                                 {
                                     ITreeNode rightNode = currentNode.FindFormattingRangeToRight();
                                     Utils.RemoveNewLineBefore(rightNode);
