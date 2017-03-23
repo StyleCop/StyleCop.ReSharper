@@ -5,3 +5,7 @@ install/*.nupkg
 *.user
 *.suo
 .vs/
+
+# ReSharper is a .NET coding add-in
+_ReSharper*
+_dotTrace*
