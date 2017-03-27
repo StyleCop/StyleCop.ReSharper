@@ -363,7 +363,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
                                     continue;
                                 }
 
-                                if (siblingMinus3 is ISwitchLabelStatement)
+                                if (siblingMinus3 is ISwitchCaseLabel)
                                 {
                                     // if we're the start of a switch block then don't insert a new line. 
                                     continue;
