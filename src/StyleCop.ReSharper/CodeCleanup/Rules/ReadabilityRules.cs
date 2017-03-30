@@ -25,10 +25,12 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
     using JetBrains.ReSharper.Psi.CodeStyle;
     using JetBrains.ReSharper.Psi.CSharp;
     using JetBrains.ReSharper.Psi.CSharp.CodeStyle;
+    using JetBrains.ReSharper.Psi.CSharp.Impl.Tree;
     using JetBrains.ReSharper.Psi.CSharp.Parsing;
     using JetBrains.ReSharper.Psi.CSharp.Tree;
     using JetBrains.ReSharper.Psi.ExtensionsAPI;
     using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
+    using JetBrains.ReSharper.Psi.JavaScript.Tree;
     using JetBrains.ReSharper.Psi.Modules;
     using JetBrains.ReSharper.Psi.Tree;
     using JetBrains.ReSharper.Resources.Shell;
@@ -36,6 +38,12 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
     using StyleCop.Diagnostics;
     using StyleCop.ReSharper.Core;
     using StyleCop.ReSharper.Extensions;
+
+    using IBlock = JetBrains.ReSharper.Psi.CSharp.Tree.IBlock;
+    using IForStatement = JetBrains.ReSharper.Psi.CSharp.Tree.IForStatement;
+    using IInvocationExpression = JetBrains.ReSharper.Psi.CSharp.Tree.IInvocationExpression;
+    using IReferenceExpression = JetBrains.ReSharper.Psi.CSharp.Tree.IReferenceExpression;
+    using IVariableDeclaration = JetBrains.ReSharper.Psi.CSharp.Tree.IVariableDeclaration;
 
     /// <summary>
     /// Readability rules.
@@ -211,7 +219,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
                     if (tokenNode.GetTokenType().IsStringLiteral)
                     {
                         IAttribute attribute = tokenNode.GetContainingNode<IAttribute>(true);
-                        ISwitchLabelStatement switchLabelStatement = tokenNode.GetContainingNode<ISwitchLabelStatement>(true);
+                        ISwitchCaseLabel switchLabelStatement = tokenNode.GetContainingNode<ISwitchCaseLabel>(true);
                         IConstantDeclaration constantDeclaration = tokenNode.GetContainingNode<IConstantDeclaration>(true);
                         IRegularParameterDeclaration parameterDeclaration = tokenNode.GetContainingNode<IRegularParameterDeclaration>(true);
 
@@ -465,19 +473,20 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
         /// <summary>
         /// Process for each variable declaration.
         /// </summary>
-        /// <param name="foreachVariableDeclaration">
+        /// <param name="foreachHeader">
         /// The for each variable declaration.
         /// </param>
-        private static void ProcessForeachVariableDeclaration(IForeachVariableDeclaration foreachVariableDeclaration)
+        private static void ProcessForeachVariableDeclaration(IForeachHeader foreachHeader)
         {
-            ILocalVariable variable = foreachVariableDeclaration.DeclaredElement;
-            if (variable != null)
+            var foreachVariableDeclaration = foreachHeader.DeclarationExpression;
+            foreach (var designation in foreachVariableDeclaration.IterateSingleVariableDesignations())
             {
-                if (!foreachVariableDeclaration.IsVar)
+                ILocalVariable variable = designation.DeclaredElement;
+                if (!designation.IsVar)
                 {
                     using (WriteLockCookie.Create(true))
                     {
-                        foreachVariableDeclaration.SetType(variable.Type);
+                        designation.SetType(variable.Type);
                     }
                 }
             }
@@ -653,10 +662,10 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
             {
                 ProcessLocalVariableDeclaration((ILocalVariableDeclaration)variableDeclaration);
             }
-            else if (variableDeclaration is IForeachVariableDeclaration)
-            {
-                ProcessForeachVariableDeclaration((IForeachVariableDeclaration)variableDeclaration);
-            }
+            ////else if (variableDeclaration is IForeachVariableDeclaration) // TODO: Refine me!
+            ////{
+            ////    ProcessForeachVariableDeclaration((IForeachVariableDeclaration)variableDeclaration);
+            ////}
             else
             {
                 IDeclaredElement declaredElement = variableDeclaration.DeclaredElement;
