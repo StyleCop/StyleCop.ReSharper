@@ -539,13 +539,13 @@ namespace StyleCop.ReSharper.Core
             int startOffset = document.GetLineStartOffset(startLine);
             int endOffset = document.GetLineEndOffsetNoLineBreak(endLine);
 
-            ICSharpCodeFormatter codeFormatter = (ICSharpCodeFormatter)CSharpLanguage.Instance.LanguageService().CodeFormatter;
-            codeFormatter.Format(
-                solution, 
-                new DocumentRange(document, new JetBrains.Util.TextRange(startOffset, endOffset)), 
-                CodeFormatProfile.DEFAULT, 
-                true, 
-                true, 
+            CodeFormatterHelper.Format(
+                CSharpLanguage.Instance,
+                solution,
+                new DocumentRange(document, new JetBrains.Util.TextRange(startOffset, endOffset)),
+                CodeFormatProfile.DEFAULT,
+                true,
+                true,
                 JetBrains.Application.Progress.NullProgressIndicator.Instance);
         }
 
