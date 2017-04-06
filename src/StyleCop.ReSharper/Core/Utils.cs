@@ -519,6 +519,7 @@ namespace StyleCop.ReSharper.Core
         /// The line to end the formatting.
         /// </param>
         public static void FormatLines(
+            PsiLanguageType language,
             ISolution solution, 
             IDocument document, 
             JetBrains.Util.dataStructures.TypedIntrinsics.Int32<DocLine> startLine,
@@ -539,9 +540,9 @@ namespace StyleCop.ReSharper.Core
             int startOffset = document.GetLineStartOffset(startLine);
             int endOffset = document.GetLineEndOffsetNoLineBreak(endLine);
 
-            ICSharpCodeFormatter codeFormatter = (ICSharpCodeFormatter)CSharpLanguage.Instance.LanguageService().CodeFormatter;
-            codeFormatter.Format(
-                solution, 
+            CodeFormatterHelper.Format (
+                language,
+                solution,
                 new DocumentRange(document, new JetBrains.Util.TextRange(startOffset, endOffset)), 
                 CodeFormatProfile.DEFAULT, 
                 true, 

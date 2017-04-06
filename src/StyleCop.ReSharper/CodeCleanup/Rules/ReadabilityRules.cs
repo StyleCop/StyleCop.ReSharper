@@ -211,7 +211,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
                     if (tokenNode.GetTokenType().IsStringLiteral)
                     {
                         IAttribute attribute = tokenNode.GetContainingNode<IAttribute>(true);
-                        ISwitchLabelStatement switchLabelStatement = tokenNode.GetContainingNode<ISwitchLabelStatement>(true);
+                        ISwitchCaseLabel switchLabelStatement = tokenNode.GetContainingNode<ISwitchCaseLabel>(true);
                         IConstantDeclaration constantDeclaration = tokenNode.GetContainingNode<IConstantDeclaration>(true);
                         IRegularParameterDeclaration parameterDeclaration = tokenNode.GetContainingNode<IRegularParameterDeclaration>(true);
 
@@ -465,20 +465,17 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
         /// <summary>
         /// Process for each variable declaration.
         /// </summary>
-        /// <param name="foreachVariableDeclaration">
+        /// <param name="singleVariableDesignation">
         /// The for each variable declaration.
         /// </param>
-        private static void ProcessForeachVariableDeclaration(IForeachVariableDeclaration foreachVariableDeclaration)
+        private static void ProcessSingleVariableDesignation (ISingleVariableDesignation singleVariableDesignation)
         {
-            ILocalVariable variable = foreachVariableDeclaration.DeclaredElement;
-            if (variable != null)
+            ILocalVariable variable = singleVariableDesignation.DeclaredElement;
+            if (!singleVariableDesignation.IsVar)
             {
-                if (!foreachVariableDeclaration.IsVar)
+                using (WriteLockCookie.Create(true))
                 {
-                    using (WriteLockCookie.Create(true))
-                    {
-                        foreachVariableDeclaration.SetType(variable.Type);
-                    }
+                    singleVariableDesignation.SetType(variable.Type);
                 }
             }
         }
@@ -653,9 +650,9 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
             {
                 ProcessLocalVariableDeclaration((ILocalVariableDeclaration)variableDeclaration);
             }
-            else if (variableDeclaration is IForeachVariableDeclaration)
+            else if (variableDeclaration is ISingleVariableDesignation)
             {
-                ProcessForeachVariableDeclaration((IForeachVariableDeclaration)variableDeclaration);
+                ProcessSingleVariableDesignation((ISingleVariableDesignation) variableDeclaration);
             }
             else
             {

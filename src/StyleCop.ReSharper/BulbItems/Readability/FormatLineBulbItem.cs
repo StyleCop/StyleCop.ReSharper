@@ -48,7 +48,7 @@ namespace StyleCop.ReSharper.BulbItems.Readability
             ITreeNode element = Utils.GetElementAtCaret(solution, textControl);
             IUsingDirective containingElement = element.GetContainingNode<IUsingDirective>(true);
 
-            Utils.FormatLines(solution, textControl.Document, line.Minus1(), line.Plus1());
+            Utils.FormatLines(element.Language, solution, textControl.Document, line.Minus1(), line.Plus1());
 
             if (containingElement != null)
             {

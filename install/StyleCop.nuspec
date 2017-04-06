@@ -3,12 +3,15 @@
   <metadata>
     <id>StyleCop.StyleCop</id>
     <title>StyleCop by JetBrains</title>
-    <version>2016.3.2</version>
+    <version>2017.1.0</version>
     <authors>Matt Ellis, Andy Reeves</authors>
     <owners>JetBrains, Matt Ellis</owners>
     <summary>StyleCop analyzes C# source code to enforce a set of style and consistency rules. Maintained by JetBrains</summary>
     <description>StyleCop analyzes C# source code to enforce a set of style and consistency rules. This plugin is compatible with StyleCop 4.7.54, and maintained by JetBrains.</description>
     <releaseNotes>
+&#8226; Updated to ReSharper 2017.1
+
+From 2016.3.2:
 &#8226; Fix some Cleanup rules that modify single line comments, should not apply to file headers (#1)
 &#8226; Fix Cleanup bug that would insert blank line before comment if it was first line after a switch label (#1)
 Thanks @SanjayGuntur for the PR!
@@ -60,7 +63,7 @@ From previous releases:
     <licenseUrl>https://github.com/StyleCop/StyleCop/blob/master/License.html</licenseUrl>
     <iconUrl>https://raw.githubusercontent.com/StyleCop/StyleCop/master/logo.png</iconUrl>
     <dependencies>
-      <dependency id="Wave" version="[7.0]" />
+      <dependency id="Wave" version="[8.0]" />
     </dependencies>
     <tags>StyleCop analysis</tags>
   </metadata>
