@@ -47,7 +47,8 @@ namespace StyleCop.ReSharper.CodeCleanup
         /// <summary>
         ///   StyleCop descriptor.
         /// </summary>
-        public static readonly StyleCopDescriptor Descriptor = new StyleCopDescriptor();
+        public static readonly FixViolationsDescriptor FIX_VIOLATIONS = new FixViolationsDescriptor();
+        public static readonly CreateXmlDocStubsDescriptor CREATE_XML_DOC_STUB = new CreateXmlDocStubsDescriptor ();
 
         /// <summary>
         /// Gets the collection of option descriptors.
@@ -59,7 +60,7 @@ namespace StyleCop.ReSharper.CodeCleanup
         {
             get
             {
-                return new CodeCleanupOptionDescriptor[] { Descriptor };
+                return new CodeCleanupOptionDescriptor[] { FIX_VIOLATIONS, CREATE_XML_DOC_STUB };
             }
         }
 
@@ -138,15 +139,14 @@ namespace StyleCop.ReSharper.CodeCleanup
                 return;
             }
 
-            StyleCopCodeCleanupOptions options = profile.GetSetting(Descriptor);
 
-            if (!options.FixViolations)
+            if (!profile.GetSetting (FIX_VIOLATIONS))
             {
                 return;
             }
 
             var services = solution.GetPsiServices(); 
-            services.Transactions.Execute("Code cleanup", () => this.InternalProcess(projectFile.ToProjectFile(), file, options.CreateXmlDocStubs));
+            services.Transactions.Execute("Code cleanup", () => this.InternalProcess(projectFile.ToProjectFile(), file, profile.GetSetting(CREATE_XML_DOC_STUB)));
 
             StyleCopTrace.Out();
         }
@@ -162,7 +162,8 @@ namespace StyleCop.ReSharper.CodeCleanup
         /// </param>
         public void SetDefaultSetting(CodeCleanupProfile profile, CodeCleanup.DefaultProfileType profileType)
         {
-            profile.SetSetting(Descriptor, new StyleCopCodeCleanupOptions());
+            profile.SetSetting(FIX_VIOLATIONS, value: true);
+            profile.SetSetting(CREATE_XML_DOC_STUB, value: false);
         }
 
         /// <summary>

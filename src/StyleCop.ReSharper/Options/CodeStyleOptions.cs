@@ -341,7 +341,8 @@ namespace StyleCop.ReSharper.Options
 
                 SetCodeCleanupProfileSetting(styleCopProfile, "CSReorderTypeMembers", null, true);
 
-                styleCopProfile.SetSetting(StyleCopCodeCleanupModule.Descriptor, new StyleCopCodeCleanupOptions());
+                styleCopProfile.SetSetting(StyleCopCodeCleanupModule.FIX_VIOLATIONS, value: true);
+                styleCopProfile.SetSetting(StyleCopCodeCleanupModule.CREATE_XML_DOC_STUB, value: false);
 
                 codeCleanupSettings.SetProfiles(profiles, settingsStore);
                 codeCleanupSettings.SetSilentCleanupProfileName(settingsStore, styleCopProfile.Name);
@@ -1406,8 +1407,9 @@ namespace StyleCop.ReSharper.Options
                 return false;
             }
 
-            StyleCopCodeCleanupOptions options = styleCopProfile.GetSetting(StyleCopCodeCleanupModule.Descriptor);
-            if (!options.FixViolations || options.CreateXmlDocStubs)
+            var fixViolations = styleCopProfile.GetSetting(StyleCopCodeCleanupModule.FIX_VIOLATIONS);
+            var createXmlDocStubs = styleCopProfile.GetSetting (StyleCopCodeCleanupModule.CREATE_XML_DOC_STUB);
+            if (!fixViolations || createXmlDocStubs)
             {
                 return false;
             }
