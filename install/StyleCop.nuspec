@@ -9,7 +9,7 @@
     <summary>StyleCop analyzes C# source code to enforce a set of style and consistency rules. Maintained by JetBrains</summary>
     <description>StyleCop analyzes C# source code to enforce a set of style and consistency rules. This plugin is compatible with StyleCop 4.7.54, and maintained by JetBrains.</description>
     <releaseNotes>
-&#8226; Fixed broken Code Cleanup (#110)
+&#8226; Fixed broken Code Cleanup (StyleCop/StyleCop#110)
 
 From 2017.1.0:
 &#8226; Updated to ReSharper 2017.1
