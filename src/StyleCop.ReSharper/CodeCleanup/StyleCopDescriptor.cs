@@ -15,6 +15,7 @@ namespace StyleCop.ReSharper.CodeCleanup
     using System.Text;
     using System.Xml;
 
+    using JetBrains.ReSharper.Daemon.CSharp.CodeCleanup;
     using JetBrains.ReSharper.Feature.Services.CodeCleanup;
     using JetBrains.Util;
 
@@ -89,19 +90,42 @@ namespace StyleCop.ReSharper.CodeCleanup
     /// <summary>
     /// Options for code cleanup
     /// </summary>
-    public class StyleCopCodeCleanupOptions
+    public class StyleCopCodeCleanupOptions : ObservableObject
     {
+        private bool fixViolations;
+        private bool createXmlDocStubs;
+
         /// <summary>
         /// Option to fix StyleCop violations
         /// </summary>
         [DisplayName("Fix StyleCop violations")]
-        public bool FixViolations { get; set; }
+        public bool FixViolations
+        {
+            get
+            {
+                return this.fixViolations;
+            }
+            set
+            {
+                this.SetField(ref this.fixViolations, value);
+            }
+        }
 
         /// <summary>
         /// Options to generate XML doc stubs
         /// </summary>
         [DisplayName("Create XML doc stubs")]
-        public bool CreateXmlDocStubs { get; set; }
+        public bool CreateXmlDocStubs
+        {
+            get
+            {
+                return this.createXmlDocStubs;
+            }
+            set
+            {
+                this.SetField(ref this.createXmlDocStubs, value);
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StyleCopCodeCleanupOptions"/> class.
