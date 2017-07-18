@@ -26,13 +26,15 @@ namespace StyleCop.ReSharper.Options
     using JetBrains.Application.Components;
     using JetBrains.Application.Settings;
     using JetBrains.Application.UI.Commands;
+    using JetBrains.Application.UI.Controls.FileSystem;
+    using JetBrains.Application.UI.Options;
+    using JetBrains.Application.UI.Options.OptionsDialog;
+    using JetBrains.Application.UI.Options.OptionsDialog.SimpleOptions;
+    using JetBrains.Application.UI.Options.OptionsDialog.SimpleOptions.ViewModel;
     using JetBrains.DataFlow;
     using JetBrains.ProjectModel;
     using JetBrains.ReSharper.Feature.Services.Daemon;
     using JetBrains.ReSharper.Resources.Shell;
-    using JetBrains.UI.Options;
-    using JetBrains.UI.Options.OptionsDialog2.SimpleOptions;
-    using JetBrains.UI.Options.OptionsDialog2.SimpleOptions.ViewModel;
     using JetBrains.UI.RichText;
     using JetBrains.Util;
     using JetBrains.VsIntegration.Shell;
@@ -66,10 +68,14 @@ namespace StyleCop.ReSharper.Options
         /// <param name="container">
         /// The component container
         /// </param>
+        /// <param name="fileDialogs">
+        /// The common file dialogs.
+        /// </param>
         public StyleCopOptionsPage(
             Lifetime lifetime,
             OptionsSettingsSmartContext settingsSmartContext,
-            IComponentContainer container)
+            IComponentContainer container,
+            ICommonFileDialogs fileDialogs)
             : base(lifetime, settingsSmartContext)
         {
             IContextBoundSettingsStoreLive settingsContext =
@@ -149,9 +155,11 @@ namespace StyleCop.ReSharper.Options
                 "Enable StyleCop plugins");
             this.AddText("Location of StyleCop plugins:");
             Property<FileSystemPath> pluginsPath = this.SetupPluginsPathProperty(lifetime);
-            FileChooserViewModel fileChooser = this.AddFolderChooserOption(
+            PathChooserViewModel fileChooser = this.AddFolderChooserOption(
                 pluginsPath,
                 "Location of StyleCop plugins",
+                FileSystemPath.Empty,
+                fileDialogs,
                 FileSystemPath.Empty);
             fileChooser.IsEnabledProperty.SetValue(true);
             this.AddBinding(

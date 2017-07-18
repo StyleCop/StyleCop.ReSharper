@@ -3,12 +3,16 @@
   <metadata>
     <id>StyleCop.StyleCop</id>
     <title>StyleCop by JetBrains</title>
-    <version>2017.1.1</version>
+    <version>2017.2.0-eap8-01</version>
     <authors>Matt Ellis, Andy Reeves</authors>
     <owners>JetBrains, Matt Ellis</owners>
     <summary>StyleCop analyzes C# source code to enforce a set of style and consistency rules. Maintained by JetBrains</summary>
     <description>StyleCop analyzes C# source code to enforce a set of style and consistency rules. This plugin is compatible with StyleCop 4.7.54, and maintained by JetBrains.</description>
     <releaseNotes>
+&#8226; Updated to StyleCop 5.0.0@f02162f33270ed3b7ba8a2a4634b1fae869c9127
+&#8226; Updated to ReSharper 2017.2
+From 2017.1.1
+
 &#8226; Fixed broken Code Cleanup (StyleCop/StyleCop#110)
 
 From 2017.1.0:
@@ -66,7 +70,7 @@ From previous releases:
     <licenseUrl>https://github.com/StyleCop/StyleCop/blob/master/License.html</licenseUrl>
     <iconUrl>https://raw.githubusercontent.com/StyleCop/StyleCop/master/logo.png</iconUrl>
     <dependencies>
-      <dependency id="Wave" version="[8.0]" />
+      <dependency id="Wave" version="[9.0]" />
     </dependencies>
     <tags>StyleCop analysis</tags>
   </metadata>
@@ -82,8 +86,8 @@ From previous releases:
          the EN spell checker, and has limited fallback - it will fallback to the
          parent Culture, e.g. en-US -> en -> Invariant, but won't fallback to another
          language, e.g. de-DE doesn't fallback to en -->
-    <file src="..\lib\StyleCop.4.7.54\mssp7en.dll" target="DotFiles" />
-    <file src="..\lib\StyleCop.4.7.54\mssp7en.lex" target="DotFiles" />
+    <file src="..\lib\StyleCop.5.0.0\mssp7en.dll" target="DotFiles" />
+    <file src="..\lib\StyleCop.5.0.0\mssp7en.lex" target="DotFiles" />
 
     <!-- The default settings file needs to be located next to StyleCop.dll.
          NuGet very helpfully thinks that any target with a different file extension is
@@ -96,14 +100,14 @@ From previous releases:
          put ours in an Extensions folder (this only prevents overwriting clashes,
          StyleCop will still try and load similarly named files, if they exist.
          However, it does guard against the file not being xml) -->
-    <file src="..\lib\StyleCop.4.7.54\Dictionaries\CustomDictionary.xml" target="DotFiles\Extensions\StyleCop.StyleCop\StyleCopDictionaries\" />
-    <file src="..\lib\StyleCop.4.7.54\Dictionaries\CustomDictionary.en-GB.xml" target="DotFiles\Extensions\StyleCop.StyleCop\StyleCopDictionaries\" />
-    <file src="..\lib\StyleCop.4.7.54\Dictionaries\CustomDictionary.en-US.xml" target="DotFiles\Extensions\StyleCop.StyleCop\StyleCopDictionaries\" />
+    <file src="..\lib\StyleCop.5.0.0\Dictionaries\CustomDictionary.xml" target="DotFiles\Extensions\StyleCop.StyleCop\StyleCopDictionaries\" />
+    <file src="..\lib\StyleCop.5.0.0\Dictionaries\CustomDictionary.en-GB.xml" target="DotFiles\Extensions\StyleCop.StyleCop\StyleCopDictionaries\" />
+    <file src="..\lib\StyleCop.5.0.0\Dictionaries\CustomDictionary.en-US.xml" target="DotFiles\Extensions\StyleCop.StyleCop\StyleCopDictionaries\" />
 
     <!-- These files get loaded dynamically, rather than by ReSharper.
          The code loads all assemblies in a given folder, so let's not load/scan all of DotFiles -->
-    <file src="..\lib\StyleCop.4.7.54\Addins\StyleCop.CSharp.dll" target="DotFiles\Extensions\StyleCop.StyleCop\StyleCopAddins\" />
-    <file src="..\lib\StyleCop.4.7.54\Addins\StyleCop.CSharp.Rules.dll" target="DotFiles\Extensions\StyleCop.StyleCop\StyleCopAddins\" />
+    <file src="..\lib\StyleCop.5.0.0\Addins\StyleCop.CSharp.dll" target="DotFiles\Extensions\StyleCop.StyleCop\StyleCopAddins\" />
+    <file src="..\lib\StyleCop.5.0.0\Addins\StyleCop.CSharp.Rules.dll" target="DotFiles\Extensions\StyleCop.StyleCop\StyleCopAddins\" />
 
     <!-- Annoyingly, the installer doesn't like multiple files with the same name, and complains
     <file src="..\lib\StyleCop.4.7.54\Addins\de-DE\StyleCop.CSharp.Rules.resources.dll" target="DotFiles\Extensions\StyleCop.StyleCop\StyleCopAddins\de-DE\" />

@@ -20,16 +20,16 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
 {
     using System.Collections.Generic;
 
+    using JetBrains.Application.Icons;
     using JetBrains.Application.Settings;
+    using JetBrains.Application.UI.Components.UIApplication;
+    using JetBrains.Application.UI.Controls.BulbMenu.Anchors;
     using JetBrains.DocumentModel;
     using JetBrains.ProjectModel;
     using JetBrains.ReSharper.Feature.Services.Daemon;
     using JetBrains.ReSharper.Feature.Services.Intentions;
     using JetBrains.ReSharper.Feature.Services.Resources;
     using JetBrains.ReSharper.Psi;
-    using JetBrains.UI.Application;
-    using JetBrains.UI.BulbMenu;
-    using JetBrains.UI.Icons;
 
     using StyleCop.ReSharper.Options;
     using StyleCop.ReSharper.Violations;
