@@ -18,6 +18,7 @@
 
 namespace StyleCop.ReSharper.QuickFixes.Framework
 {
+    using JetBrains.Application.Icons;
     using JetBrains.Application.Settings;
     using JetBrains.DocumentModel.DataContext;
     using JetBrains.Interop.WinApi;
@@ -102,7 +103,7 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
             {
                 unsafe
                 {
-                    ChangeInspectionSeverityDialog dialog = new ChangeInspectionSeverityDialog(lifetime, this.commonIconsComponent);
+                    ChangeInspectionSeverityDialog dialog = new ChangeInspectionSeverityDialog(lifetime);
                     IContextBoundSettingsStore contextBoundSettingsStore =
                         this.settingsStore.BindToContextTransient(ContextRange.Smart(textControl.Document.ToDataContext()));
                     ConfigurableSeverityItem item = this.highlightingSettingsManager.GetSeverityItem(this.HighlightID);
@@ -111,7 +112,7 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
                     dialog.SeverityOptionsTitle = string.Format(item.FullTitle + ":");
                     dialog.CanBeError = !item.SolutionAnalysisRequired;
 
-                    if (dialog.ShowDialog(User32Dll.GetForegroundWindow()) == true)
+                    if (dialog.ShowDialog() == true)
                     {
                         IContextBoundSettingsStore store = contextBoundSettingsStore;
                         if (dialog.SelectedSettingsLayer != null)

@@ -25,7 +25,7 @@ using JetBrains.ReSharper.Feature.Services.Daemon;
 [assembly: AssemblyDescription("StyleCop for ReSharper")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct(StyleCop.Constants.ProductName)]
+[assembly: AssemblyProduct("StyleCop")]
 [assembly: AssemblyCopyright("MS-PL")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -23,6 +23,7 @@ namespace StyleCop.ReSharper.Core
     using System.Linq;
 
     using JetBrains.Application.Settings;
+    using JetBrains.Application.Threading;
     using JetBrains.DataFlow;
     using JetBrains.ProjectModel;
     using JetBrains.ReSharper.Feature.Services.CSharp.Daemon;
