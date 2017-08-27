@@ -21,6 +21,7 @@ namespace StyleCop.ReSharper.ShellComponents.VisualStudio2015
     using System;
 
     using JetBrains.Application.Components;
+    using JetBrains.Application.Threading;
     using JetBrains.DataFlow;
     using JetBrains.ProjectModel;
     using JetBrains.ProjectModel.Tasks;

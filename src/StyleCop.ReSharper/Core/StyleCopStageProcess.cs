@@ -22,6 +22,7 @@ namespace StyleCop.ReSharper.Core
     using System;
 
     using JetBrains.Application.Settings;
+    using JetBrains.Application.Threading;
     using JetBrains.DataFlow;
     using JetBrains.DocumentModel;
     using JetBrains.ReSharper.Feature.Services.Daemon;
@@ -134,14 +135,10 @@ namespace StyleCop.ReSharper.Core
                 DaemonData daemonData;
                 bool shouldProcessNow;
 
-                // TODO: Lock proper object. But what?
-                lock (this.file)
-                {
-                    daemonData = this.file.UserData.GetOrCreateData(
-                        DaemonDataKey,
-                        () => new DaemonData(this.lifetime, this.threading, this.daemon, this.daemonProcess.Document));
-                    shouldProcessNow = daemonData.OnDaemonCalled();
-                }
+                daemonData = this.file.UserData.GetOrCreateDataUnderLock(
+                    DaemonDataKey,
+                    () => new DaemonData(this.lifetime, this.threading, this.daemon, this.daemonProcess.Document));
+                shouldProcessNow = daemonData.OnDaemonCalled();
 
                 if (shouldProcessNow)
                 {

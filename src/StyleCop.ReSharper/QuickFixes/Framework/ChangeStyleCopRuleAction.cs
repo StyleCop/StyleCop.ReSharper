@@ -18,7 +18,9 @@
 
 namespace StyleCop.ReSharper.QuickFixes.Framework
 {
+    using JetBrains.Application.Icons;
     using JetBrains.Application.Settings;
+    using JetBrains.Application.UI.WindowManagement;
     using JetBrains.DocumentModel.DataContext;
     using JetBrains.Interop.WinApi;
     using JetBrains.ProjectModel;
@@ -34,11 +36,6 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
     /// </summary>
     public class ChangeStyleCopRuleAction : IBulbAction
     {
-        /// <summary>
-        /// The common icons component.
-        /// </summary>
-        private readonly IThemedIconManager commonIconsComponent;
-
         /// <summary>
         /// The highlighting settings manager.
         /// </summary>
@@ -61,15 +58,11 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
         /// <param name="severityId">
         /// The severityId.
         /// </param>
-        /// <param name="commonIconsComponent">
-        /// The icon to use.
-        /// </param>
         public ChangeStyleCopRuleAction(
-            HighlightingSettingsManager highlightingSettingsManager, ISettingsStore settingsStore, string severityId, IThemedIconManager commonIconsComponent)
+            HighlightingSettingsManager highlightingSettingsManager, ISettingsStore settingsStore, string severityId)
         {
             this.highlightingSettingsManager = highlightingSettingsManager;
             this.settingsStore = settingsStore;
-            this.commonIconsComponent = commonIconsComponent;
             this.HighlightID = severityId;
         }
 
@@ -102,7 +95,7 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
             {
                 unsafe
                 {
-                    ChangeInspectionSeverityDialog dialog = new ChangeInspectionSeverityDialog(lifetime, this.commonIconsComponent);
+                    ChangeInspectionSeverityDialog dialog = new ChangeInspectionSeverityDialog(lifetime);
                     IContextBoundSettingsStore contextBoundSettingsStore =
                         this.settingsStore.BindToContextTransient(ContextRange.Smart(textControl.Document.ToDataContext()));
                     ConfigurableSeverityItem item = this.highlightingSettingsManager.GetSeverityItem(this.HighlightID);

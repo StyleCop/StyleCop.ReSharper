@@ -20,7 +20,10 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
 {
     using System.Collections.Generic;
 
+    using JetBrains.Application.Icons;
     using JetBrains.Application.Settings;
+    using JetBrains.Application.UI.Components.UIApplication;
+    using JetBrains.Application.UI.Controls.BulbMenu.Anchors;
     using JetBrains.DocumentModel;
     using JetBrains.ProjectModel;
     using JetBrains.ReSharper.Feature.Services.Daemon;
@@ -28,7 +31,6 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
     using JetBrains.ReSharper.Feature.Services.Resources;
     using JetBrains.ReSharper.Psi;
     using JetBrains.UI.Application;
-    using JetBrains.UI.BulbMenu;
     using JetBrains.UI.Icons;
 
     using StyleCop.ReSharper.Options;
@@ -40,11 +42,6 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
     [CustomHighlightingActionProvider(typeof(CSharpProjectFileType))]
     public class ChangeStyleCopRule : ICustomHighlightingActionProvider
     {
-        /// <summary>
-        /// The common icons component.
-        /// </summary>
-        private readonly IThemedIconManager commonIconsComponent;
-
         /// <summary>
         /// The highlighting settings manager.
         /// </summary>
@@ -67,18 +64,13 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
         /// <param name="application">
         /// The UI application.
         /// </param>
-        /// <param name="commonIconsComponent">
-        /// The icon to use.
-        /// </param>
         public ChangeStyleCopRule(
             HighlightingSettingsManager highlightingSettingsManager,
             ISettingsStore settingsStore,
-            UIApplication application,
-            IThemedIconManager commonIconsComponent)
+            UIApplication application)
         {
             this.highlightingSettingsManager = highlightingSettingsManager;
             this.settingsStore = settingsStore;
-            this.commonIconsComponent = commonIconsComponent;
         }
 
         /// <summary>
@@ -113,8 +105,7 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
             ChangeStyleCopRuleAction changeStyleCopRuleAction = new ChangeStyleCopRuleAction(
                 this.highlightingSettingsManager,
                 this.settingsStore,
-                highlightId,
-                this.commonIconsComponent) { Text = "Inspection Options for \"" + violation.ToolTip + "\"" };
+                highlightId) { Text = "Inspection Options for \"" + violation.ToolTip + "\"" };
 
             yield return
                 new IntentionAction(changeStyleCopRuleAction, changeStyleCopRuleAction.Text, BulbThemedIcons.ContextAction.Id, IntentionsAnchors.ContextActionsAnchor);
