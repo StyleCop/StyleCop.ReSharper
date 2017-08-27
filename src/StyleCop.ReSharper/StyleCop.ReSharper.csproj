@@ -264,16 +264,13 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="StyleCop, Version=5.0.0.0, Culture=neutral, PublicKeyToken=f904653c63bc2738, processorArchitecture=MSIL">
-      <HintPath>..\packages\StyleCop.5.0.0-beta02\lib\net40\StyleCop.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\StyleCop.5.0.0\lib\net40\StyleCop.dll</HintPath>
     </Reference>
     <Reference Include="StyleCop.CSharp, Version=5.0.0.0, Culture=neutral, PublicKeyToken=f904653c63bc2738, processorArchitecture=MSIL">
-      <HintPath>..\packages\StyleCop.CSharp.5.0.0-beta02\lib\net40\StyleCop.CSharp.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\StyleCop.CSharp.5.0.0\lib\net40\StyleCop.CSharp.dll</HintPath>
     </Reference>
     <Reference Include="StyleCop.CSharp.Rules, Version=5.0.0.0, Culture=neutral, PublicKeyToken=f904653c63bc2738, processorArchitecture=MSIL">
-      <HintPath>..\packages\StyleCop.CSharp.Rules.5.0.0-beta02\lib\net40\StyleCop.CSharp.Rules.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\StyleCop.CSharp.Rules.5.0.0\lib\net40\StyleCop.CSharp.Rules.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Collections.Concurrent" />
@@ -643,6 +640,7 @@
     <Error Condition="!Exists('..\packages\JetBrains.Psi.Features.test.Framework.109.0.20170824.132357\build\JetBrains.Psi.Features.test.Framework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\JetBrains.Psi.Features.test.Framework.109.0.20170824.132357\build\JetBrains.Psi.Features.test.Framework.targets'))" />
     <Error Condition="!Exists('..\packages\JetBrains.ReSharper.SDK.Internal.109.0.20170824.140122\build\JetBrains.ReSharper.SDK.Internal.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\JetBrains.ReSharper.SDK.Internal.109.0.20170824.140122\build\JetBrains.ReSharper.SDK.Internal.targets'))" />
     <Error Condition="!Exists('..\packages\JetBrains.Platform.VisualStudio.109.0.20170824.131327\build\JetBrains.Platform.VisualStudio.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\JetBrains.Platform.VisualStudio.109.0.20170824.131327\build\JetBrains.Platform.VisualStudio.targets'))" />
+    <Error Condition="!Exists('..\packages\StyleCop.CSharp.Rules.5.0.0\build\StyleCop.CSharp.Rules.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\StyleCop.CSharp.Rules.5.0.0\build\StyleCop.CSharp.Rules.targets'))" />
   </Target>
   <Import Project="..\packages\JetBrains.Build.Platform.Tasks.ThemedIconsPacker.2.0.20151217.1\build\JetBrains.Build.Platform.Tasks.ThemedIconsPacker.Targets" Condition="Exists('..\packages\JetBrains.Build.Platform.Tasks.ThemedIconsPacker.2.0.20151217.1\build\JetBrains.Build.Platform.Tasks.ThemedIconsPacker.Targets')" />
   <Import Project="..\packages\JetBrains.Platform.Interop.dotMemoryUnit.Framework.109.0.20170824.131327\build\JetBrains.Platform.Interop.dotMemoryUnit.Framework.targets" Condition="Exists('..\packages\JetBrains.Platform.Interop.dotMemoryUnit.Framework.109.0.20170824.131327\build\JetBrains.Platform.Interop.dotMemoryUnit.Framework.targets')" />
@@ -665,6 +663,7 @@
   <Import Project="..\packages\JetBrains.Psi.Features.test.Framework.109.0.20170824.132357\build\JetBrains.Psi.Features.test.Framework.targets" Condition="Exists('..\packages\JetBrains.Psi.Features.test.Framework.109.0.20170824.132357\build\JetBrains.Psi.Features.test.Framework.targets')" />
   <Import Project="..\packages\JetBrains.ReSharper.SDK.Internal.109.0.20170824.140122\build\JetBrains.ReSharper.SDK.Internal.targets" Condition="Exists('..\packages\JetBrains.ReSharper.SDK.Internal.109.0.20170824.140122\build\JetBrains.ReSharper.SDK.Internal.targets')" />
   <Import Project="..\packages\JetBrains.Platform.VisualStudio.109.0.20170824.131327\build\JetBrains.Platform.VisualStudio.targets" Condition="Exists('..\packages\JetBrains.Platform.VisualStudio.109.0.20170824.131327\build\JetBrains.Platform.VisualStudio.targets')" />
+  <Import Project="..\packages\StyleCop.CSharp.Rules.5.0.0\build\StyleCop.CSharp.Rules.targets" Condition="Exists('..\packages\StyleCop.CSharp.Rules.5.0.0\build\StyleCop.CSharp.Rules.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
