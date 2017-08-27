@@ -3,12 +3,14 @@
   <metadata>
     <id>StyleCop.StyleCop</id>
     <title>StyleCop by JetBrains</title>
-    <version>2017.2</version>
+    <version>2017.2.1-pre0001</version>
     <authors>Matt Ellis, Andy Reeves</authors>
     <owners>JetBrains, Matt Ellis</owners>
     <summary>StyleCop analyzes C# source code to enforce a set of style and consistency rules. Maintained by JetBrains</summary>
-    <description>StyleCop analyzes C# source code to enforce a set of style and consistency rules. This plugin is compatible with StyleCop 4.7.54, and maintained by JetBrains.</description>
-    <releaseNotes>
+    <description>StyleCop analyzes C# source code to enforce a set of style and consistency rules. This plugin is compatible with StyleCop 5.0.0, and maintained by JetBrains.</description>
+    <releaseNotes>&#8226; Updated to StyleCop 5.0.0 (StyleCop/StyleCop#123)
+
+From 2017.2.0:
 &#8226; Updated to ReSharper 2017.2
 
 From 2017.1.1:
