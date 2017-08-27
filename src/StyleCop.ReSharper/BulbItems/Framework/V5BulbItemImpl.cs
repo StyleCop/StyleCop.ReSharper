@@ -21,6 +21,7 @@ namespace StyleCop.ReSharper.BulbItems.Framework
     using System;
 
     using JetBrains.Application;
+    using JetBrains.Application.Threading;
     using JetBrains.DocumentManagers.impl;
     using JetBrains.DocumentModel;
     using JetBrains.DocumentModel.Transactions;
