@@ -258,48 +258,43 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
 
             if (invokedExpression != null)
             {
-                IReferenceExpression referenceExpressionNode = invokedExpression as IReferenceExpression;
-
-                if (referenceExpressionNode != null)
+                IReferenceExpression referenceExpression = invokedExpression as IReferenceExpression;
+                if (referenceExpression != null)
                 {
-                    IReferenceExpression referenceExpression = invokedExpression as IReferenceExpression;
-                    if (referenceExpression != null)
+                    ICSharpExpression qualifierExpression = referenceExpression.QualifierExpression;
+                    if (qualifierExpression is IBaseExpression)
                     {
-                        ICSharpExpression qualifierExpression = referenceExpression.QualifierExpression;
-                        if (qualifierExpression is IBaseExpression)
+                        string methodName = referenceExpression.NameIdentifier.Name;
+
+                        ICSharpTypeDeclaration typeDeclaration = invocationExpression.GetContainingNode<ICSharpTypeDeclaration>(true);
+
+                        if (typeDeclaration != null)
                         {
-                            string methodName = referenceExpressionNode.NameIdentifier.Name;
-
-                            ICSharpTypeDeclaration typeDeclaration = invocationExpression.GetContainingNode<ICSharpTypeDeclaration>(true);
-
-                            if (typeDeclaration != null)
+                            foreach (ICSharpTypeMemberDeclaration memberDeclaration in typeDeclaration.MemberDeclarations)
                             {
-                                foreach (ICSharpTypeMemberDeclaration memberDeclaration in typeDeclaration.MemberDeclarations)
+                                if (memberDeclaration.DeclaredName == methodName)
                                 {
-                                    if (memberDeclaration.DeclaredName == methodName)
+                                    IMethodDeclaration methodDeclaration = memberDeclaration as IMethodDeclaration;
+                                    if (methodDeclaration != null)
                                     {
-                                        IMethodDeclaration methodDeclaration = memberDeclaration as IMethodDeclaration;
-                                        if (methodDeclaration != null)
-                                        {
-                                            isOverride = methodDeclaration.IsOverride;
-                                            isNew = methodDeclaration.IsNew();
-                                            break;
-                                        }
+                                        isOverride = methodDeclaration.IsOverride;
+                                        isNew = methodDeclaration.IsNew();
+                                        break;
                                     }
                                 }
+                            }
 
-                                if (isOverride || isNew || methodName.Equals("Equals", StringComparison.InvariantCultureIgnoreCase))
-                                {
-                                    return;
-                                }
+                            if (isOverride || isNew || methodName.Equals("Equals", StringComparison.InvariantCultureIgnoreCase))
+                            {
+                                return;
+                            }
 
-                                using (WriteLockCookie.Create(true))
-                                {
-                                    // swap the base to this
-                                    ICSharpExpression expression = CSharpElementFactory.GetInstance(invocationExpression.GetPsiModule()).CreateExpression("this");
+                            using (WriteLockCookie.Create(true))
+                            {
+                                // swap the base to this
+                                ICSharpExpression expression = CSharpElementFactory.GetInstance(invocationExpression.GetPsiModule()).CreateExpression("this");
 
-                                    referenceExpression.SetQualifierExpression(expression);
-                                }
+                                referenceExpression.SetQualifierExpression(expression);
                             }
                         }
                     }
