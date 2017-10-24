@@ -31,6 +31,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
     using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
     using JetBrains.ReSharper.Psi.Modules;
     using JetBrains.ReSharper.Psi.Tree;
+    using JetBrains.ReSharper.Psi.Util;
     using JetBrains.ReSharper.Resources.Shell;
 
     using StyleCop.Diagnostics;
@@ -255,49 +256,33 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
             bool isNew = false;
 
             IPrimaryExpression invokedExpression = invocationExpression.InvokedExpression;
+            if (invokedExpression == null) return;
 
-            if (invokedExpression != null)
+            IReferenceExpression referenceExpression = invokedExpression as IReferenceExpression;
+            if (referenceExpression == null) return;
+
+            ICSharpExpression qualifierExpression = referenceExpression.QualifierExpression;
+            if (!(qualifierExpression is IBaseExpression)) return;
+            
+            ICSharpTypeDeclaration typeDeclaration = invocationExpression.GetContainingNode<ICSharpTypeDeclaration>(true);
+            if (typeDeclaration == null) return;
+
+            ITypeElement typeDeclaredElement = typeDeclaration.DeclaredElement;
+            if (typeDeclaredElement == null) return;
+
+            IDeclaredElement referenceDeclaredElement = referenceExpression.Reference.Resolve().DeclaredElement;
+            if (referenceDeclaredElement == null) return;
+
+            foreach (var member in typeDeclaredElement.GetAllClassMembers(referenceDeclaredElement.ShortName))
             {
-                IReferenceExpression referenceExpression = invokedExpression as IReferenceExpression;
-                if (referenceExpression != null)
+                if (!member.Equals(referenceDeclaredElement)) continue;
+
+                using (WriteLockCookie.Create(true))
                 {
-                    ICSharpExpression qualifierExpression = referenceExpression.QualifierExpression;
-                    if (qualifierExpression is IBaseExpression)
-                    {
-                        string methodName = referenceExpression.NameIdentifier.Name;
+                    // swap the base to this
+                    ICSharpExpression expression = CSharpElementFactory.GetInstance(invocationExpression.GetPsiModule()).CreateExpression("this");
 
-                        ICSharpTypeDeclaration typeDeclaration = invocationExpression.GetContainingNode<ICSharpTypeDeclaration>(true);
-
-                        if (typeDeclaration != null)
-                        {
-                            foreach (ICSharpTypeMemberDeclaration memberDeclaration in typeDeclaration.MemberDeclarations)
-                            {
-                                if (memberDeclaration.DeclaredName == methodName)
-                                {
-                                    IMethodDeclaration methodDeclaration = memberDeclaration as IMethodDeclaration;
-                                    if (methodDeclaration != null)
-                                    {
-                                        isOverride = methodDeclaration.IsOverride;
-                                        isNew = methodDeclaration.IsNew();
-                                        break;
-                                    }
-                                }
-                            }
-
-                            if (isOverride || isNew || methodName.Equals("Equals", StringComparison.InvariantCultureIgnoreCase))
-                            {
-                                return;
-                            }
-
-                            using (WriteLockCookie.Create(true))
-                            {
-                                // swap the base to this
-                                ICSharpExpression expression = CSharpElementFactory.GetInstance(invocationExpression.GetPsiModule()).CreateExpression("this");
-
-                                referenceExpression.SetQualifierExpression(expression);
-                            }
-                        }
-                    }
+                    referenceExpression.SetQualifierExpression(expression);
                 }
             }
         }
