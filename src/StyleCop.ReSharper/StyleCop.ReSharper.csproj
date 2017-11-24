@@ -2,6 +2,7 @@
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\JetBrains.Build.Platform.Tasks.ProxyToSolutionCompiledTask.2.0.20170530.0\build\JetBrains.Build.Platform.Tasks.ProxyToSolutionCompiledTask.Props" Condition="Exists('..\packages\JetBrains.Build.Platform.Tasks.ProxyToSolutionCompiledTask.2.0.20170530.0\build\JetBrains.Build.Platform.Tasks.ProxyToSolutionCompiledTask.Props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="..\CopyToReSharperInstallationsDirectory.targets" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -11,6 +12,7 @@
     <RootNamespace>StyleCop.ReSharper</RootNamespace>
     <AssemblyName>StyleCop.ReSharper</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <InstallationHive>Exp</InstallationHive>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
