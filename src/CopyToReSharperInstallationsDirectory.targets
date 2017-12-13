@@ -1,0 +1,21 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Target Name="CopyToReSharperInstallationsDirectory" AfterTargets="AfterBuild">
+
+    <PropertyGroup>
+      <JetBrainsInstallationsDirectory>$(LOCALAPPDATA)\JetBrains\Installations</JetBrainsInstallationsDirectory>
+    </PropertyGroup>
+
+    <ItemGroup Condition="Exists('$(JetBrainsInstallationsDirectory)') And '$(InstallationHive)' != ''">
+      <ReSharperInstallationsSubDirectories
+        Include="$([System.IO.Directory]::GetDirectories('$(JetBrainsInstallationsDirectory)', 'ReSharperPlatformVs*$(InstallationHive)*'))" />
+    </ItemGroup>
+
+    <Message Condition="@(ReSharperInstallationsSubDirectories) != ''" Text="Copy to installation dirs ..." Importance="High" />
+    <Message Condition="@(ReSharperInstallationsSubDirectories) != ''" Text="%(ReSharperInstallationsSubDirectories.Identity)" Importance="High" />
+    <Copy Condition="@(ReSharperInstallationsSubDirectories) != ''"
+          SourceFiles="@(MainAssembly);@(_DebugSymbolsOutputPath);@(AdditionalFilesForReSharperInstallationsDirectory)"
+          DestinationFolder="%(ReSharperInstallationsSubDirectories.Identity)" />
+  </Target>
+
+</Project>

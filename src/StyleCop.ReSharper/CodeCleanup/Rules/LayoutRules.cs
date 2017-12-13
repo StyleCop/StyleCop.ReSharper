@@ -365,7 +365,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
 
                                 if (siblingMinus3 is ISwitchCaseLabel)
                                 {
-                                    // if we're the start of a switch block then don't insert a new line. 
+                                    //Â ifÂ we'reÂ theÂ startÂ ofÂ aÂ switchÂ blockÂ thenÂ don'tÂ insertÂ aÂ newÂ line. 
                                     continue;
                                 }
 

@@ -152,7 +152,11 @@ namespace StyleCop.ReSharper.Core
                                     this.file);
 
                                 // This filters the highlights, based on "ReSharper disable" comments, etc.
-                                var filteringConsumer = new FilteringHighlightingConsumer(this, this.settings, this.file);
+                                var defaultConsumer = new DefaultHighlightingConsumer(this.daemonProcess.SourceFile);
+                                var filteringConsumer = new FilteringHighlightingConsumer(
+                                    defaultConsumer,
+                                    this.daemonProcess.SourceFile,
+                                    this.file);
                                 foreach (var highlightingInfo in runner.ViolationHighlights)
                                 {
                                     filteringConsumer.ConsumeHighlighting(highlightingInfo);

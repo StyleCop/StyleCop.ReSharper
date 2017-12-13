@@ -5,6 +5,8 @@ install/*.nupkg
 *.user
 *.suo
 .vs/
+*.tmp
+output/
 
 # ReSharper is a .NET coding add-in
 _ReSharper*

@@ -120,7 +120,7 @@ namespace StyleCop.ReSharper.Options
             if (DoesHostSupportRoslynAnalzyers(container))
             {
                 this.AddText(
-                    "Note: Analysis is automatically disabled if the project references the StyleCop.Analyzers NuGet package, which provides StyleCop analysis for Visual Studio 2015 and C# 6.");
+                    "Note: Analysis is automatically disabled if the project references the StyleCop.Analyzers NuGet package.");
             }
 
             this.AddBoolOption(
