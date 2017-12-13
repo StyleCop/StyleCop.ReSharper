@@ -120,7 +120,7 @@ namespace StyleCop.ReSharper.Options
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.PLACE_SIMPLE_ACCESSORHOLDER_ON_SINGLE_LINE, false);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.PLACE_SIMPLE_ANONYMOUSMETHOD_ON_SINGLE_LINE, true);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.PLACE_SIMPLE_INITIALIZER_ON_SINGLE_LINE, true);
-            settingsStore.SetValue((CSharpFormatSettingsKey key) => key.PLACE_SIMPLE_LINQ_ON_SINGLE_LINE, true);
+            //settingsStore.SetValue((CSharpFormatSettingsKey key) => key.PLACE_SIMPLE_LINQ_ON_SINGLE_LINE, true);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.PLACE_SIMPLE_METHOD_ON_SINGLE_LINE, false);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.PLACE_TYPE_ATTRIBUTE_ON_SAME_LINE, false);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.PLACE_TYPE_CONSTRAINTS_ON_SAME_LINE, false);
@@ -675,10 +675,10 @@ namespace StyleCop.ReSharper.Options
                 return false;
             }
 
-            if (!settingsStore.GetValue((CSharpFormatSettingsKey key) => key.PLACE_SIMPLE_LINQ_ON_SINGLE_LINE))
-            {
-                return false;
-            }
+            //if (!settingsStore.GetValue((CSharpFormatSettingsKey key) => key.PLACE_SIMPLE_LINQ_ON_SINGLE_LINE))
+            //{
+            //    return false;
+            //}
 
             if (settingsStore.GetValue((CSharpFormatSettingsKey key) => key.PLACE_SIMPLE_METHOD_ON_SINGLE_LINE))
             {

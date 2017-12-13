@@ -24,6 +24,7 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
     using JetBrains.DocumentModel.DataContext;
     using JetBrains.Interop.WinApi;
     using JetBrains.ProjectModel;
+    using JetBrains.PsiFeatures.UIInteractive.Features.Intentions.Options;
     using JetBrains.ReSharper.Daemon.Impl;
     using JetBrains.ReSharper.Feature.Services.Bulbs;
     using JetBrains.ReSharper.Feature.Services.Daemon;
