@@ -9,43 +9,43 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Updated to StyleCop 5.0.0 (StyleCop/StyleCop#123)
 - Fix cleanup for rule 1100 (StyleCop/StyleCop#153)
 
-## 2017.2.0:
+## 2017.2.0
 - Updated to ReSharper 2017.2
 
-## 2017.1.1:
+## 2017.1.1
 - Fixed broken Code Cleanup (StyleCop/StyleCop#110)
 
-## 2017.1.0:
+## 2017.1.0
 - Updated to ReSharper 2017.1
 
-## 2016.3.2:
+## 2016.3.2
 - Fix some Cleanup rules that modify single line comments, should not apply to file headers (#1)
 - Fix Cleanup bug that would insert blank line before comment if it was first line after a switch label (#1)
 Thanks @SanjayGuntur for the PR!
 
-## 2016.3.1:
+## 2016.3.1
 - Fix crash if the file doesn't have a header (StyleCop/StyleCop#78)
 
-## 2016.3.0:
+## 2016.3.0
 - Updated to ReSharper 2016.3
 
-## 2016.2.1:
+## 2016.2.1
 - Remove NUnit file layout pattern, since it doesn't match StyleCop guidelines
 
-## 2016.2.0:
+## 2016.2.0
 - Updated to ReSharper 2016.2 (StyleCop/StyleCop#55)
 
-## 2016.1.4:
+## 2016.1.4
 - Create SuppressMessage attribute parameters more reliably
 - Works properly if StyleCop 4.7.49 is already loaded in Visual Studio
 
-## 2016.1.3:
+## 2016.1.3
 - Better version number reporting
 
-## 2016.1.2:
+## 2016.1.2
 - Updated to StyleCop 4.7.54 (StyleCop/StyleCop#52)
 
-## 2016.1.1:
+## 2016.1.1
 - Suppress message quick fix available again (StyleCop/StyleCop#59)
 - Fix duplicate warning tooltips (StyleCop/StyleCop#34)
 - Fix insert header documentation quick fix (StyleCop/StyleCop#57)
@@ -54,7 +54,7 @@ Thanks @SanjayGuntur for the PR!
 - Display StyleCop parse errors
 - Display StyleCop.dll version in plugin options page
 
-## previous releases:
+## Previous releases
 - Support for ReSharper 2016.1 (StyleCop/StyleCop#47)
 - Fix to allow filtering by StyleCop issues in code inspection window (StyleCop/StyleCop#37)
 - Fix error messages in installer (StyleCop/StyleCop#32)
