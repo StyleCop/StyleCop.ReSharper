@@ -28,12 +28,12 @@ using Nuke.Core.Tooling;
 using Nuke.Core.Utilities;
 using Nuke.Core.Utilities.Collections;
 
-using static Nuke.Common.IO.HttpTasks;
-using static Nuke.Common.IO.SerializationTasks;
-using static Nuke.Common.IO.TextTasks;
+using static Nuke.Core.IO.HttpTasks;
+using static Nuke.Core.IO.SerializationTasks;
+using static Nuke.Core.IO.TextTasks;
 using static Nuke.Common.Tools.MSBuild.MSBuildTasks;
 using static Nuke.Common.Tools.NuGet.NuGetTasks;
-using static Nuke.Common.Tools.NuGetPackageResolver;
+using static Nuke.Core.Tooling.NuGetPackageResolver;
 using static Nuke.Core.IO.FileSystemTasks;
 using static Nuke.Core.IO.PathConstruction;
 using static Nuke.Core.Logger;
