@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## 2017.3.0
+- Updated to ReSharper 2018.1
+
+## 2017.3.0
 - Updated to ReSharper 2017.3
 - Updated to StyleCop 5.0.0 (StyleCop/StyleCop#123)
 - Fix cleanup for rule 1100 (StyleCop/StyleCop#153)

@@ -53,7 +53,7 @@ namespace StyleCop.ReSharper.Violations
                 return new StyleCopErrorHighlighting(violation, documentRange);
             }
 
-            Severity severity = HighlightingSettingsManager.Instance.GetConfigurableSeverity(highlightID, solution);
+            Severity severity = HighlightingSettingsManager.Instance.GetConfigurableSeverity(highlightID, sourceFile: null, solution: solution);
 
             return new StyleCopHighlighting(violation, documentRange, severity, highlightID);
         }

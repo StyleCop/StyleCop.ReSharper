@@ -101,7 +101,7 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
                         this.settingsStore.BindToContextTransient(ContextRange.Smart(textControl.Document.ToDataContext()));
                     ConfigurableSeverityItem item = this.highlightingSettingsManager.GetSeverityItem(this.HighlightID);
 
-                    dialog.Severity = this.highlightingSettingsManager.GetConfigurableSeverity(this.HighlightID, solution);
+                    dialog.Severity = this.highlightingSettingsManager.GetConfigurableSeverity(this.HighlightID, sourceFile: null, solution: solution);
                     dialog.SeverityOptionsTitle = string.Format(item.FullTitle + ":");
                     dialog.CanBeError = !item.SolutionAnalysisRequired;
 

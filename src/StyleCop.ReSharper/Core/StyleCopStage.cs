@@ -155,7 +155,7 @@ namespace StyleCop.ReSharper.Core
                             settingsStore,
                             file));
             }
-            catch (JetBrains.Application.Progress.ProcessCancelledException)
+            catch (OperationCanceledException)
             {
                 return null;
             }

@@ -172,7 +172,7 @@ namespace StyleCop.ReSharper.Core
                     daemonData.ScheduleReHighlight();
                 }
             }
-            catch (JetBrains.Application.Progress.ProcessCancelledException)
+            catch (OperationCanceledException)
             {
             }
 
