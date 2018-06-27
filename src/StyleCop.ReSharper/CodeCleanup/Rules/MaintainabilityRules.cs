@@ -47,7 +47,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
                 {
                     ICSharpExpression innerExpression = parenthesizedExpressionNode.Expression;
 
-                    if (innerExpression != null && node.Parent != null)
+                    if (innerExpression != null && node.Parent != null && node.Parent.NodeType == ElementType.INTERPOLATED_STRING_EXPRESSION)
                     {
                         NodeType innerExpressionNodeType = (innerExpression as TreeElement).NodeType;
 
