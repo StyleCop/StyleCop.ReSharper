@@ -25,7 +25,7 @@ namespace StyleCop.ReSharper.ShellComponents.VisualStudio2015
     /// Zone marker for the Visual Studio specific components
     /// </summary>
     [ZoneMarker]
-    public class ZoneMarker : IRequire<IVisualStudioZone>
+    public class ZoneMarker : IRequire<IVisualStudioEnvZone>
     {
     }
 }

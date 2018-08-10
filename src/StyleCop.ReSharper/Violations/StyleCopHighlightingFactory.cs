@@ -17,7 +17,9 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace StyleCop.ReSharper.Violations
 {
+    using JetBrains.Application.Settings;
     using JetBrains.DocumentModel;
+    using JetBrains.DocumentModel.DataContext;
     using JetBrains.ProjectModel;
     using JetBrains.ReSharper.Feature.Services.Daemon;
 
@@ -53,7 +55,14 @@ namespace StyleCop.ReSharper.Violations
                 return new StyleCopErrorHighlighting(violation, documentRange);
             }
 
-            Severity severity = HighlightingSettingsManager.Instance.GetConfigurableSeverity(highlightID, sourceFile: null, solution: solution);
+            ISettingsStore settingsStore = solution.GetSettingsStore().SettingsStore;
+            IContextBoundSettingsStore contextBoundSettingsStore =
+                settingsStore.BindToContextTransient(ContextRange.Smart(documentRange.Document.ToDataContext()));
+
+            Severity severity = HighlightingSettingsManager.Instance.GetConfigurableSeverity(
+                highlightID,
+                sourceFile: null,
+                storeBoundToSourceFile: contextBoundSettingsStore);
 
             return new StyleCopHighlighting(violation, documentRange, severity, highlightID);
         }

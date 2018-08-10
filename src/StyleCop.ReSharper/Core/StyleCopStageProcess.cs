@@ -156,7 +156,8 @@ namespace StyleCop.ReSharper.Core
                                 var filteringConsumer = new FilteringHighlightingConsumer(
                                     defaultConsumer,
                                     this.daemonProcess.SourceFile,
-                                    this.file);
+                                    this.file,
+                                    this.settings);
                                 foreach (var highlightingInfo in runner.ViolationHighlights)
                                 {
                                     filteringConsumer.ConsumeHighlighting(highlightingInfo);
