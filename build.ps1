@@ -1,9 +1,11 @@
 [CmdletBinding()]
 Param(
-    [switch]$NoInit,
+    #[switch]$CustomParam,
     [Parameter(Position=0,Mandatory=$false,ValueFromRemainingArguments=$true)]
     [string[]]$BuildArguments
 )
+
+Write-Output "Windows PowerShell $($Host.Version)"
 
 Set-StrictMode -Version 2.0; $ErrorActionPreference = "Stop"; $ConfirmPreference = "None"; trap { $host.SetShouldExit(1) }
 $PSScriptRoot = Split-Path $MyInvocation.MyCommand.Path -Parent
@@ -12,41 +14,36 @@ $PSScriptRoot = Split-Path $MyInvocation.MyCommand.Path -Parent
 # CONFIGURATION
 ###########################################################################
 
+$SolutionDirectory = "$PSScriptRoot\src"
+$BuildProjectFile = "$PSScriptRoot\build\_build.csproj"
+$BuildExeFile = "$PSScriptRoot\build\bin\debug\_build.exe"
+$TempDirectory = "$PSScriptRoot\\.tmp"
+
 $NuGetVersion = "latest"
-$SolutionDirectory = "$PSScriptRoot\.\src"
-$BuildProjectFile = "$PSScriptRoot\.\build\.build.csproj"
-$BuildExeFile = "$PSScriptRoot\.\build\bin\debug\.build.exe"
-
-$TempDirectory = "$PSScriptRoot\.tmp"
-
 $NuGetUrl = "https://dist.nuget.org/win-x86-commandline/$NuGetVersion/nuget.exe"
-$NuGetFile = "$TempDirectory\nuget.exe"
-$env:NUGET_EXE = $NuGetFile
 
 ###########################################################################
-# PREPARE BUILD
+# EXECUTION
 ###########################################################################
 
 function ExecSafe([scriptblock] $cmd) {
     & $cmd
-    if ($LastExitCode -ne 0) { throw "The following call failed with exit code $LastExitCode. '$cmd'" }
+    if ($LASTEXITCODE) { exit $LASTEXITCODE }
 }
 
-if (!$NoInit) {
+$env:NUGET_EXE = "$TempDirectory\nuget.exe"
+if (!(Test-Path $env:NUGET_EXE)) {
     md -force $TempDirectory > $null
-
-    if (!(Test-Path $NuGetFile)) { (New-Object System.Net.WebClient).DownloadFile($NuGetUrl, $NuGetFile) }
-    elseif ($NuGetVersion -eq "latest") { & $NuGetFile update -Self }
-
-    ExecSafe { & $NuGetFile restore $BuildProjectFile -SolutionDirectory $SolutionDirectory }
-    ExecSafe { & $NuGetFile install Nuke.MSBuildLocator -ExcludeVersion -OutputDirectory $TempDirectory -SolutionDirectory $SolutionDirectory }
+    (New-Object System.Net.WebClient).DownloadFile($NuGetUrl, $env:NUGET_EXE)
 }
+elseif ($NuGetVersion -eq "latest") {
+    ExecSafe { & $env:NUGET_EXE update -Self }
+}
+Write-Output $(& $env:NUGET_EXE help | select -First 1)
 
-$MSBuildFile = & "$TempDirectory\Nuke.MSBuildLocator\tools\Nuke.MSBuildLocator.exe"
+ExecSafe { & $env:NUGET_EXE install Nuke.MSBuildLocator -Version 0.6.2-beta0001 -ExcludeVersion -OutputDirectory $TempDirectory -SolutionDirectory $SolutionDirectory }
+$MSBuildFile = & "$TempDirectory\Nuke.MSBuildLocator\tools\Nuke.MSBuildLocator.exe" "$TempDirectory\vswhere\tools\vswhere.exe"
+
+ExecSafe { & $env:NUGET_EXE restore $BuildProjectFile -SolutionDirectory $SolutionDirectory }
 ExecSafe { & $MSBuildFile $BuildProjectFile }
-
-###########################################################################
-# EXECUTE BUILD
-###########################################################################
-
 ExecSafe { & $BuildExeFile $BuildArguments }
