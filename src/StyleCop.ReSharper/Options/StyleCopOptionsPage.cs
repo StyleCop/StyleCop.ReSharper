@@ -96,15 +96,6 @@ namespace StyleCop.ReSharper.Options
             string ourFileVersion = GetFileVersionInfo(assembly);
             this.AddText(string.Format("StyleCop.ReSharper.dll {0} ({1})", assembly.GetName().Version, ourFileVersion));
 
-            if (ourFileVersion != styleCopFileVersion)
-            {
-                TextStyle style = new TextStyle(FontStyle.Bold, Color.Empty, Color.Empty);
-                this.AddRichText(
-                    new RichText(
-                        "Mismatched StyleCop.dll version! Are you running an older version of the Visual Studio plugin?",
-                        style));
-            }
-
             this.AddHeader("Options");
 
             // Note that we have to check to see if the lifetime is terminated before accessing the
