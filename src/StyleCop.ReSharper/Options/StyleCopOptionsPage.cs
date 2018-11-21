@@ -125,7 +125,7 @@ namespace StyleCop.ReSharper.Options
                 nonUserFiles,
                 BindingStyle.IsEnabledProperty,
                 (StyleCopOptionsSettingsKey options) => options.AnalysisEnabled,
-                JetFunc<object>.Identity);
+                x => x);
 
             this.AddHeader("Headers");
             this.AddBoolOption(
@@ -157,7 +157,7 @@ namespace StyleCop.ReSharper.Options
                 fileChooser,
                 BindingStyle.IsEnabledProperty,
                 (StyleCopOptionsSettingsKey options) => options.PluginsEnabled,
-                JetFunc<object>.Identity);
+                x => x);
 
             this.AddHeader("Misc");
             this.AddBoolOption(

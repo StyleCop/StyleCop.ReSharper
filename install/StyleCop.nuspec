@@ -36,7 +36,7 @@
          NuGet very helpfully thinks that any target with a different file extension is
          actually a directory (instead of using a much more sensible trailing slash).
          So the ReSharper project copies and renames the default settings -->
-    <file src="..\src\StyleCop.ReSharper\bin\$configuration$\Settings.StyleCop" target="DotFiles\" />
+    <file src="..\src\StyleCop.ReSharper\Settings.StyleCop" target="DotFiles\" />
 
     <!-- Custom dictionaries are read from the location of StyleCop.dll, or in any
          child folders. To prevent clashes with other similarly named files, we'll
