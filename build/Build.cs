@@ -24,10 +24,14 @@ using Nuke.Common.Git;
 using Nuke.Common.Tools.GitVersion;
 using Nuke.Common.Tools.NuGet;
 using Nuke.Common;
+using Nuke.Common.ChangeLog;
+using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
+using Nuke.Common.Tools.MSBuild;
 using Nuke.Common.Utilities;
 using Nuke.Common.Utilities.Collections;
 
+using static Nuke.Common.ChangeLog.ChangelogTasks;
 using static Nuke.Common.IO.HttpTasks;
 using static Nuke.Common.IO.SerializationTasks;
 using static Nuke.Common.IO.TextTasks;
@@ -38,6 +42,7 @@ using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.PathConstruction;
 using static Nuke.Common.Logger;
 using static Nuke.Common.Tooling.ProcessTasks;
+using static Nuke.Common.Tools.Git.GitTasks;
 
 // ReSharper disable ArrangeThisQualifier
 
@@ -45,14 +50,18 @@ class Build : NukeBuild
 {
     public static int Main() => Execute<Build>(x => x.Pack);
 
+    [Parameter] readonly string Configuration = "Release";
     [Parameter] readonly string Source = "https://resharper-plugins.jetbrains.com/api/v2/package";
     [Parameter] readonly string ApiKey;
+    [Parameter] readonly string Version;
 
     [GitRepository] readonly GitRepository GitRepository;
-    [GitVersion] readonly GitVersion GitVersion;
+    [Solution] readonly Solution Solution;
 
-    string ProjectFile => GlobFiles(SolutionDirectory, "**/*.csproj").Single();
-    string PackagesConfigFile => GlobFiles(SolutionDirectory, "**/packages.config").Single();
+    Project Project => Solution.GetProject("StyleCop.ReSharper");
+    string PackagesConfigFile => Project.Directory / "packages.config";
+    string SourceDirectory => RootDirectory / "src";
+    string OutputDirectory => RootDirectory / "output";
 
     Target InstallHive => _ => _
         .Executes(() =>
@@ -62,7 +71,7 @@ class Build : NukeBuild
             var downloadUrl = JsonDeserialize<JObject>(jsonResponse)["RSU"].First["downloads"]["windows"]["link"]
                 .ToString();
             var installer = TemporaryDirectory / new Uri(downloadUrl).Segments.Last();
-            var installationHive = MSBuildParseProject(ProjectFile).Properties["InstallationHive"];
+            var installationHive = MSBuildParseProject(Project).Properties["InstallationHive"];
 
             if (!File.Exists(installer)) HttpDownloadFile(downloadUrl, installer);
 
@@ -83,39 +92,44 @@ class Build : NukeBuild
         .DependsOn(Clean)
         .Executes(() =>
         {
-            NuGetRestore(s => DefaultNuGetRestore);
+            NuGetRestore(s => s
+                .SetTargetPath(Solution));
         });
 
     Target Compile => _ => _
         .DependsOn(Restore)
         .Executes(() =>
         {
-            MSBuild(s => DefaultMSBuildCompile);
+            MSBuild(s => s
+                .SetSolutionFile(Solution)
+                .SetTargets("Rebuild")
+                .SetConfiguration(Configuration)
+                .DisableNodeReuse());
         });
+
+    string ChangelogFile => RootDirectory / "CHANGELOG.md";
 
     Target Pack => _ => _
         .DependsOn(Compile)
+        .Requires(() => Version)
         .Executes(() =>
         {
-            var releaseNotes = ReadAllLines(RootDirectory / "CHANGELOG.md")
-                .SkipWhile(x => !x.StartsWith("##"))
-                .Skip(count: 1)
-                .TakeWhile(x => !string.IsNullOrWhiteSpace(x))
-                .Select(x => $"\u2022{x.TrimStart('-')}")
-                .JoinNewLine();
-
             GlobFiles(RootDirectory / "install", "*.nuspec")
-                .ForEach(x => NuGetPack(s => DefaultNuGetPack
+                .ForEach(x => NuGetPack(s => s
                     .SetTargetPath(x)
+                    .SetConfiguration(Configuration)
+                    .SetVersion(Version)
                     .SetBasePath(RootDirectory / "install")
+                    .SetOutputDirectory(OutputDirectory)
                     .SetProperty("wave", GetWaveVersion(PackagesConfigFile) + ".0")
                     .SetProperty("currentyear", DateTime.Now.Year.ToString())
-                    .SetProperty("releasenotes", releaseNotes)
+                    .SetProperty("releasenotes", GetNuGetReleaseNotes(ChangelogFile, GitRepository))
                     .EnableNoPackageAnalysis()));
         });
 
     Target Push => _ => _
         .DependsOn(Pack)
+        .Requires(() => ExtractChangelogSectionNotes(ChangelogFile, "vNext").Any())
         .Requires(() => ApiKey)
         .Requires(() => Configuration.EqualsOrdinalIgnoreCase("Release"))
         .Executes(() =>
@@ -125,6 +139,15 @@ class Build : NukeBuild
                     .SetTargetPath(x)
                     .SetSource(Source)
                     .SetApiKey(ApiKey)));
+
+            if (!Version.Contains("-"))
+            {
+                FinalizeChangelog(ChangelogFile, Version, GitRepository);
+                Git($"add {ChangelogFile}");
+                Git($"commit -m \"Finalize {Path.GetFileName(ChangelogFile)} for {Version}\"");
+                
+                Git($"tag {Version}");
+            }
         });
 
     static string GetWaveVersion(string packagesConfigFile)
