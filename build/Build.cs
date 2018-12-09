@@ -63,24 +63,6 @@ class Build : NukeBuild
     string SourceDirectory => RootDirectory / "src";
     string OutputDirectory => RootDirectory / "output";
 
-    Target InstallHive => _ => _
-        .Executes(() =>
-        {
-            var jsonResponse =
-                HttpDownloadString("https://data.services.jetbrains.com/products/releases?code=RSU&latest=true");
-            var downloadUrl = JsonDeserialize<JObject>(jsonResponse)["RSU"].First["downloads"]["windows"]["link"]
-                .ToString();
-            var installer = TemporaryDirectory / new Uri(downloadUrl).Segments.Last();
-            var installationHive = MSBuildParseProject(Project).Properties["InstallationHive"];
-
-            if (!File.Exists(installer)) HttpDownloadFile(downloadUrl, installer);
-
-            Info($"Installing '{Path.GetFileNameWithoutExtension(installer)}' into '{installationHive}' hive...");
-            StartProcess(installer,
-                    $"/VsVersion=12.0;14.0;15.0 /SpecificProductNames=ReSharper /Hive={installationHive} /Silent=True")
-                .AssertZeroExitCode();
-        });
-
     Target Clean => _ => _
         .Executes(() =>
         {
@@ -119,7 +101,7 @@ class Build : NukeBuild
                     .SetTargetPath(x)
                     .SetConfiguration(Configuration)
                     .SetVersion(Version)
-                    .SetBasePath(RootDirectory / "install")
+                    .SetBasePath(RootDirectory)
                     .SetOutputDirectory(OutputDirectory)
                     .SetProperty("wave", GetWaveVersion(PackagesConfigFile) + ".0")
                     .SetProperty("currentyear", DateTime.Now.Year.ToString())
@@ -152,7 +134,7 @@ class Build : NukeBuild
 
     static string GetWaveVersion(string packagesConfigFile)
     {
-        var fullWaveVersion = GetLocalInstalledPackages(packagesConfigFile, includeDependencies: true)
+        var fullWaveVersion = GetLocalInstalledPackages(packagesConfigFile, resolveDependencies: true)
             .SingleOrDefault(x => x.Id == "Wave").NotNull("fullWaveVersion != null").Version.ToString();
         return fullWaveVersion.Substring(startIndex: 0, length: fullWaveVersion.IndexOf(value: '.'));
     }

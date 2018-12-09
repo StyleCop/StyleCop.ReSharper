@@ -3,7 +3,7 @@
 	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=SA/@EntryIndexedValue">SA</s:String>
 	<s:String x:Key="/Default/Environment/Hierarchy/Build/SolBuilderDuo/UseMsbuildSolutionBuilder/@EntryValue">No</s:String>
 	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=D627F73B6AC0474F991C133FAFA1D1C4/AbsolutePath/@EntryValue">C:\Users\matt\Code\forks\GitHub\StyleCop\StyleCop.ReSharper\src\StyleCop.ReSharper\StyleCop.dotSettings</s:String>
-	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=D627F73B6AC0474F991C133FAFA1D1C4/RelativePath/@EntryValue">..\StyleCop.ReSharper\StyleCop.dotSettings</s:String>
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=D627F73B6AC0474F991C133FAFA1D1C4/RelativePath/@EntryValue">..\src\StyleCop.ReSharper\StyleCop.dotSettings</s:String>
 	<s:Boolean x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=D627F73B6AC0474F991C133FAFA1D1C4/@KeyIndexDefined">True</s:Boolean>
 	<s:Boolean x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=FileD627F73B6AC0474F991C133FAFA1D1C4/@KeyIndexDefined">True</s:Boolean>
 	<s:Double x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=FileD627F73B6AC0474F991C133FAFA1D1C4/RelativePriority/@EntryValue">1</s:Double></wpf:ResourceDictionary>

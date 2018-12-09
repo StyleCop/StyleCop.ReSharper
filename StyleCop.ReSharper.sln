@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleCop.ReSharper", "StyleCop.ReSharper\StyleCop.ReSharper.csproj", "{B65D53B2-2BFB-4050-BA9B-65150C75E83D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleCop.ReSharper", "src\StyleCop.ReSharper\StyleCop.ReSharper.csproj", "{B65D53B2-2BFB-4050-BA9B-65150C75E83D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "..\build\_build.csproj", "{C80D821D-17DC-4244-AF89-F5F234AA3100}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{C80D821D-17DC-4244-AF89-F5F234AA3100}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

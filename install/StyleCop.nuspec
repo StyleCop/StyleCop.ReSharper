@@ -19,8 +19,8 @@
   </metadata>
   <files>
     <!-- The main plugin -->
-    <file src="..\src\StyleCop.ReSharper\bin\$configuration$\StyleCop.ReSharper.dll" target="DotFiles" />
-    <file src="..\src\StyleCop.ReSharper\bin\$configuration$\StyleCop.dll" target="DotFiles" />
+    <file src="src\StyleCop.ReSharper\bin\$configuration$\StyleCop.ReSharper.dll" target="DotFiles" />
+    <file src="src\StyleCop.ReSharper\bin\$configuration$\StyleCop.dll" target="DotFiles" />
 
     <!-- StyleCop will try and find the appropriate language spell checker from
          Office 2010's install location. If it can't find them, it tries to load
@@ -29,28 +29,28 @@
          the EN spell checker, and has limited fallback - it will fallback to the
          parent Culture, e.g. en-US -> en -> Invariant, but won't fallback to another
          language, e.g. de-DE doesn't fallback to en -->
-    <file src="..\src\StyleCop.ReSharper\bin\$configuration$\mssp7en.dll" target="DotFiles" />
-    <file src="..\src\StyleCop.ReSharper\bin\$configuration$\mssp7en.lex" target="DotFiles" />
+    <file src="src\StyleCop.ReSharper\bin\$configuration$\mssp7en.dll" target="DotFiles" />
+    <file src="src\StyleCop.ReSharper\bin\$configuration$\mssp7en.lex" target="DotFiles" />
 
     <!-- The default settings file needs to be located next to StyleCop.dll.
          NuGet very helpfully thinks that any target with a different file extension is
          actually a directory (instead of using a much more sensible trailing slash).
          So the ReSharper project copies and renames the default settings -->
-    <file src="..\src\StyleCop.ReSharper\Settings.StyleCop" target="DotFiles\" />
+    <file src="src\StyleCop.ReSharper\Settings.StyleCop" target="DotFiles\" />
 
     <!-- Custom dictionaries are read from the location of StyleCop.dll, or in any
          child folders. To prevent clashes with other similarly named files, we'll
          put ours in an Extensions folder (this only prevents overwriting clashes,
          StyleCop will still try and load similarly named files, if they exist.
          However, it does guard against the file not being xml) -->
-    <file src="..\dictionaries\CustomDictionary.xml" target="DotFiles\Extensions\StyleCop.StyleCop\StyleCopDictionaries\" />
-    <file src="..\dictionaries\CustomDictionary.en-GB.xml" target="DotFiles\Extensions\StyleCop.StyleCop\StyleCopDictionaries\" />
-    <file src="..\dictionaries\CustomDictionary.en-US.xml" target="DotFiles\Extensions\StyleCop.StyleCop\StyleCopDictionaries\" />
+    <file src="dictionaries\CustomDictionary.xml" target="DotFiles\Extensions\StyleCop.StyleCop\StyleCopDictionaries\" />
+    <file src="dictionaries\CustomDictionary.en-GB.xml" target="DotFiles\Extensions\StyleCop.StyleCop\StyleCopDictionaries\" />
+    <file src="dictionaries\CustomDictionary.en-US.xml" target="DotFiles\Extensions\StyleCop.StyleCop\StyleCopDictionaries\" />
 
     <!-- These files get loaded dynamically, rather than by ReSharper.
          The code loads all assemblies in a given folder, so let's not load/scan all of DotFiles -->
-    <file src="..\src\StyleCop.ReSharper\bin\$configuration$\StyleCop.CSharp.dll" target="DotFiles\Extensions\StyleCop.StyleCop\StyleCopAddins\" />
-    <file src="..\src\StyleCop.ReSharper\bin\$configuration$\StyleCop.CSharp.Rules.dll" target="DotFiles\Extensions\StyleCop.StyleCop\StyleCopAddins\" />
+    <file src="src\StyleCop.ReSharper\bin\$configuration$\StyleCop.CSharp.dll" target="DotFiles\Extensions\StyleCop.StyleCop\StyleCopAddins\" />
+    <file src="src\StyleCop.ReSharper\bin\$configuration$\StyleCop.CSharp.Rules.dll" target="DotFiles\Extensions\StyleCop.StyleCop\StyleCopAddins\" />
 
     <!-- Annoyingly, the installer doesn't like multiple files with the same name, and complains
     <file src="..\lib\StyleCop.4.7.54\Addins\de-DE\StyleCop.CSharp.Rules.resources.dll" target="DotFiles\Extensions\StyleCop.StyleCop\StyleCopAddins\de-DE\" />
@@ -62,6 +62,6 @@
     -->
 
     <!-- Settings -->
-    <file src="..\src\StyleCop.ReSharper\StyleCop.dotSettings" target="DotFiles\Extensions\StyleCop.StyleCop\settings\StyleCop.dotSettings" />
+    <file src="src\StyleCop.ReSharper\StyleCop.dotSettings" target="DotFiles\Extensions\StyleCop.StyleCop\settings\StyleCop.dotSettings" />
   </files>
 </package>
