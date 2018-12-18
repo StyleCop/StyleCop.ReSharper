@@ -14,13 +14,16 @@ $PSScriptRoot = Split-Path $MyInvocation.MyCommand.Path -Parent
 # CONFIGURATION
 ###########################################################################
 
-$SolutionDirectory = "$PSScriptRoot\src"
 $BuildProjectFile = "$PSScriptRoot\build\_build.csproj"
-$BuildExeFile = "$PSScriptRoot\build\bin\debug\_build.exe"
 $TempDirectory = "$PSScriptRoot\\.tmp"
 
-$NuGetVersion = "latest"
-$NuGetUrl = "https://dist.nuget.org/win-x86-commandline/$NuGetVersion/nuget.exe"
+$DotNetGlobalFile = "$PSScriptRoot\\global.json"
+$DotNetInstallUrl = "https://raw.githubusercontent.com/dotnet/cli/master/scripts/obtain/dotnet-install.ps1"
+$DotNetReleasesUrl = "https://raw.githubusercontent.com/dotnet/core/master/release-notes/releases.json"
+
+$env:DOTNET_SKIP_FIRST_TIME_EXPERIENCE = 1
+$env:DOTNET_CLI_TELEMETRY_OPTOUT = 1
+$env:NUGET_XMLDOC_MODE = "skip"
 
 ###########################################################################
 # EXECUTION
@@ -31,19 +34,32 @@ function ExecSafe([scriptblock] $cmd) {
     if ($LASTEXITCODE) { exit $LASTEXITCODE }
 }
 
-$env:NUGET_EXE = "$TempDirectory\nuget.exe"
-if (!(Test-Path $env:NUGET_EXE)) {
+# If global.json exists, load expected version
+if (Test-Path $DotNetGlobalFile) {
+    $DotNetVersion = $(Get-Content $DotNetGlobalFile | Out-String | ConvertFrom-Json).sdk.version
+}
+
+# If dotnet is installed locally, and expected version is not set or installation matches the expected version
+if ((Get-Command "dotnet" -ErrorAction SilentlyContinue) -ne $null -and ` 
+    (!(Test-Path variable:DotNetVersion) -or $(& dotnet --version) -eq $DotNetVersion)) {
+    $env:DOTNET_EXE = (Get-Command "dotnet").Path
+}
+else {
+    $DotNetDirectory = "$TempDirectory\dotnet-win"
+    $env:DOTNET_EXE = "$DotNetDirectory\dotnet.exe"
+
+    # If expected version is not set, get latest version
+    if (!(Test-Path variable:DotNetVersion)) {
+        $DotNetVersion = $(Invoke-WebRequest -UseBasicParsing $DotNetReleasesUrl | ConvertFrom-Json)[0]."version-sdk"
+    }
+
+    # Download and execute install script
+    $DotNetInstallFile = "$TempDirectory\dotnet-install.ps1"
     md -force $TempDirectory > $null
-    (New-Object System.Net.WebClient).DownloadFile($NuGetUrl, $env:NUGET_EXE)
+    (New-Object System.Net.WebClient).DownloadFile($DotNetInstallUrl, $DotNetInstallFile)
+    ExecSafe { & $DotNetInstallFile -InstallDir $DotNetDirectory -Version $DotNetVersion -NoPath }
 }
-elseif ($NuGetVersion -eq "latest") {
-    ExecSafe { & $env:NUGET_EXE update -Self }
-}
-Write-Output $(& $env:NUGET_EXE help | select -First 1)
 
-ExecSafe { & $env:NUGET_EXE install Nuke.MSBuildLocator -Version 0.6.2-beta0001 -ExcludeVersion -OutputDirectory $TempDirectory -SolutionDirectory $SolutionDirectory }
-$MSBuildFile = & "$TempDirectory\Nuke.MSBuildLocator\tools\Nuke.MSBuildLocator.exe" "$TempDirectory\vswhere\tools\vswhere.exe"
+Write-Output "Microsoft (R) .NET Core SDK version $(& $env:DOTNET_EXE --version)"
 
-ExecSafe { & $env:NUGET_EXE restore $BuildProjectFile -SolutionDirectory $SolutionDirectory }
-ExecSafe { & $MSBuildFile $BuildProjectFile }
-ExecSafe { & $BuildExeFile $BuildArguments }
+ExecSafe { & $env:DOTNET_EXE run --project $BuildProjectFile -- $BuildArguments }
