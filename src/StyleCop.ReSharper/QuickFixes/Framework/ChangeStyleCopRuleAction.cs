@@ -23,6 +23,7 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
     using JetBrains.Application.UI.WindowManagement;
     using JetBrains.DocumentModel.DataContext;
     using JetBrains.Interop.WinApi;
+    using JetBrains.Lifetimes;
     using JetBrains.ProjectModel;
     using JetBrains.PsiFeatures.UIInteractive.Features.Intentions.Options;
     using JetBrains.ReSharper.Daemon.Impl;
@@ -90,8 +91,8 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
         /// </param>
         public void Execute(ISolution solution, ITextControl textControl)
         {
-            JetBrains.DataFlow.LifetimeDefinition definition = JetBrains.DataFlow.Lifetimes.Define(solution.GetLifetime());
-            JetBrains.DataFlow.Lifetime lifetime = definition.Lifetime;
+            LifetimeDefinition definition = Lifetime.Define(solution.GetLifetime());
+            Lifetime lifetime = definition.Lifetime;
             try
             {
                 unsafe

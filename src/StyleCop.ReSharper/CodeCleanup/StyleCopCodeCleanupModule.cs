@@ -23,6 +23,7 @@ namespace StyleCop.ReSharper.CodeCleanup
 
     using JetBrains.DataFlow;
     using JetBrains.DocumentModel;
+    using JetBrains.Lifetimes;
     using JetBrains.ProjectModel;
     using JetBrains.ReSharper.Daemon.CSharp.CodeCleanup;
     using JetBrains.ReSharper.Daemon.CSharp.CodeCleanup.CodeStyles;
@@ -182,7 +183,7 @@ namespace StyleCop.ReSharper.CodeCleanup
         {
             // Process the file for all the different Code Cleanups we have here
             // we do them in a very specific order. Do not change it.
-            Lifetimes.Using(
+            Lifetime.Using(
                 lifetime =>
                     {
                         StyleCopApiPool apiPool = projectFile.GetSolution().GetComponent<StyleCopApiPool>();

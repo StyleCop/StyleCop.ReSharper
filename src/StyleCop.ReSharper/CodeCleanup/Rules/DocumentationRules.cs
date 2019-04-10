@@ -27,6 +27,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
 
     using JetBrains.Application.Settings;
     using JetBrains.DataFlow;
+    using JetBrains.Lifetimes;
     using JetBrains.ProjectModel;
     using JetBrains.ReSharper.Psi;
     using JetBrains.ReSharper.Psi.CSharp.Parsing;
@@ -126,7 +127,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
                 }
             }
 
-            Lifetimes.Using(
+            Lifetime.Using(
                 lifetime =>
                     {
                         DocumentationRulesConfiguration docConfig = GetDocumentationRulesConfig(lifetime, file);
@@ -408,7 +409,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
         /// </param>
         public static void InsertCompanyName(ICSharpFile file)
         {
-            Lifetimes.Using(
+            Lifetime.Using(
                 lifetime =>
                     {
                         DocumentationRulesConfiguration docConfig = GetDocumentationRulesConfig(lifetime, file);
@@ -427,7 +428,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
         /// </param>
         public static void InsertCopyrightText(ICSharpFile file)
         {
-            Lifetimes.Using(
+            Lifetime.Using(
                 lifetime =>
                     {
                         DocumentationRulesConfiguration docConfig = GetDocumentationRulesConfig(lifetime, file);
@@ -446,7 +447,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
         /// </param>
         public static void InsertFileHeader(ICSharpFile file)
         {
-            Lifetimes.Using(
+            Lifetime.Using(
                 lifetime =>
                     {
                         FileHeader fileHeader = new FileHeader(file);
@@ -854,7 +855,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
             Debug.Assert(declaration.DeclaredElement != null, "declaration.DeclaredElement != null");
 
             bool returnValue = false;
-            Lifetimes.Using(
+            Lifetime.Using(
                 lifetime =>
                     {
                         DocumentationRulesConfiguration docConfig = GetDocumentationRulesConfig(lifetime, file);
@@ -1410,7 +1411,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
                 return;
             }
 
-            Lifetimes.Using(
+            Lifetime.Using(
                 lifetime =>
                     {
                         DocumentationRulesConfiguration docConfig = GetDocumentationRulesConfig(lifetime, file);

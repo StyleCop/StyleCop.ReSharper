@@ -30,6 +30,7 @@ namespace StyleCop.ReSharper.Options
     using JetBrains.Application.FileSystemTracker;
     using JetBrains.Application.Settings;
     using JetBrains.DataFlow;
+    using JetBrains.Lifetimes;
     using JetBrains.ReSharper.Feature.Services.Daemon;
     using JetBrains.ReSharper.Psi;
     using JetBrains.ReSharper.Psi.CSharp;
@@ -65,7 +66,7 @@ namespace StyleCop.ReSharper.Options
             // Registering highlightings should happen declaratively
             // Create this instance directly, rather than use the pool, because the pool needs to
             // be per-solution, as it caches settings for files in the solution
-            Lifetimes.Using(
+            Lifetime.Using(
                 temporaryLifetime =>
                     {
                         // We don't really need the file system tracker - it's only used when we get

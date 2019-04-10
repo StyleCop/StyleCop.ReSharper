@@ -25,6 +25,7 @@ namespace StyleCop.ReSharper.Core
     using JetBrains.Application.FileSystemTracker;
     using JetBrains.Application.Settings;
     using JetBrains.DataFlow;
+    using JetBrains.Lifetimes;
     using JetBrains.ProjectModel;
     using JetBrains.ReSharper.Psi;
     using JetBrains.Util;

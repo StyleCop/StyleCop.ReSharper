@@ -25,6 +25,7 @@ namespace StyleCop.ReSharper.Core
     using JetBrains.Application.Threading;
     using JetBrains.DataFlow;
     using JetBrains.DocumentModel;
+    using JetBrains.Lifetimes;
     using JetBrains.ReSharper.Feature.Services.Daemon;
     using JetBrains.ReSharper.Psi;
     using JetBrains.ReSharper.Psi.CSharp.Tree;
@@ -142,7 +143,7 @@ namespace StyleCop.ReSharper.Core
 
                 if (shouldProcessNow)
                 {
-                    Lifetimes.Using(
+                    Lifetime.Using(
                         apiLifetime =>
                             {
                                 var runner = this.apiPool.GetInstance(apiLifetime).Runner;

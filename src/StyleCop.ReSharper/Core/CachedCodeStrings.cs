@@ -21,6 +21,8 @@ namespace StyleCop.ReSharper.Core
     using System.Runtime.CompilerServices;
 
     using JetBrains.DataFlow;
+    using JetBrains.Diagnostics;
+    using JetBrains.Lifetimes;
     using JetBrains.ProjectModel;
     using JetBrains.Util;
 
@@ -107,7 +109,7 @@ namespace StyleCop.ReSharper.Core
         {
             if (rulesAssembly == null)
             {
-                Lifetimes.Using(
+                Lifetime.Using(
                     l =>
                         {
                             var styleCopApi = solution.GetComponent<StyleCopApiPool>().GetInstance(l);

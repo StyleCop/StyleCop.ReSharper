@@ -25,6 +25,7 @@ namespace StyleCop.ReSharper.Core
     using JetBrains.Application.Settings;
     using JetBrains.Application.Threading;
     using JetBrains.DataFlow;
+    using JetBrains.Lifetimes;
     using JetBrains.ProjectModel;
     using JetBrains.ReSharper.Feature.Services.CSharp.Daemon;
     using JetBrains.ReSharper.Feature.Services.Daemon;

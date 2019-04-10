@@ -18,6 +18,7 @@
 namespace StyleCop.ReSharper.BulbItems.Ordering
 {
     using JetBrains.DataFlow;
+    using JetBrains.Lifetimes;
     using JetBrains.ProjectModel;
     using JetBrains.ReSharper.Psi;
     using JetBrains.ReSharper.Psi.CSharp.Tree;
@@ -46,7 +47,7 @@ namespace StyleCop.ReSharper.BulbItems.Ordering
         {
             ICSharpFile file = Utils.GetCSharpFile(solution, textControl);
 
-            Lifetimes.Using(
+            Lifetime.Using(
                 lifetime =>
                     {
                         StyleCopApi api = solution.GetComponent<StyleCopApiPool>().GetInstance(lifetime);

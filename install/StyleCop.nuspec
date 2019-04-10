@@ -7,7 +7,7 @@
     <authors>Matt Ellis, Andy Reeves</authors>
     <owners>JetBrains, Matt Ellis</owners>
     <summary>StyleCop analyzes C# source code to enforce a set of style and consistency rules. Maintained by JetBrains</summary>
-    <description>StyleCop analyzes C# source code to enforce a set of style and consistency rules. This plugin is compatible with StyleCop 5.0.0, and maintained by JetBrains.</description>
+    <description>StyleCop analyzes C# source code to enforce a set of style and consistency rules. This plugin is compatible with StyleCop 6.1.0, and maintained by JetBrains.</description>
     <releaseNotes>$releasenotes$</releaseNotes>
     <projectUrl>https://github.com/StyleCop/StyleCop.ReSharper</projectUrl>
     <licenseUrl>https://github.com/StyleCop/StyleCop/blob/master/LICENSE</licenseUrl>

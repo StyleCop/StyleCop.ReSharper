@@ -31,6 +31,7 @@ namespace StyleCop.ReSharper.Options
     using JetBrains.Application.UI.Options.OptionsDialog.SimpleOptions;
     using JetBrains.Application.UI.Options.OptionsDialog.SimpleOptions.ViewModel;
     using JetBrains.DataFlow;
+    using JetBrains.Lifetimes;
     using JetBrains.ProjectModel;
     using JetBrains.ReSharper.Feature.Services.Daemon;
     using JetBrains.ReSharper.Resources.Shell;
