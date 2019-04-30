@@ -66,7 +66,7 @@ class Build : NukeBuild
     Target Clean => _ => _
         .Executes(() =>
         {
-            DeleteDirectories(GlobDirectories(SourceDirectory, "**/bin", "**/obj"));
+            GlobDirectories(SourceDirectory, "**/bin", "**/obj").ForEach(DeleteDirectory);
             EnsureCleanDirectory(OutputDirectory);
         });
 
@@ -108,10 +108,22 @@ class Build : NukeBuild
                     .SetProperty("releasenotes", GetNuGetReleaseNotes(ChangelogFile, GitRepository))
                     .EnableNoPackageAnalysis()));
         });
+    
+    Target Changelog => _ => _
+        .Before(Pack)
+        .OnlyWhenStatic(() => !Version.Contains("-"))
+        .Executes(() =>
+        {
+            FinalizeChangelog(ChangelogFile, Version, GitRepository);
+            Git($"add {ChangelogFile}");
+            Git($"commit -m \"Finalize {Path.GetFileName(ChangelogFile)} for {Version}\"");
+            
+            Git($"tag {Version}");
+        });
 
     Target Push => _ => _
-        .DependsOn(Pack)
-        .Requires(() => ExtractChangelogSectionNotes(ChangelogFile, "vNext").Any())
+        .DependsOn(Pack, Changelog)
+        .Requires(() => ExtractChangelogSectionNotes(ChangelogFile, Version).Any())
         .Requires(() => ApiKey)
         .Requires(() => Configuration.EqualsOrdinalIgnoreCase("Release"))
         .Executes(() =>
@@ -121,21 +133,13 @@ class Build : NukeBuild
                     .SetTargetPath(x)
                     .SetSource(Source)
                     .SetApiKey(ApiKey)));
-
-            if (!Version.Contains("-"))
-            {
-                FinalizeChangelog(ChangelogFile, Version, GitRepository);
-                Git($"add {ChangelogFile}");
-                Git($"commit -m \"Finalize {Path.GetFileName(ChangelogFile)} for {Version}\"");
-                
-                Git($"tag {Version}");
-            }
         });
 
     static string GetWaveVersion(string packagesConfigFile)
     {
-        var fullWaveVersion = GetLocalInstalledPackages(packagesConfigFile, resolveDependencies: true)
-            .SingleOrDefault(x => x.Id == "Wave").NotNull("fullWaveVersion != null").Version.ToString();
+        var fullWaveVersion = GetLocalInstalledPackages(packagesConfigFile)
+            .OrderByDescending(x => x.Version)
+            .FirstOrDefault(x => x.Id == "Wave").NotNull("fullWaveVersion != null").Version.ToString();
         return fullWaveVersion.Substring(startIndex: 0, length: fullWaveVersion.IndexOf(value: '.'));
     }
 }
