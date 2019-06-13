@@ -1,6 +1,6 @@
 # StyleCop for ReSharper
 
-StyleCop analyses C# source code to enforce a set of style and consistency rules. StyleCop for ReSharper is an extension for ReSharper that will run StyleCop analysis as you type, display the violations inline in the editor and provide quick fixes for some violations. It will also configure ReSharper to use default settings that match StyleCop rules.
+StyleCop analyzes C# source code to enforce a set of style and consistency rules. StyleCop for ReSharper is an extension for ReSharper that will run StyleCop analysis as you type, display the violations inline in the editor and provide quick fixes for some violations. It will also configure ReSharper to use default settings that match StyleCop rules.
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/StyleCop/StyleCop?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
