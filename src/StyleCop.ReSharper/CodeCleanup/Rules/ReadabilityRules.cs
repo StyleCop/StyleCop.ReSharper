@@ -476,7 +476,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
 
                 using (WriteLockCookie.Create(true))
                 {
-                    multipleDeclaration.SetTypeUsage(CSharpElementFactory.GetInstance(localVariableDeclaration.GetPsiModule()).CreateTypeUsageNode(newType, multipleDeclaration));
+                    multipleDeclaration.SetTypeUsage(CSharpElementFactory.GetInstance(localVariableDeclaration.GetPsiModule()).CreateTypeUsage(newType, multipleDeclaration));
                 }
             }
             else
@@ -564,7 +564,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
                 {
                     if (!types[i].IsUnknown)
                     {
-                        ITypeUsage newTypeUsageNode = CSharpElementFactory.GetInstance(project).CreateTypeUsageNode(types[i], node);
+                        ITypeUsage newTypeUsageNode = CSharpElementFactory.GetInstance(project).CreateTypeUsage(types[i], node);
 
                         using (WriteLockCookie.Create(true))
                         {

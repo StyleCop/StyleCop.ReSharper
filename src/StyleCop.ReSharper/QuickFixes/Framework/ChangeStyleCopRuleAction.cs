@@ -109,7 +109,7 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
                     dialog.SeverityOptionsTitle = string.Format(item.FullTitle + ":");
                     dialog.CanBeError = !item.SolutionAnalysisRequired;
 
-                    if (dialog.ShowDialog(User32Dll.GetForegroundWindow()) == true)
+                    if (dialog.ShowDialog() == true)
                     {
                         IContextBoundSettingsStore store = contextBoundSettingsStore;
                         if (dialog.SelectedSettingsLayer != null)
