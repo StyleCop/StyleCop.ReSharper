@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## vNext
 
+## [2019.2.0] / 2019-08-08
+- Updated for ReSharper 2019.2
+
 ## [2019.1.0] / 2019-04-30
 - Updated to ReSharper 2019.1
 - Updated to StyleCop 6.1.0
@@ -87,7 +90,8 @@ Thanks @SanjayGuntur for the PR!
 - Separate Code Cleanup option to create XML doc stubs (StyleCop/StyleCop#15)
 - Not honouring settings when adjusting file header in Code Cleanup (StyleCop/StyleCop#14)
 
-[vNext]: https://github.com/StyleCop/StyleCop.ReSharper/compare/2019.1.0...HEAD
+[vNext]: https://github.com/StyleCop/StyleCop.ReSharper/compare/2019.2.0...HEAD
+[2019.2.0]: https://github.com/StyleCop/StyleCop.ReSharper/compare/2019.1.0...2019.2.0
 [2019.1.0]: https://github.com/StyleCop/StyleCop.ReSharper/compare/2018.3.0...2019.1.0
 [2018.3.0]: https://github.com/StyleCop/StyleCop.ReSharper/compare/2018.2.0...2018.3.0
 [2018.2.0]: https://github.com/StyleCop/StyleCop.ReSharper/compare/2018.1.2...2018.2.0
