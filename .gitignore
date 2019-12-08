@@ -1,14 +1,19 @@
-[Pp]ackages/
-bin/
-obj/
-install/*.nupkg
-*.user
-*.suo
-.vs/
-*.tmp
-output/
-.idea/
+# Build artifacts
+[Bb]in/
+[Oo]bj/
+build
+output
+.gradle
+.tmp
 
-# ReSharper is a .NET coding add-in
+# User-specific files
+*.suo
+*.user
+*.sln.docstates
+*.cache
+
+# IDEs
+.idea
+.vs
 _ReSharper*
 _dotTrace*
