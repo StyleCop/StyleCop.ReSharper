@@ -1,14 +1,14 @@
 <Project>
   <PropertyGroup>
-    <SdkVersion>2019.2.0-*</SdkVersion>
-    
+    <SdkVersion>2019.3.0-*</SdkVersion>
+
     <Title>StyleCop by JetBrains</Title>
     <Description>StyleCop analyzes C# source code to enforce a set of style and consistency rules. This plugin is compatible with StyleCop 6.1.0, and maintained by JetBrains.</Description>
-  
+
     <Authors>Matt Ellis, Andy Reeves</Authors>
     <Copyright>Copyright $([System.DateTime]::Now.Year) Maintainers of StyleCop</Copyright>
     <PackageTags>resharper plugin</PackageTags>
-  
+
     <PackageProjectUrl>https://github.com/StyleCop/StyleCop.ReSharper</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/StyleCop/StyleCop/blob/master/LICENSE</PackageLicenseUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/StyleCop/StyleCop/master/logo.png</PackageIconUrl>
