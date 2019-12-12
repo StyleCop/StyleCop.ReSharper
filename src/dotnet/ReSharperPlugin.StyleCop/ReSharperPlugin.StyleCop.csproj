@@ -1,5 +1,5 @@
-﻿<Project>
-  
+<Project>
+
   <PropertyGroup>
     <LanguageTargets>$(MSBuildToolsPath)\Microsoft.CSharp.targets</LanguageTargets>
   </PropertyGroup>
