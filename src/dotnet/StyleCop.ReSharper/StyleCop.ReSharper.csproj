@@ -1,13 +1,9 @@
 ﻿<Project>
-
   <PropertyGroup>
-    <AssemblyName>StyleCop.ReSharper</AssemblyName>
     <PackageId>StyleCop.StyleCop</PackageId>
     <LanguageTargets>$(MSBuildToolsPath)\Microsoft.CSharp.targets</LanguageTargets>
   </PropertyGroup>
-
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
-
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
     <IsPackable>True</IsPackable>
@@ -15,11 +11,9 @@
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
-
   <ItemDefinitionGroup>
     <PackageReference PrivateAssets="all" />
   </ItemDefinitionGroup>
-
   <ItemGroup>
     <PackageReference Include="EnvDTE100" Version="10.0.3" />
     <PackageReference Include="JetBrains.ReSharper.SDK" Version="$(SdkVersion)" IncludeAssets="all" />
@@ -30,18 +24,15 @@
     <!-- TODO: https://github.com/NuGet/Home/issues/7154 -->
     <PackageReference Include="Wave" Version="$(WaveVersion)" PrivateAssets="none" />
   </ItemGroup>
-
   <ItemGroup>
     <Compile Remove="Rider\**\*" />
     <None Remove="Rider\**\*" />
     <EmbeddedResource Remove="Rider\**\*" />
     <Content Remove="Rider\**\*" />
   </ItemGroup>
-
   <ItemGroup>
     <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\$(AssemblyName).dll" PackagePath="dotFiles" Pack="true" />
     <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\$(AssemblyName).pdb" PackagePath="dotFiles" Pack="true" />
-
     <Content Include="Settings.StyleCop" PackagePath="dotFiles" Pack="true" />
     <Content Include="StyleCop.dotSettings" PackagePath="dotFiles\Extensions\StyleCop.StyleCop\settings" Pack="true" />
     <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\mssp7en.*" PackagePath="dotFiles" Pack="true" />
@@ -49,35 +40,15 @@
     <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\StyleCop.CSharp*" PackagePath="dotFiles\Extensions\StyleCop.StyleCop\StyleCopAddins" Pack="true" />
     <Content Include="..\..\..\dictionaries\*.xml" PackagePath="dotFiles\Extensions\StyleCop.StyleCop\StyleCopDictionaries" Pack="true" />
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Include="Resources\StyleCopIcons\*.*" />
+    <EmbeddedResource Include="Resources\ReorderingPatterns.xml" />
   </ItemGroup>
-
   <ItemGroup>
     <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <ThemedIconsXamlV3 Include="**\*-color.xaml">
-      <ThemeColumns>Color</ThemeColumns>
-      <RemoveBackgroundElement>True</RemoveBackgroundElement>
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </ThemedIconsXamlV3>
-    <ThemedIconsXamlV3 Include="**\*-graydark.xaml">
-      <ThemeColumns>GrayDark</ThemeColumns>
-      <RemoveBackgroundElement>True</RemoveBackgroundElement>
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </ThemedIconsXamlV3>
-  </ItemGroup>
-
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
-
 </Project>
