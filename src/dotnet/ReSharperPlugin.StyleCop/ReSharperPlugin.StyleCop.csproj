@@ -1,11 +1,13 @@
-<Project>
+﻿<Project>
 
   <PropertyGroup>
+    <AssemblyName>StyleCop.ReSharper</AssemblyName>
+    <PackageId>StyleCop.StyleCop</PackageId>
     <LanguageTargets>$(MSBuildToolsPath)\Microsoft.CSharp.targets</LanguageTargets>
   </PropertyGroup>
-  
+
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
-  
+
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
     <IsPackable>True</IsPackable>
@@ -13,7 +15,11 @@
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
-  
+
+  <ItemDefinitionGroup>
+    <PackageReference PrivateAssets="all" />
+  </ItemDefinitionGroup>
+
   <ItemGroup>
     <PackageReference Include="EnvDTE100" Version="10.0.3" />
     <PackageReference Include="JetBrains.ReSharper.SDK" Version="$(SdkVersion)" IncludeAssets="all" />
@@ -22,34 +28,39 @@
     <PackageReference Include="VSLangProj140" Version="14.0.25030" />
     <PackageReference Include="VSSDK.VSLangProj.11" Version="11.0.4" />
     <!-- TODO: https://github.com/NuGet/Home/issues/7154 -->
-    <PackageReference Include="Wave" Version="$(WaveVersion)" />
+    <PackageReference Include="Wave" Version="$(WaveVersion)" PrivateAssets="none" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <Compile Remove="Rider\**\*" />
     <None Remove="Rider\**\*" />
     <EmbeddedResource Remove="Rider\**\*" />
     <Content Remove="Rider\**\*" />
   </ItemGroup>
-  
+
   <ItemGroup>
-    <Content Include="bin\$(AssemblyName)\$(Configuration)\$(AssemblyName).dll" PackagePath="dotFiles" Pack="true" />
-    <Content Include="bin\$(AssemblyName)\$(Configuration)\$(AssemblyName).pdb" PackagePath="dotFiles" Pack="true" />
+    <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\$(AssemblyName).dll" PackagePath="dotFiles" Pack="true" />
+    <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\$(AssemblyName).pdb" PackagePath="dotFiles" Pack="true" />
 
     <Content Include="Settings.StyleCop" PackagePath="dotFiles" Pack="true" />
     <Content Include="StyleCop.dotSettings" PackagePath="dotFiles\Extensions\StyleCop.StyleCop\settings" Pack="true" />
-    <Content Include="bin\$(AssemblyName)\$(Configuration)\mssp7en.*" PackagePath="dotFiles" Pack="true" />
-    <Content Include="bin\$(AssemblyName)\$(Configuration)\StyleCop.*" PackagePath="dotFiles\Extensions\StyleCop.StyleCop\StyleCopAddins" Pack="true" />
+    <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\mssp7en.*" PackagePath="dotFiles" Pack="true" />
+    <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\StyleCop.dll" PackagePath="dotFiles" Pack="true" />
+    <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\StyleCop.CSharp*" PackagePath="dotFiles\Extensions\StyleCop.StyleCop\StyleCopAddins" Pack="true" />
     <Content Include="..\..\..\dictionaries\*.xml" PackagePath="dotFiles\Extensions\StyleCop.StyleCop\StyleCopDictionaries" Pack="true" />
   </ItemGroup>
-  
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\StyleCopIcons\*.*" />
+  </ItemGroup>
+
   <ItemGroup>
     <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -66,7 +77,7 @@
       <Generator>MSBuild:Compile</Generator>
     </ThemedIconsXamlV3>
   </ItemGroup>
-  
+
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
-  
+
 </Project>
