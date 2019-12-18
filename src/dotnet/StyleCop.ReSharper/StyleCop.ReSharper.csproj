@@ -50,6 +50,12 @@
     <ItemGroup>
         <EmbeddedResource Include="Resources\StyleCopIcons\*.*" />
         <EmbeddedResource Include="Resources\ReorderingPatterns.xml" />
+        <ThemedIconPng Include="Resources\StyleCopIcons\Logo.png" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(OS)' != 'Unix'">
+        <Reference Include="PresentationCore" />
+        <Reference Include="PresentationFramework" />
     </ItemGroup>
 
     <ItemGroup>
