@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
-    <SdkVersion>2020.1.0-*</SdkVersion>
+    <SdkVersion>2020.2.0-eap02</SdkVersion>
 
     <Title>StyleCop by JetBrains</Title>
     <Description>StyleCop analyzes C# source code to enforce a set of style and consistency rules. This plugin is compatible with StyleCop 6.1.0, and maintained by JetBrains.</Description>

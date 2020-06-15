@@ -3,12 +3,12 @@
 //   MS-PL
 // </copyright>
 // <license>
-//   This source code is subject to terms and conditions of the Microsoft 
-//   Public License. A copy of the license can be found in the License.html 
-//   file at the root of this distribution. If you cannot locate the  
-//   Microsoft Public License, please send an email to dlr@microsoft.com. 
-//   By using this source code in any fashion, you are agreeing to be bound 
-//   by the terms of the Microsoft Public License. You must not remove this 
+//   This source code is subject to terms and conditions of the Microsoft
+//   Public License. A copy of the license can be found in the License.html
+//   file at the root of this distribution. If you cannot locate the
+//   Microsoft Public License, please send an email to dlr@microsoft.com.
+//   By using this source code in any fashion, you are agreeing to be bound
+//   by the terms of the Microsoft Public License. You must not remove this
 //   notice, or any other, from this software.
 // </license>
 // <summary>
@@ -84,10 +84,10 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
         /// Performs the QuickFix, inserts the configured modifier into the location specified by the violation.
         /// </summary>
         /// <param name="solution">
-        /// Current Solution. 
+        /// Current Solution.
         /// </param>
         /// <param name="textControl">
-        /// Current Text Control to modify. 
+        /// Current Text Control to modify.
         /// </param>
         public void Execute(ISolution solution, ITextControl textControl)
         {
@@ -100,7 +100,7 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
                     ChangeInspectionSeverityDialog dialog = new ChangeInspectionSeverityDialog(lifetime);
                     IContextBoundSettingsStore contextBoundSettingsStore =
                         this.settingsStore.BindToContextTransient(ContextRange.Smart(textControl.Document.ToDataContext()));
-                    ConfigurableSeverityItem item = this.highlightingSettingsManager.GetSeverityItem(this.HighlightID);
+                    var item = this.highlightingSettingsManager.GetSeverityItem(this.HighlightID).Unwrap();
 
                     dialog.Severity = this.highlightingSettingsManager.GetConfigurableSeverity(
                         this.HighlightID,
