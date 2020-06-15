@@ -41,10 +41,14 @@
         <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\$(AssemblyName).pdb" PackagePath="dotFiles" Pack="true" />
         <Content Include="Settings.StyleCop" PackagePath="dotFiles" Pack="true" />
         <Content Include="StyleCop.dotSettings" PackagePath="dotFiles\Extensions\StyleCop.StyleCop\settings" Pack="true" />
-        <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\mssp7en.*" PackagePath="dotFiles" Pack="true" />
+        <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\mssp7en.dll" PackagePath="dotFiles" Pack="true" />
+        <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\mssp7en.lex" PackagePath="dotFiles" Pack="true" />
         <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\StyleCop.dll" PackagePath="dotFiles" Pack="true" />
-        <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\StyleCop.CSharp*" PackagePath="dotFiles\Extensions\StyleCop.StyleCop\StyleCopAddins" Pack="true" />
-        <Content Include="..\..\..\dictionaries\*.xml" PackagePath="dotFiles\Extensions\StyleCop.StyleCop\StyleCopDictionaries" Pack="true" />
+        <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\StyleCop.CSharp.dll" PackagePath="dotFiles\Extensions\StyleCop.StyleCop\StyleCopAddins" Pack="true" />
+        <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\StyleCop.CSharp.Rules.dll" PackagePath="dotFiles\Extensions\StyleCop.StyleCop\StyleCopAddins" Pack="true" />
+        <Content Include="..\..\..\dictionaries\CustomDictionary.en-GB.xml" PackagePath="dotFiles\Extensions\StyleCop.StyleCop\StyleCopDictionaries" Pack="true" />
+        <Content Include="..\..\..\dictionaries\CustomDictionary.en-US.xml" PackagePath="dotFiles\Extensions\StyleCop.StyleCop\StyleCopDictionaries" Pack="true" />
+        <Content Include="..\..\..\dictionaries\CustomDictionary.xml" PackagePath="dotFiles\Extensions\StyleCop.StyleCop\StyleCopDictionaries" Pack="true" />
     </ItemGroup>
 
     <ItemGroup>
