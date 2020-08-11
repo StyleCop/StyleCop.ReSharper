@@ -17,6 +17,9 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using JetBrains.Application.Progress;
+using JetBrains.Util;
+
 namespace StyleCop.ReSharper.CodeCleanup
 {
     using System.Collections.Generic;
@@ -108,6 +111,8 @@ namespace StyleCop.ReSharper.CodeCleanup
             return projectFile.GetDominantPsiFile<CSharpLanguage>() != null;
         }
 
+        public string Name => "StyleCop";
+
         /// <summary>
         /// Process clean-up on file.
         /// </summary>
@@ -123,8 +128,8 @@ namespace StyleCop.ReSharper.CodeCleanup
         /// <param name="progressIndicator">
         /// The progress indicator.
         /// </param>
-        public void Process(
-            IPsiSourceFile projectFile, IRangeMarker rangeMarker, CodeCleanupProfile profile, JetBrains.Application.Progress.IProgressIndicator progressIndicator)
+        public void Process(IPsiSourceFile projectFile, IRangeMarker rangeMarker, CodeCleanupProfile profile,
+            IProgressIndicator progressIndicator, IUserDataHolder cache)
         {
             if (!this.IsAvailable(projectFile))
             {
