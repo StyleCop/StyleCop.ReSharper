@@ -16,6 +16,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using JetBrains.Platform.VisualStudio.Protocol.Common.Shell;
+
 namespace StyleCop.ReSharper.Options
 {
     using System;

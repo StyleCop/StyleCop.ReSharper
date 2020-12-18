@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## vNext
+- Added support for ReSharper and Rider 2020.3
+
+## 2020.3.0
+- Updated for ReSharper 2020.3
+
 ## 2020.2.1
 - Updated for ReSharper 2020.2
 
@@ -88,7 +94,7 @@ Thanks @SanjayGuntur for the PR!
 - Display StyleCop parse errors
 - Display StyleCop.dll version in plugin options page
 
-## Previous releases
+## 1.0.0
 - Support for ReSharper 2016.1 (StyleCop/StyleCop#47)
 - Fix to allow filtering by StyleCop issues in code inspection window (StyleCop/StyleCop#37)
 - Fix error messages in installer (StyleCop/StyleCop#32)
@@ -122,4 +128,5 @@ Thanks @SanjayGuntur for the PR!
 [2016.1.2]: https://github.com/StyleCop/StyleCop.ReSharper/compare/2016.1.1...2016.1.2
 [2016.1.1]: https://github.com/StyleCop/StyleCop.ReSharper/compare/Previous...2016.1.1
 [Previous]: https://github.com/StyleCop/StyleCop.ReSharper/tree/Previous
+
 

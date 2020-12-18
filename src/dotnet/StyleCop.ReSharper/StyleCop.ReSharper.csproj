@@ -36,7 +36,7 @@
         <Content Remove="Rider\**\*" />
     </ItemGroup>
 
-    <ItemGroup Condition="'$(TargetFramework)' == ''">
+    <ItemGroup>
         <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\$(AssemblyName).dll" PackagePath="dotFiles" Pack="true" />
         <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\$(AssemblyName).pdb" PackagePath="dotFiles" Pack="true" />
         <Content Include="Settings.StyleCop" PackagePath="dotFiles" Pack="true" />

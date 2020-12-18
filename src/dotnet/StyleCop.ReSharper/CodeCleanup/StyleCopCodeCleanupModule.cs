@@ -111,6 +111,11 @@ namespace StyleCop.ReSharper.CodeCleanup
             return projectFile.GetDominantPsiFile<CSharpLanguage>() != null;
         }
 
+        public bool IsAvailable(CodeCleanupProfile profile)
+        {
+            return profile.GetSetting(FIX_VIOLATIONS) || profile.GetSetting(CREATE_XML_DOC_STUB);
+        }
+
         public string Name => "StyleCop";
 
         /// <summary>
