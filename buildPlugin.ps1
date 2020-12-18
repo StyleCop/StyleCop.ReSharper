@@ -1,9 +1,11 @@
 Param(
-    $Version = "1.0.0"
+    $Version = "9999.0.0"
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+$PSScriptRoot = Split-Path $MyInvocation.MyCommand.Path -Parent
+Set-Location $PSScriptRoot
 
 . ".\settings.ps1"
 

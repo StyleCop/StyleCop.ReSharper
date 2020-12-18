@@ -26,7 +26,7 @@
         <PackageReference Include="VSLangProj140" Version="14.0.25030" />
         <PackageReference Include="VSSDK.VSLangProj.11" Version="11.0.4" />
         <!-- TODO: https://github.com/NuGet/Home/issues/7154 -->
-        <PackageReference Include="Wave" Version="$(WaveVersion)" PrivateAssets="none" />
+        <PackageReference Include="Wave" Version="[$(WaveVersion),$(UpperWaveVersion))" />
     </ItemGroup>
 
     <ItemGroup>
@@ -36,7 +36,7 @@
         <Content Remove="Rider\**\*" />
     </ItemGroup>
 
-    <ItemGroup>
+    <ItemGroup Condition="'$(TargetFramework)' == ''">
         <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\$(AssemblyName).dll" PackagePath="dotFiles" Pack="true" />
         <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\$(AssemblyName).pdb" PackagePath="dotFiles" Pack="true" />
         <Content Include="Settings.StyleCop" PackagePath="dotFiles" Pack="true" />
