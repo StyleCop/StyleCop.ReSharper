@@ -1,5 +1,5 @@
-$PluginId = "ReSharperPlugin.StyleCop"
-$SolutionPath = "$PSScriptRoot\ReSharperPlugin.StyleCop.sln"
+$PluginId = "StyleCop.StyleCop"
+$SolutionPath = "$PSScriptRoot\StyleCop.sln"
 $SourceBasePath = "$PSScriptRoot\src\dotnet"
 
 $VsWhereOutput = [xml] (& "$PSScriptRoot\tools\vswhere.exe" -format xml)
