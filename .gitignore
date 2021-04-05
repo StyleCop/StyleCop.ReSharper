@@ -14,7 +14,6 @@ packages
 *.cache
 
 # IDEs
-.idea
 .vs
 _ReSharper*
 _dotTrace*
