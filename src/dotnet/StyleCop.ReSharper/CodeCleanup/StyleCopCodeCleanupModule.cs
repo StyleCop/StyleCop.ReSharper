@@ -171,7 +171,7 @@ namespace StyleCop.ReSharper.CodeCleanup
         /// <param name="profileType">
         /// Determine if it is a full or reformat <see cref="CodeCleanup.DefaultProfileType"/>.
         /// </param>
-        public void SetDefaultSetting(CodeCleanupProfile profile, CodeCleanup.DefaultProfileType profileType)
+        public void SetDefaultSetting(CodeCleanupProfile profile, CodeCleanupService.DefaultProfileType profileType)
         {
             profile.SetSetting(FIX_VIOLATIONS, value: true);
             profile.SetSetting(CREATE_XML_DOC_STUB, value: false);

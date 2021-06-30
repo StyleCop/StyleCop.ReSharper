@@ -73,7 +73,7 @@ namespace StyleCop.ReSharper.Options
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.ALIGN_MULTLINE_TYPE_PARAMETER_CONSTRAINS, true);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.ALIGN_MULTLINE_TYPE_PARAMETER_LIST, true);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.ALLOW_COMMENT_AFTER_LBRACE, false);
-            settingsStore.SetValue((CSharpFormatSettingsKey key) => key.ANONYMOUS_METHOD_DECLARATION_BRACES, BraceFormatStyle.NEXT_LINE_SHIFTED_2);
+            settingsStore.SetValue((CSharpFormatSettingsKey key) => key.ANONYMOUS_METHOD_DECLARATION_BRACES, BraceFormatStyleEx.NEXT_LINE_SHIFTED_2);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.BLANK_LINES_AFTER_START_COMMENT, 1);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.BLANK_LINES_AFTER_USING_LIST, 1);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.BLANK_LINES_AROUND_FIELD, 1);
@@ -85,7 +85,7 @@ namespace StyleCop.ReSharper.Options
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.BLANK_LINES_AROUND_TYPE, 1);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.BLANK_LINES_BETWEEN_USING_GROUPS, 1);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.BLANK_LINES_INSIDE_REGION, 1);
-            settingsStore.SetValue((CSharpFormatSettingsKey key) => key.CASE_BLOCK_BRACES, BraceFormatStyle.NEXT_LINE_SHIFTED_2);
+            settingsStore.SetValue((CSharpFormatSettingsKey key) => key.CASE_BLOCK_BRACES, BraceFormatStyleEx.NEXT_LINE_SHIFTED_2);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.CONTINUOUS_INDENT_MULTIPLIER, 1);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.EMPTY_BLOCK_STYLE, EmptyBlockStyle.MULTILINE);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.FORCE_CHOP_COMPOUND_DO_EXPRESSION, false);
@@ -101,13 +101,13 @@ namespace StyleCop.ReSharper.Options
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.INDENT_CASE_FROM_SWITCH, true);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.INDENT_NESTED_FIXED_STMT, false);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.INDENT_NESTED_USINGS_STMT, false);
-            settingsStore.SetValue((CSharpFormatSettingsKey key) => key.INITIALIZER_BRACES, BraceFormatStyle.NEXT_LINE_SHIFTED_2);
-            settingsStore.SetValue((CSharpFormatSettingsKey key) => key.INVOCABLE_DECLARATION_BRACES, BraceFormatStyle.NEXT_LINE);
+            settingsStore.SetValue((CSharpFormatSettingsKey key) => key.INITIALIZER_BRACES, BraceFormatStyleEx.NEXT_LINE_SHIFTED_2);
+            settingsStore.SetValue((CSharpFormatSettingsKey key) => key.INVOCABLE_DECLARATION_BRACES, BraceFormatStyleEx.NEXT_LINE);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.KEEP_BLANK_LINES_IN_CODE, 1);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.KEEP_BLANK_LINES_IN_DECLARATIONS, 1);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.KEEP_USER_LINEBREAKS, false);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.LINE_FEED_AT_FILE_END, false);
-            settingsStore.SetValue((CSharpFormatSettingsKey key) => key.OTHER_BRACES, BraceFormatStyle.NEXT_LINE);
+            settingsStore.SetValue((CSharpFormatSettingsKey key) => key.OTHER_BRACES, BraceFormatStyleEx.NEXT_LINE);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.PLACE_ABSTRACT_ACCESSORHOLDER_ON_SINGLE_LINE, true);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.PLACE_ACCESSORHOLDER_ATTRIBUTE_ON_SAME_LINE, false);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.PLACE_CATCH_ON_NEW_LINE, true);
@@ -214,7 +214,7 @@ namespace StyleCop.ReSharper.Options
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.SPACE_WITHIN_WHILE_PARENTHESES, false);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.SPECIAL_ELSE_IF_TREATMENT, true);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.STICK_COMMENT, false);
-            settingsStore.SetValue((CSharpFormatSettingsKey key) => key.TYPE_DECLARATION_BRACES, BraceFormatStyle.NEXT_LINE);
+            settingsStore.SetValue((CSharpFormatSettingsKey key) => key.TYPE_DECLARATION_BRACES, BraceFormatStyleEx.NEXT_LINE);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.WRAP_AFTER_DECLARATION_LPAR, true);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.WRAP_AFTER_INVOCATION_LPAR, true);
             settingsStore.SetValue((CSharpFormatSettingsKey key) => key.WRAP_ARGUMENTS_STYLE, WrapStyle.CHOP_IF_LONG);
@@ -420,7 +420,7 @@ namespace StyleCop.ReSharper.Options
                 return false;
             }
 
-            if (settingsStore.GetValue((CSharpFormatSettingsKey key) => key.ANONYMOUS_METHOD_DECLARATION_BRACES) != BraceFormatStyle.NEXT_LINE_SHIFTED_2)
+            if (settingsStore.GetValue((CSharpFormatSettingsKey key) => key.ANONYMOUS_METHOD_DECLARATION_BRACES) != BraceFormatStyleEx.NEXT_LINE_SHIFTED_2)
             {
                 return false;
             }
@@ -480,7 +480,7 @@ namespace StyleCop.ReSharper.Options
                 return false;
             }
 
-            if (settingsStore.GetValue((CSharpFormatSettingsKey key) => key.CASE_BLOCK_BRACES) != BraceFormatStyle.NEXT_LINE_SHIFTED_2)
+            if (settingsStore.GetValue((CSharpFormatSettingsKey key) => key.CASE_BLOCK_BRACES) != BraceFormatStyleEx.NEXT_LINE_SHIFTED_2)
             {
                 return false;
             }
@@ -575,12 +575,12 @@ namespace StyleCop.ReSharper.Options
                 return false;
             }
 
-            if (settingsStore.GetValue((CSharpFormatSettingsKey key) => key.INITIALIZER_BRACES) != BraceFormatStyle.NEXT_LINE_SHIFTED_2)
+            if (settingsStore.GetValue((CSharpFormatSettingsKey key) => key.INITIALIZER_BRACES) != BraceFormatStyleEx.NEXT_LINE_SHIFTED_2)
             {
                 return false;
             }
 
-            if (settingsStore.GetValue((CSharpFormatSettingsKey key) => key.INVOCABLE_DECLARATION_BRACES) != BraceFormatStyle.NEXT_LINE)
+            if (settingsStore.GetValue((CSharpFormatSettingsKey key) => key.INVOCABLE_DECLARATION_BRACES) != BraceFormatStyleEx.NEXT_LINE)
             {
                 return false;
             }
@@ -610,7 +610,7 @@ namespace StyleCop.ReSharper.Options
                 return false;
             }
 
-            if (settingsStore.GetValue((CSharpFormatSettingsKey key) => key.OTHER_BRACES) != BraceFormatStyle.NEXT_LINE)
+            if (settingsStore.GetValue((CSharpFormatSettingsKey key) => key.OTHER_BRACES) != BraceFormatStyleEx.NEXT_LINE)
             {
                 return false;
             }
@@ -1130,7 +1130,7 @@ namespace StyleCop.ReSharper.Options
                 return false;
             }
 
-            if (settingsStore.GetValue((CSharpFormatSettingsKey key) => key.TYPE_DECLARATION_BRACES) != BraceFormatStyle.NEXT_LINE)
+            if (settingsStore.GetValue((CSharpFormatSettingsKey key) => key.TYPE_DECLARATION_BRACES) != BraceFormatStyleEx.NEXT_LINE)
             {
                 return false;
             }

@@ -16,6 +16,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using JetBrains.ReSharper.Resources.Shell;
+
 namespace StyleCop.ReSharper
 {
     using JetBrains.Application.BuildScript.Application.Zones;
@@ -24,7 +26,7 @@ namespace StyleCop.ReSharper
     /// The zone marker for the plugin
     /// </summary>
     [ZoneMarker]
-    public class ZoneMarker
+    public class ZoneMarker : IRequire<PsiFeaturesImplZone>
     {
     }
 }
