@@ -16,6 +16,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using JetBrains.Platform.RdFramework;
+
 namespace StyleCop.ReSharper.ShellComponents.VisualStudio2015
 {
     using JetBrains.Application.BuildScript.Application.Zones;
@@ -25,7 +27,9 @@ namespace StyleCop.ReSharper.ShellComponents.VisualStudio2015
     /// Zone marker for the Visual Studio specific components
     /// </summary>
     [ZoneMarker]
-    public class ZoneMarker : IRequire<IVisualStudioEnvZone>
+    public class ZoneMarker :
+        IRequire<IVisualStudioFrontendEnvZone>,
+        IRequire<IRdFrameworkZone>
     {
     }
 }

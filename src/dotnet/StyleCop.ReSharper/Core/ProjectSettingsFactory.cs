@@ -164,7 +164,7 @@ namespace StyleCop.ReSharper.Core
 
             this.fileSystemTracker.AdviseFileChanges(
                 this.lifetime,
-                FileSystemPath.Parse(path),
+                VirtualFileSystemPath.Parse(path, LocalInteractionContext.Instance),
                 delta => this.cache.Clear());
 
             StyleCopTrace.Out();

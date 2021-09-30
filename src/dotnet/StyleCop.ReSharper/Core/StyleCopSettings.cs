@@ -244,7 +244,7 @@ namespace StyleCop.ReSharper.Core
 
             this.fileSystemTracker.AdviseFileChanges(
                 this.lifetime,
-                FileSystemPath.Parse(path),
+                VirtualFileSystemPath.Parse(path, LocalInteractionContext.Instance),
                 _ =>
                     {
                         this.settingsFilePathForProjectFile.Clear();
@@ -333,7 +333,7 @@ namespace StyleCop.ReSharper.Core
 
             if (project != null)
             {
-                FileSystemPath directory = project.Location;
+                VirtualFileSystemPath directory = project.Location;
 
                 if (directory.ExistsDirectory)
                 {
