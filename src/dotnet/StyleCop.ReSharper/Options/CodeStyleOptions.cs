@@ -327,13 +327,11 @@ namespace StyleCop.ReSharper.Options
 
                 SetCodeCleanupProfileSetting(styleCopProfile, "CSUpdateFileHeader", null, false);
 
-                OptimizeUsings.OptimizeUsingsOptions optimizeUsingsOptions = new OptimizeUsings.OptimizeUsingsOptions
-                                                                                 {
-                                                                                     OptimizeUsings = true,
-                                                                                     EmbraceUsingsInRegion = false,
-                                                                                     RegionName = string.Empty
-                                                                                 };
-                styleCopProfile.SetSetting(OptimizeUsings.OPTIMIZE_USINGS_DESCRIPTOR, optimizeUsingsOptions);
+
+
+                styleCopProfile.SetSetting(OptimizeUsings.OptimizeUsingsDescriptor, true);
+                styleCopProfile.SetSetting(OptimizeUsings.EmbraceUsingsInRegionDescriptor, false);
+                styleCopProfile.SetSetting(OptimizeUsings.RegionNameDescriptor, string.Empty);
 
                 SetCodeCleanupProfileSetting(styleCopProfile, "CSReformatCode", null, true);
 
@@ -1376,18 +1374,20 @@ namespace StyleCop.ReSharper.Options
                 return false;
             }
 
-            OptimizeUsings.OptimizeUsingsOptions optimizeUsingsOptions = styleCopProfile.GetSetting(OptimizeUsings.OPTIMIZE_USINGS_DESCRIPTOR);
-            if (!optimizeUsingsOptions.OptimizeUsings)
+            var optimizeUsingsOption = styleCopProfile.GetSetting(OptimizeUsings.OptimizeUsingsDescriptor);
+            if (!optimizeUsingsOption)
             {
                 return false;
             }
 
-            if (optimizeUsingsOptions.EmbraceUsingsInRegion)
+            var embraceUsingsInRegionOption = styleCopProfile.GetSetting(OptimizeUsings.EmbraceUsingsInRegionDescriptor);
+            if (embraceUsingsInRegionOption)
             {
                 return false;
             }
 
-            if (optimizeUsingsOptions.RegionName != string.Empty)
+            var regionNameOption = styleCopProfile.GetSetting(OptimizeUsings.RegionNameDescriptor);
+            if (regionNameOption != string.Empty)
             {
                 return false;
             }
@@ -1437,14 +1437,14 @@ namespace StyleCop.ReSharper.Options
         /// </returns>
         private static T GetCodeCleanupProfileSetting<T>(CodeCleanupProfile profile, string descriptorName, string propertyName)
         {
-            CodeCleanupOptionDescriptor cleanupOptionDescriptor = GetDescriptor(descriptorName);
+            var cleanupOptionDescriptor = GetDescriptor(descriptorName) as CodeCleanupSingleOptionDescriptor;
 
             if (cleanupOptionDescriptor == null)
             {
                 return default(T);
             }
 
-            if (cleanupOptionDescriptor.Type == typeof(bool) || (cleanupOptionDescriptor.Type == typeof(string) || cleanupOptionDescriptor.Type.IsEnum))
+            if (cleanupOptionDescriptor.ValueType == typeof(bool) || (cleanupOptionDescriptor.ValueType == typeof(string) || cleanupOptionDescriptor.ValueType.IsEnum))
             {
                 return (T)profile.GetSetting(cleanupOptionDescriptor);
             }
@@ -1472,7 +1472,7 @@ namespace StyleCop.ReSharper.Options
             {
                 foreach (CodeCleanupOptionDescriptor descriptor in module.Descriptors)
                 {
-                    if (descriptor.Name == descriptorName && module.LanguageType.Name == "CSHARP")
+                    if (descriptor.Id == descriptorName && module.LanguageType.Name == "CSHARP")
                     {
                         return descriptor;
                     }
@@ -1494,9 +1494,9 @@ namespace StyleCop.ReSharper.Options
         /// <returns>
         /// A PropertyInfo matching. 
         /// </returns>
-        private static PropertyInfo GetPropertyInfo(CodeCleanupOptionDescriptor descriptor, string propertyName)
+        private static PropertyInfo GetPropertyInfo(CodeCleanupSingleOptionDescriptor descriptor, string propertyName)
         {
-            return (from info in descriptor.Type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
+            return (from info in descriptor.ValueType.GetProperties(BindingFlags.Public | BindingFlags.Instance)
                     let browsableAttributes = (BrowsableAttribute[])info.GetCustomAttributes(typeof(BrowsableAttribute), false)
                     where (browsableAttributes.Length != 1) || browsableAttributes[0].Browsable
                     select info).FirstOrDefault(info => info.Name == propertyName);
@@ -1519,14 +1519,14 @@ namespace StyleCop.ReSharper.Options
         /// </param>
         private static void SetCodeCleanupProfileSetting(CodeCleanupProfile profile, string descriptorName, string propertyName, object value)
         {
-            CodeCleanupOptionDescriptor cleanupOptionDescriptor = GetDescriptor(descriptorName);
+            var cleanupOptionDescriptor = GetDescriptor(descriptorName) as CodeCleanupSingleOptionDescriptor;
 
             if (cleanupOptionDescriptor == null)
             {
                 return;
             }
 
-            if (cleanupOptionDescriptor.Type == typeof(bool) || (cleanupOptionDescriptor.Type == typeof(string) || cleanupOptionDescriptor.Type.IsEnum))
+            if (cleanupOptionDescriptor.ValueType == typeof(bool) || (cleanupOptionDescriptor.ValueType == typeof(string) || cleanupOptionDescriptor.ValueType.IsEnum))
             {
                 profile.SetSetting(cleanupOptionDescriptor, value);
                 return;

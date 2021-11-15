@@ -14,7 +14,6 @@ namespace StyleCop.ReSharper.CodeCleanup
 
     using JetBrains.ReSharper.Feature.Services.CodeCleanup;
 
-    [Category (CSharpCategory)]
     [DisplayName ("Fix StyleCop violations")]
     [DefaultValue (true)]
     public class FixViolationsDescriptor : CodeCleanupBoolOptionDescriptor
@@ -25,7 +24,6 @@ namespace StyleCop.ReSharper.CodeCleanup
         }
     }
 
-    [Category (CSharpCategory)]
     [DisplayName ("Create XML doc stubs")]
     [DefaultValue (false)]
     public class CreateXmlDocStubsDescriptor : CodeCleanupBoolOptionDescriptor
