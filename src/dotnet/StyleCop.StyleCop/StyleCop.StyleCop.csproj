@@ -2,6 +2,7 @@
     <PropertyGroup>
         <PackageId>StyleCop.StyleCop</PackageId>
         <LanguageTargets>$(MSBuildToolsPath)\Microsoft.CSharp.targets</LanguageTargets>
+        <RootNamespace>StyleCop.ReSharper</RootNamespace>
     </PropertyGroup>
 
     <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />

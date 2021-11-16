@@ -9,8 +9,8 @@
 //------------------------------------------------------------------------------
 
 [assembly: global::System.Windows.Markup.XmlnsDefinitionAttribute("urn:shemas-jetbrains-com:ui-application-icons-style-cop", "StyleCop.ReSharper.Resources")]
-[assembly: global::JetBrains.UI.Icons.CompiledIcons.CompiledIconsPackAttribute(IconPackResourceIdentification="StyleCop.ReSharper;component/Resources/StyleCopIcons/ThemedIcons.StyleCop.Generat" +
-	"ed.Xaml", IconNames=new string[] {
+[assembly: global::JetBrains.UI.Icons.CompiledIcons.CompiledIconsPackAttribute(IconPackResourceIdentification="StyleCop.StyleCop;component/Resources/StyleCopIcons/ThemedIcons.StyleCop.Generate" +
+	"d.Xaml", IconNames=new string[] {
 		"Logo"})]
 
 namespace StyleCop.ReSharper.Resources
@@ -77,8 +77,8 @@ namespace StyleCop.ReSharper.Resources
 		///<example>
 		///  <code>themediconmanager.GetIcon&lt;StyleCopThemedIcons.Logo&gt;()        // Icon image for rendering</code>
 		///</example>
-		[global::JetBrains.UI.Icons.CompiledIcons.CompiledIconClassAttribute("StyleCop.ReSharper;component/Resources/StyleCopIcons/ThemedIcons.StyleCop.Generat" +
-			"ed.Xaml", 0, "Logo")]
+		[global::JetBrains.UI.Icons.CompiledIcons.CompiledIconClassAttribute("StyleCop.StyleCop;component/Resources/StyleCopIcons/ThemedIcons.StyleCop.Generate" +
+			"d.Xaml", 0, "Logo")]
 		public sealed class Logo : global::JetBrains.UI.Icons.CompiledIcons.CompiledIconClass
 		{
 			
@@ -104,14 +104,14 @@ namespace StyleCop.ReSharper.Resources
 			///<example>
 			///  <code>themediconmanager.GetIcon&lt;StyleCopThemedIcons.Logo&gt;()        // Icon image for rendering</code>
 			///</example>
-			public static global::JetBrains.UI.Icons.IconId Id = new global::JetBrains.UI.Icons.CompiledIcons.CompiledIconId("StyleCop.ReSharper;component/Resources/StyleCopIcons/ThemedIcons.StyleCop.Generat" +
-					"ed.Xaml", 0, "Logo");
+			public static global::JetBrains.UI.Icons.IconId Id = new global::JetBrains.UI.Icons.CompiledIcons.CompiledIconId("StyleCop.StyleCop;component/Resources/StyleCopIcons/ThemedIcons.StyleCop.Generate" +
+					"d.Xaml", 0, "Logo");
 		}
 	}
 }
 
 
-public sealed class RenderedIcons_ByPackResourceNameHash_4D1605C144A0460ED2E313964D57608A
+public sealed class RenderedIcons_ByPackResourceNameHash_107CC1F952672946BAC74496F83B3086
 {
 	
 	public static byte[] Logo____png__x1 = new byte[] {

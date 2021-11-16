@@ -97,7 +97,7 @@ namespace StyleCop.ReSharper.Options
 
             assembly = this.GetType().Assembly;
             string ourFileVersion = GetFileVersionInfo(assembly);
-            this.AddText(string.Format("StyleCop.ReSharper.dll {0} ({1})", assembly.GetName().Version, ourFileVersion));
+            this.AddText(string.Format("StyleCop.StyleCop.dll {0} ({1})", assembly.GetName().Version, ourFileVersion));
 
             this.AddHeader("Options");
 

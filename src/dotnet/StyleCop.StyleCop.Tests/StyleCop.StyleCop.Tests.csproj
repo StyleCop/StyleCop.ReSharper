@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
     <IsPackable>false</IsPackable>
+    <RootNamespace>StyleCop.ReSharper.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StyleCop.ReSharper\StyleCop.ReSharper.csproj" />
+    <ProjectReference Include="..\StyleCop.StyleCop\StyleCop.StyleCop.csproj" />
   </ItemGroup>
 
   <ItemGroup>
