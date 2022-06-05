@@ -19,11 +19,8 @@
 
 namespace StyleCop.ReSharper.Core
 {
-    using System;
-
     using JetBrains.Application.Settings;
     using JetBrains.Application.Threading;
-    using JetBrains.DataFlow;
     using JetBrains.DocumentModel;
     using JetBrains.Lifetimes;
     using JetBrains.ReSharper.Feature.Services.Daemon;
@@ -32,9 +29,9 @@ namespace StyleCop.ReSharper.Core
     using JetBrains.ReSharper.Resources.Shell;
     using JetBrains.Threading;
     using JetBrains.Util;
-
     using StyleCop.Diagnostics;
     using StyleCop.ReSharper.ShellComponents;
+    using System;
 
     /// <summary>
     /// Stage Process that execute the Microsoft StyleCop against the specified file.

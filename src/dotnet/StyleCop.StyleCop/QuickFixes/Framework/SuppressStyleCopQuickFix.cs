@@ -18,14 +18,12 @@
 
 namespace StyleCop.ReSharper.QuickFixes.Framework
 {
-    using System.Collections.Generic;
-
     using JetBrains.ReSharper.Feature.Services.Bulbs;
     using JetBrains.ReSharper.Feature.Services.Intentions;
     using JetBrains.ReSharper.Feature.Services.QuickFixes;
-
     using StyleCop.ReSharper.BulbItems.Framework;
     using StyleCop.ReSharper.Violations;
+    using System.Collections.Generic;
 
     /// <summary>
     ///   QuickFix - SuppressStyleCopQuickFix. Priority set to 0 to push it down the list.
@@ -62,7 +60,7 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
         /// <returns>The QuickFix actions.</returns>
         public IEnumerable<IntentionAction> CreateBulbItems()
         {
-           return this.bulbItems.ToQuickFixIntentions(IntentionsAnchors.ConfigureActionsAnchor);
+            return this.bulbItems.ToQuickFixIntentions(IntentionsAnchors.ConfigureActionsAnchor);
         }
 
         /// <summary>
@@ -89,7 +87,7 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
                                  {
                                      new SuppressMessageBulbItem
                                          {
-                                             Description = "Suppress : " + this.highlighting.ToolTip, 
+                                             Description = "Suppress : " + this.highlighting.ToolTip,
                                              Rule = this.highlighting.Rule
                                          }
                                  };

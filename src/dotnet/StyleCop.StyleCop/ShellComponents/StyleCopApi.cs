@@ -19,7 +19,6 @@
 namespace StyleCop.ReSharper.ShellComponents
 {
     using JetBrains.Application.FileSystemTracker;
-    using JetBrains.DataFlow;
     using JetBrains.Lifetimes;
 
     using StyleCop.ReSharper.Core;

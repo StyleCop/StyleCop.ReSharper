@@ -18,14 +18,6 @@
 
 namespace StyleCop.ReSharper.Core
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.Linq;
-    using System.Text;
-    using System.Text.RegularExpressions;
-    using System.Xml;
-
     using JetBrains.Application.Settings;
     using JetBrains.DocumentManagers;
     using JetBrains.DocumentModel;
@@ -47,10 +39,16 @@ namespace StyleCop.ReSharper.Core
     using JetBrains.ReSharper.Psi.Util;
     using JetBrains.ReSharper.Resources.Shell;
     using JetBrains.TextControl;
-
     using StyleCop.Diagnostics;
     using StyleCop.ReSharper.Extensions;
     using StyleCop.ReSharper.Options;
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+    using System.Text;
+    using System.Text.RegularExpressions;
+    using System.Xml;
 
     /// <summary>
     /// Utilities for many of our QuickFixes.
@@ -62,7 +60,7 @@ namespace StyleCop.ReSharper.Core
         /// </summary>
         public static readonly char[] TrimChars = new[]
                                                       {
-                                                          '/', '\t', '\n', '\v', '\f', '\r', ' ', '\x0085', '\x00a0', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 
+                                                          '/', '\t', '\n', '\v', '\f', '\r', ' ', '\x0085', '\x00a0', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
                                                           ' ', '​', '\u2028', '\u2029', '　', '﻿'
                                                       };
 
@@ -404,9 +402,9 @@ namespace StyleCop.ReSharper.Core
             else if (constructorDeclaration.GetAccessRights() == AccessRights.PRIVATE && constructorDeclaration.ParameterDeclarations.Count == 0)
             {
                 xmlWeShouldInsert = string.Format(
-                    CultureInfo.InvariantCulture, 
-                    CachedCodeStrings.ExampleHeaderSummaryForPrivateInstanceConstructor + ".", 
-                    constructorDeclaration.DeclaredName, 
+                    CultureInfo.InvariantCulture,
+                    CachedCodeStrings.ExampleHeaderSummaryForPrivateInstanceConstructor + ".",
+                    constructorDeclaration.DeclaredName,
                     structOrClass);
             }
             else
@@ -520,8 +518,8 @@ namespace StyleCop.ReSharper.Core
         /// </param>
         public static void FormatLines(
             PsiLanguageType language,
-            ISolution solution, 
-            IDocument document, 
+            ISolution solution,
+            IDocument document,
             JetBrains.Util.dataStructures.TypedIntrinsics.Int32<DocLine> startLine,
              JetBrains.Util.dataStructures.TypedIntrinsics.Int32<DocLine> endLine)
         {
@@ -540,13 +538,13 @@ namespace StyleCop.ReSharper.Core
             int startOffset = document.GetLineStartOffset(startLine);
             int endOffset = document.GetLineEndOffsetNoLineBreak(endLine);
 
-            CodeFormatterHelper.Format (
+            CodeFormatterHelper.Format(
                 language,
                 solution,
-                new DocumentRange(document, new JetBrains.Util.TextRange(startOffset, endOffset)), 
-                CodeFormatProfile.DEFAULT, 
-                true, 
-                true, 
+                new DocumentRange(document, new JetBrains.Util.TextRange(startOffset, endOffset)),
+                CodeFormatProfile.DEFAULT,
+                true,
+                true,
                 JetBrains.Application.Progress.NullProgressIndicator.Instance);
         }
 
@@ -1398,8 +1396,8 @@ namespace StyleCop.ReSharper.Core
         /// </returns>
         public static ITypeElement GetTypeElement(IDeclaration declaration, string typeName)
         {
-            var symbols = declaration.GetPsiServices().Symbols;     
-            return symbols.GetSymbolScope(LibrarySymbolScope.FULL, true).GetTypeElementByCLRName(typeName); 
+            var symbols = declaration.GetPsiServices().Symbols;
+            return symbols.GetSymbolScope(LibrarySymbolScope.FULL, true).GetTypeElementByCLRName(typeName);
         }
 
         /// <summary>

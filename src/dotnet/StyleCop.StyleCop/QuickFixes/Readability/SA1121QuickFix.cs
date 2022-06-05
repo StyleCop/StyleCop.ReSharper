@@ -17,14 +17,12 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace StyleCop.ReSharper.QuickFixes.Readability
 {
-    using System.Collections.Generic;
-
     using JetBrains.ReSharper.Feature.Services.Bulbs;
     using JetBrains.ReSharper.Feature.Services.QuickFixes;
-
     using StyleCop.ReSharper.BulbItems.Readability;
     using StyleCop.ReSharper.QuickFixes.Framework;
     using StyleCop.ReSharper.Violations;
+    using System.Collections.Generic;
 
     /// <summary>
     /// QuickFix - SA1121.
@@ -55,7 +53,7 @@ namespace StyleCop.ReSharper.QuickFixes.Readability
                                  {
                                      new SA1121UseBuiltInTypeAliasBulbItem
                                          {
-                                             Description = "Convert to built in type: " + this.Highlighting.ToolTip, 
+                                             Description = "Convert to built in type: " + this.Highlighting.ToolTip,
                                              DocumentRange = this.Highlighting.CalculateRange()
                                          }
                                  };

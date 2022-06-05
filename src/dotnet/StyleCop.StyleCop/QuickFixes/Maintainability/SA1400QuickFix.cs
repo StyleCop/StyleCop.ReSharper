@@ -17,14 +17,12 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace StyleCop.ReSharper.QuickFixes.Maintainability
 {
-    using System.Collections.Generic;
-
     using JetBrains.ReSharper.Feature.Services.Bulbs;
     using JetBrains.ReSharper.Feature.Services.QuickFixes;
-
     using StyleCop.ReSharper.BulbItems.Maintainability;
     using StyleCop.ReSharper.QuickFixes.Framework;
     using StyleCop.ReSharper.Violations;
+    using System.Collections.Generic;
 
     /// <summary>
     /// QuickFix for StyleCop Rule SA1400.
@@ -55,28 +53,28 @@ namespace StyleCop.ReSharper.QuickFixes.Maintainability
                                  {
                                      new SA1400AccessModifierMustBeDeclaredBulbItem
                                          {
-                                             Modifier = "public", 
-                                             DocumentRange = this.Highlighting.CalculateRange(), 
+                                             Modifier = "public",
+                                             DocumentRange = this.Highlighting.CalculateRange(),
                                              Description = "Make Public : " + this.Highlighting.ToolTip
-                                         }, 
+                                         },
                                      new SA1400AccessModifierMustBeDeclaredBulbItem
                                          {
-                                             Modifier = "private", 
-                                             DocumentRange = this.Highlighting.CalculateRange(), 
+                                             Modifier = "private",
+                                             DocumentRange = this.Highlighting.CalculateRange(),
                                              Description = "Make Private : " + this.Highlighting.ToolTip
-                                         }, 
+                                         },
                                      new SA1400AccessModifierMustBeDeclaredBulbItem
                                          {
-                                             Modifier = "protected", 
-                                             DocumentRange = this.Highlighting.CalculateRange(), 
+                                             Modifier = "protected",
+                                             DocumentRange = this.Highlighting.CalculateRange(),
                                              Description = "Make Protected : " + this.Highlighting.ToolTip
-                                         }, 
+                                         },
                                      new SA1400AccessModifierMustBeDeclaredBulbItem
                                          {
-                                             Modifier = "internal", 
-                                             DocumentRange = this.Highlighting.CalculateRange(), 
+                                             Modifier = "internal",
+                                             DocumentRange = this.Highlighting.CalculateRange(),
                                              Description = "Make Internal : " + this.Highlighting.ToolTip
-                                         }, 
+                                         },
                                  };
         }
     }

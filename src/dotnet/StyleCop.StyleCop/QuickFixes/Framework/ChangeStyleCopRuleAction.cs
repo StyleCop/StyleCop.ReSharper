@@ -18,20 +18,14 @@
 
 namespace StyleCop.ReSharper.QuickFixes.Framework
 {
-    using JetBrains.Application.Icons;
     using JetBrains.Application.Settings;
-    using JetBrains.Application.UI.WindowManagement;
     using JetBrains.DocumentModel.DataContext;
-    using JetBrains.Interop.WinApi;
     using JetBrains.Lifetimes;
     using JetBrains.ProjectModel;
     using JetBrains.PsiFeatures.UIInteractive.Features.Intentions.Options;
-    using JetBrains.ReSharper.Daemon.Impl;
     using JetBrains.ReSharper.Feature.Services.Bulbs;
     using JetBrains.ReSharper.Feature.Services.Daemon;
     using JetBrains.TextControl;
-    using JetBrains.UI.Application;
-    using JetBrains.UI.Icons;
 
     /// <summary>
     ///   Adds changing the display option for the style cop rule as context menu.

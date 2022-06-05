@@ -18,14 +18,6 @@
 
 namespace StyleCop.ReSharper.Core
 {
-    using System;
-    using System.Collections.Specialized;
-    using System.Globalization;
-    using System.Linq;
-    using System.Text;
-    using System.Web;
-    using System.Xml;
-
     using JetBrains.Application.Settings;
     using JetBrains.ReSharper.Psi;
     using JetBrains.ReSharper.Psi.CSharp.Parsing;
@@ -33,9 +25,15 @@ namespace StyleCop.ReSharper.Core
     using JetBrains.ReSharper.Psi.ExtensionsAPI;
     using JetBrains.ReSharper.Psi.Tree;
     using JetBrains.ReSharper.Resources.Shell;
-
     using StyleCop.ReSharper.Extensions;
     using StyleCop.ReSharper.Options;
+    using System;
+    using System.Collections.Specialized;
+    using System.Globalization;
+    using System.Linq;
+    using System.Text;
+    using System.Web;
+    using System.Xml;
 
     /// <summary>
     /// File header.

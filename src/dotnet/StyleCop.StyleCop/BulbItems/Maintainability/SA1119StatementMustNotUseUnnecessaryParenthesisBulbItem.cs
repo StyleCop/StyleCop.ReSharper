@@ -17,16 +17,14 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace StyleCop.ReSharper.BulbItems.Maintainability
 {
-    using System.Collections.Generic;
-
     using JetBrains.ProjectModel;
     using JetBrains.ReSharper.Psi.CSharp.Tree;
     using JetBrains.ReSharper.Psi.Tree;
     using JetBrains.TextControl;
-
     using StyleCop.ReSharper.BulbItems.Framework;
     using StyleCop.ReSharper.CodeCleanup.Rules;
     using StyleCop.ReSharper.Core;
+    using System.Collections.Generic;
 
     /// <summary>
     /// The s a 1119 statement must not use unnecessary parenthesis bulb item.

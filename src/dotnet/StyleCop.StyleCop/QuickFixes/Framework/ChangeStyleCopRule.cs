@@ -18,9 +18,6 @@
 
 namespace StyleCop.ReSharper.QuickFixes.Framework
 {
-    using System.Collections.Generic;
-
-    using JetBrains.Application.Icons;
     using JetBrains.Application.Settings;
     using JetBrains.Application.UI.Components.UIApplication;
     using JetBrains.Application.UI.Controls.BulbMenu.Anchors;
@@ -30,11 +27,9 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
     using JetBrains.ReSharper.Feature.Services.Intentions;
     using JetBrains.ReSharper.Feature.Services.Resources;
     using JetBrains.ReSharper.Psi;
-    using JetBrains.UI.Application;
-    using JetBrains.UI.Icons;
-
     using StyleCop.ReSharper.Options;
     using StyleCop.ReSharper.Violations;
+    using System.Collections.Generic;
 
     /// <summary>
     ///   DisableHighlightingActionProvider for StyleCop rules.
@@ -105,7 +100,8 @@ namespace StyleCop.ReSharper.QuickFixes.Framework
             ChangeStyleCopRuleAction changeStyleCopRuleAction = new ChangeStyleCopRuleAction(
                 this.highlightingSettingsManager,
                 this.settingsStore,
-                highlightId) { Text = "Inspection Options for \"" + violation.ToolTip + "\"" };
+                highlightId)
+            { Text = "Inspection Options for \"" + violation.ToolTip + "\"" };
 
             yield return
                 new IntentionAction(changeStyleCopRuleAction, changeStyleCopRuleAction.Text, BulbThemedIcons.ContextAction.Id, IntentionsAnchors.ContextActionsAnchor);

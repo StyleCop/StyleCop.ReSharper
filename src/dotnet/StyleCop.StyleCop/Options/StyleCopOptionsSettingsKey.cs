@@ -18,10 +18,8 @@
 
 namespace StyleCop.ReSharper.Options
 {
-    using System.Reflection;
-
     using JetBrains.Application.Settings;
-    using JetBrains.Util;
+    using System.Reflection;
 
     /// <summary>
     /// Class to hold all of the Configurable options for this addin.

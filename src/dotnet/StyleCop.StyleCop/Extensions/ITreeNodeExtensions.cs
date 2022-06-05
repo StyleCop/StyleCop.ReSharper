@@ -18,13 +18,12 @@
 
 namespace StyleCop.ReSharper.Extensions
 {
-    using System;
-
     using JetBrains.ReSharper.Psi.CSharp.Parsing;
     using JetBrains.ReSharper.Psi.ExtensionsAPI;
     using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
     using JetBrains.ReSharper.Psi.Tree;
     using JetBrains.ReSharper.Resources.Shell;
+    using System;
 
     /// <summary>
     /// Extension Methods for ITreeNode types.

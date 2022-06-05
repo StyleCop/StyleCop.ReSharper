@@ -28,19 +28,19 @@ namespace StyleCop.ReSharper.CodeCleanup
         /// Do not change.
         /// </summary>
         [Description("Do not change")]
-        Ignore, 
+        Ignore,
 
         /// <summary>
         /// Only insert if missing.
         /// </summary>
         [Description("Insert header if it's missing")]
-        InsertMissing, 
+        InsertMissing,
 
         /// <summary>
         /// Replaces the copyright element completely.
         /// </summary>
         [Description("Replace copyright element completely")]
-        ReplaceCopyrightElement, 
+        ReplaceCopyrightElement,
 
         /// <summary>
         /// Replace all.

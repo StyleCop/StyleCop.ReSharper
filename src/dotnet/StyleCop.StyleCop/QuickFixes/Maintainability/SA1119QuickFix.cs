@@ -17,14 +17,12 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace StyleCop.ReSharper.QuickFixes.Maintainability
 {
-    using System.Collections.Generic;
-
     using JetBrains.ReSharper.Feature.Services.Bulbs;
     using JetBrains.ReSharper.Feature.Services.QuickFixes;
-
     using StyleCop.ReSharper.BulbItems.Maintainability;
     using StyleCop.ReSharper.QuickFixes.Framework;
     using StyleCop.ReSharper.Violations;
+    using System.Collections.Generic;
 
     /// <summary>
     /// QuickFix for StyleCop Rule SA1119.
@@ -58,7 +56,7 @@ namespace StyleCop.ReSharper.QuickFixes.Maintainability
                                              Description =
                                                  "Remove Unnecessary Parenthesis : "
                                                  + this.Highlighting.ToolTip
-                                         }, 
+                                         },
                                  };
         }
     }

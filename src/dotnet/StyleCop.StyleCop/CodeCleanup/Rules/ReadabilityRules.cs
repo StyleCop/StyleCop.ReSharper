@@ -18,9 +18,6 @@
 
 namespace StyleCop.ReSharper.CodeCleanup.Rules
 {
-    using System;
-    using System.Collections.Generic;
-
     using JetBrains.ReSharper.Psi;
     using JetBrains.ReSharper.Psi.CodeStyle;
     using JetBrains.ReSharper.Psi.CSharp;
@@ -33,10 +30,10 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
     using JetBrains.ReSharper.Psi.Tree;
     using JetBrains.ReSharper.Psi.Util;
     using JetBrains.ReSharper.Resources.Shell;
-
     using StyleCop.Diagnostics;
     using StyleCop.ReSharper.Core;
     using StyleCop.ReSharper.Extensions;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Readability rules.
@@ -48,13 +45,13 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
         /// </summary>
         private static readonly string[][] BuiltInTypes = new[]
                                                               {
-                                                                  new[] { "Boolean", "System.Boolean", "bool" }, new[] { "Object", "System.Object", "object" }, 
-                                                                  new[] { "String", "System.String", "string" }, new[] { "Int16", "System.Int16", "short" }, 
-                                                                  new[] { "UInt16", "System.UInt16", "ushort" }, new[] { "Int32", "System.Int32", "int" }, 
-                                                                  new[] { "UInt32", "System.UInt32", "uint" }, new[] { "Int64", "System.Int64", "long" }, 
-                                                                  new[] { "UInt64", "System.UInt64", "ulong" }, new[] { "Double", "System.Double", "double" }, 
-                                                                  new[] { "Single", "System.Single", "float" }, new[] { "Byte", "System.Byte", "byte" }, 
-                                                                  new[] { "SByte", "System.SByte", "sbyte" }, new[] { "Char", "System.Char", "char" }, 
+                                                                  new[] { "Boolean", "System.Boolean", "bool" }, new[] { "Object", "System.Object", "object" },
+                                                                  new[] { "String", "System.String", "string" }, new[] { "Int16", "System.Int16", "short" },
+                                                                  new[] { "UInt16", "System.UInt16", "ushort" }, new[] { "Int32", "System.Int32", "int" },
+                                                                  new[] { "UInt32", "System.UInt32", "uint" }, new[] { "Int64", "System.Int64", "long" },
+                                                                  new[] { "UInt64", "System.UInt64", "ulong" }, new[] { "Double", "System.Double", "double" },
+                                                                  new[] { "Single", "System.Single", "float" }, new[] { "Byte", "System.Byte", "byte" },
+                                                                  new[] { "SByte", "System.SByte", "sbyte" }, new[] { "Char", "System.Char", "char" },
                                                                   new[] { "Decimal", "System.Decimal", "decimal" }
                                                               };
 
@@ -263,7 +260,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
 
             ICSharpExpression qualifierExpression = referenceExpression.QualifierExpression;
             if (!(qualifierExpression is IBaseExpression)) return;
-            
+
             ICSharpTypeDeclaration typeDeclaration = invocationExpression.GetContainingNode<ICSharpTypeDeclaration>(true);
             if (typeDeclaration == null) return;
 
@@ -448,7 +445,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
         /// <param name="singleVariableDesignation">
         /// The for each variable declaration.
         /// </param>
-        private static void ProcessSingleVariableDesignation (ISingleVariableDesignation singleVariableDesignation)
+        private static void ProcessSingleVariableDesignation(ISingleVariableDesignation singleVariableDesignation)
         {
             ILocalVariable variable = singleVariableDesignation.DeclaredElement;
             if (!singleVariableDesignation.IsVar)
@@ -632,7 +629,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
             }
             else if (variableDeclaration is ISingleVariableDesignation)
             {
-                ProcessSingleVariableDesignation((ISingleVariableDesignation) variableDeclaration);
+                ProcessSingleVariableDesignation((ISingleVariableDesignation)variableDeclaration);
             }
             else
             {

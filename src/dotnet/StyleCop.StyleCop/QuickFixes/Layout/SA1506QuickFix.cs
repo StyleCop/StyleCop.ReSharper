@@ -17,14 +17,12 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace StyleCop.ReSharper.QuickFixes.Layout
 {
-    using System.Collections.Generic;
-
     using JetBrains.ReSharper.Feature.Services.Bulbs;
     using JetBrains.ReSharper.Feature.Services.QuickFixes;
-
     using StyleCop.ReSharper.BulbItems.Layout;
     using StyleCop.ReSharper.QuickFixes.Framework;
     using StyleCop.ReSharper.Violations;
+    using System.Collections.Generic;
 
     /// <summary>
     /// QuickFix - SA1506.
@@ -57,7 +55,7 @@ namespace StyleCop.ReSharper.QuickFixes.Layout
                                          {
                                              Description =
                                                  "Format line : "
-                                                 + this.Highlighting.ToolTip, 
+                                                 + this.Highlighting.ToolTip,
                                              DocumentRange =
                                                  this.Highlighting.CalculateRange()
                                          }

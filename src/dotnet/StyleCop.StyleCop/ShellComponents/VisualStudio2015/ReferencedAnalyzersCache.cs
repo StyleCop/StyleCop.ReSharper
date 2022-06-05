@@ -18,11 +18,8 @@
 
 namespace StyleCop.ReSharper.ShellComponents.VisualStudio2015
 {
-    using System;
-
     using JetBrains.Application.Components;
     using JetBrains.Application.Threading;
-    using JetBrains.DataFlow;
     using JetBrains.Diagnostics;
     using JetBrains.Lifetimes;
     using JetBrains.ProjectModel;
@@ -33,9 +30,8 @@ namespace StyleCop.ReSharper.ShellComponents.VisualStudio2015
     using JetBrains.Util;
     using JetBrains.Util.Logging;
     using JetBrains.VsIntegration.ProjectDocuments.Projects.Builder;
-
     using NuGet.VisualStudio;
-
+    using System;
     using VSLangProj140;
 
     /// <summary>

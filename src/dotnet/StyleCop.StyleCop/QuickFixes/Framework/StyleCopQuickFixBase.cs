@@ -18,13 +18,11 @@
 
 namespace StyleCop.ReSharper.QuickFixes.Framework
 {
-    using System.Collections.Generic;
-
     using JetBrains.ReSharper.Feature.Services.Bulbs;
     using JetBrains.ReSharper.Feature.Services.Intentions;
     using JetBrains.ReSharper.Feature.Services.QuickFixes;
-
     using StyleCop.ReSharper.Violations;
+    using System.Collections.Generic;
 
     /// <summary>
     ///   Basic Textual Quick Fix Example for rule SA1400QuickFix.

@@ -19,12 +19,8 @@
 
 namespace StyleCop.ReSharper.Core
 {
-    using System;
-    using System.Linq;
-
     using JetBrains.Application.Settings;
     using JetBrains.Application.Threading;
-    using JetBrains.DataFlow;
     using JetBrains.Lifetimes;
     using JetBrains.ProjectModel;
     using JetBrains.ReSharper.Feature.Services.CSharp.Daemon;
@@ -32,11 +28,11 @@ namespace StyleCop.ReSharper.Core
     using JetBrains.ReSharper.Psi;
     using JetBrains.ReSharper.Psi.CSharp.Tree;
     using JetBrains.ReSharper.Psi.Tree;
-    using JetBrains.Threading;
-
     using StyleCop.Diagnostics;
     using StyleCop.ReSharper.Options;
     using StyleCop.ReSharper.ShellComponents;
+    using System;
+    using System.Linq;
 
     /// <summary>
     /// Daemon stage for StyleCop. This class is automatically loaded by ReSharper daemon 

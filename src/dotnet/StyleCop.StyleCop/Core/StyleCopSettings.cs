@@ -18,21 +18,18 @@
 
 namespace StyleCop.ReSharper.Core
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-
     using JetBrains.Application.FileSystemTracker;
     using JetBrains.Application.Settings;
-    using JetBrains.DataFlow;
     using JetBrains.Lifetimes;
     using JetBrains.ProjectModel;
     using JetBrains.ReSharper.Psi;
     using JetBrains.Util;
-
     using StyleCop.Diagnostics;
     using StyleCop.ReSharper.Extensions;
     using StyleCop.ReSharper.Options;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
 
     /// <summary>
     /// The style cop settings.

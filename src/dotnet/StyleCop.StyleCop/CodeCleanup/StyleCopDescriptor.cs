@@ -9,27 +9,25 @@
 
 namespace StyleCop.ReSharper.CodeCleanup
 {
-    using System;
+    using JetBrains.ReSharper.Feature.Services.CodeCleanup;
     using System.ComponentModel;
 
-    using JetBrains.ReSharper.Feature.Services.CodeCleanup;
-
-    [DisplayName ("Fix StyleCop violations")]
-    [DefaultValue (true)]
+    [DisplayName("Fix StyleCop violations")]
+    [DefaultValue(true)]
     public class FixViolationsDescriptor : CodeCleanupBoolOptionDescriptor
     {
-        public FixViolationsDescriptor ()
-            : base ("FixViolations")
+        public FixViolationsDescriptor()
+            : base("FixViolations")
         {
         }
     }
 
-    [DisplayName ("Create XML doc stubs")]
-    [DefaultValue (false)]
+    [DisplayName("Create XML doc stubs")]
+    [DefaultValue(false)]
     public class CreateXmlDocStubsDescriptor : CodeCleanupBoolOptionDescriptor
     {
-        public CreateXmlDocStubsDescriptor ()
-            : base ("CreateXmlDocStubs")
+        public CreateXmlDocStubsDescriptor()
+            : base("CreateXmlDocStubs")
         {
         }
     }

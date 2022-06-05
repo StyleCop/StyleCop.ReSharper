@@ -18,11 +18,7 @@
 
 namespace StyleCop.ReSharper.BulbItems.Framework
 {
-    using System;
-
-    using JetBrains.Application;
     using JetBrains.Application.Threading;
-    using JetBrains.DocumentManagers.impl;
     using JetBrains.DocumentModel;
     using JetBrains.DocumentModel.Storage;
     using JetBrains.DocumentModel.Transactions;
@@ -30,6 +26,7 @@ namespace StyleCop.ReSharper.BulbItems.Framework
     using JetBrains.ReSharper.Feature.Services.Bulbs;
     using JetBrains.ReSharper.Psi;
     using JetBrains.TextControl;
+    using System;
 
     /// <summary>
     /// BulbItem Implementation for ReSharper build items.
@@ -85,7 +82,7 @@ namespace StyleCop.ReSharper.BulbItems.Framework
         /// </returns>
         protected override Action<ITextControl> ExecutePsiTransaction(ISolution solution, JetBrains.Application.Progress.IProgressIndicator progress)
         {
-            return delegate(ITextControl textControl)
+            return delegate (ITextControl textControl)
                 {
                     solution.GetComponent<IDocumentStorageHelpers>().SaveAllDocuments();
 

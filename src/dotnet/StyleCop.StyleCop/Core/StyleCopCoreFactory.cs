@@ -17,17 +17,14 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace StyleCop.ReSharper.Core
 {
-    using System.Collections.Generic;
-    using System.Reflection;
-
     using JetBrains.Application.FileSystemTracker;
     using JetBrains.Application.Settings;
-    using JetBrains.DataFlow;
     using JetBrains.Lifetimes;
     using JetBrains.Util;
-
     using StyleCop.Diagnostics;
     using StyleCop.ReSharper.Options;
+    using System.Collections.Generic;
+    using System.Reflection;
 
     /// <summary>
     /// The style cop core factory.

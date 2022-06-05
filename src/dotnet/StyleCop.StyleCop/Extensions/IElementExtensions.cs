@@ -17,9 +17,8 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace StyleCop.ReSharper.Extensions
 {
-    using System;
-
     using JetBrains.ReSharper.Psi.Tree;
+    using System;
 
     /// <summary>
     /// Extension methods for Token types.

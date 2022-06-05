@@ -18,16 +18,14 @@
 
 namespace StyleCop.ReSharper.Core
 {
-    using System;
-    using System.Collections.Generic;
-
     using JetBrains.DocumentModel;
     using JetBrains.ProjectModel;
     using JetBrains.ReSharper.Feature.Services.Daemon;
     using JetBrains.ReSharper.Psi.CSharp.Tree;
-
     using StyleCop.Diagnostics;
     using StyleCop.ReSharper.Violations;
+    using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Executes Microsoft StyleCop within the ReSharper Environment.

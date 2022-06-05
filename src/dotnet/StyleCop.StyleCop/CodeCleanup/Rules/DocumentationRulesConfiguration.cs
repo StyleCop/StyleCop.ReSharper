@@ -17,13 +17,11 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace StyleCop.ReSharper.CodeCleanup.Rules
 {
+    using JetBrains.ReSharper.Psi;
+    using StyleCop.ReSharper.Core;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-
-    using JetBrains.ReSharper.Psi;
-
-    using StyleCop.ReSharper.Core;
 
     /// <summary>
     /// A class that exposes the current Documentation configuration for the file provided.

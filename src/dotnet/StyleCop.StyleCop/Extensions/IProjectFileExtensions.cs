@@ -17,11 +17,9 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace StyleCop.ReSharper.Extensions
 {
-    using System.Xml;
-
     using JetBrains.ProjectModel;
-
     using StyleCop.Diagnostics;
+    using System.Xml;
 
     /// <summary>
     /// Extension methods for IProjectFile types.

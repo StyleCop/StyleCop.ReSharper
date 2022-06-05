@@ -22,24 +22,20 @@ using JetBrains.Util;
 
 namespace StyleCop.ReSharper.CodeCleanup
 {
-    using System.Collections.Generic;
-
-    using JetBrains.DataFlow;
     using JetBrains.DocumentModel;
     using JetBrains.Lifetimes;
     using JetBrains.ProjectModel;
     using JetBrains.ReSharper.Daemon.CSharp.CodeCleanup;
-    using JetBrains.ReSharper.Daemon.CSharp.CodeCleanup.CodeStyles;
     using JetBrains.ReSharper.Feature.Services.CodeCleanup;
     using JetBrains.ReSharper.Feature.Services.CSharp.CodeCleanup;
     using JetBrains.ReSharper.Psi;
     using JetBrains.ReSharper.Psi.CSharp;
     using JetBrains.ReSharper.Psi.CSharp.Tree;
     using JetBrains.ReSharper.Psi.Files;
-
     using StyleCop.Diagnostics;
     using StyleCop.ReSharper.CodeCleanup.Rules;
     using StyleCop.ReSharper.ShellComponents;
+    using System.Collections.Generic;
 
     /// <summary>
     ///   Custom StyleCop CodeCleanUp module to fix StyleCop violations.
@@ -52,7 +48,7 @@ namespace StyleCop.ReSharper.CodeCleanup
         ///   StyleCop descriptor.
         /// </summary>
         public static readonly FixViolationsDescriptor FIX_VIOLATIONS = new FixViolationsDescriptor();
-        public static readonly CreateXmlDocStubsDescriptor CREATE_XML_DOC_STUB = new CreateXmlDocStubsDescriptor ();
+        public static readonly CreateXmlDocStubsDescriptor CREATE_XML_DOC_STUB = new CreateXmlDocStubsDescriptor();
 
         /// <summary>
         /// Gets the collection of option descriptors.
@@ -151,12 +147,12 @@ namespace StyleCop.ReSharper.CodeCleanup
             }
 
 
-            if (!profile.GetSetting (FIX_VIOLATIONS))
+            if (!profile.GetSetting(FIX_VIOLATIONS))
             {
                 return;
             }
 
-            var services = solution.GetPsiServices(); 
+            var services = solution.GetPsiServices();
             services.Transactions.Execute("Code cleanup", () => this.InternalProcess(projectFile.ToProjectFile(), file, profile.GetSetting(CREATE_XML_DOC_STUB)));
 
             StyleCopTrace.Out();

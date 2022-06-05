@@ -18,8 +18,6 @@
 
 namespace StyleCop.ReSharper.CodeCleanup.Rules
 {
-    using System.Collections.Generic;
-
     using JetBrains.ReSharper.Psi;
     using JetBrains.ReSharper.Psi.CSharp.Parsing;
     using JetBrains.ReSharper.Psi.CSharp.Tree;
@@ -28,9 +26,9 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
     using JetBrains.ReSharper.Psi.Parsing;
     using JetBrains.ReSharper.Psi.Tree;
     using JetBrains.ReSharper.Resources.Shell;
-
     using StyleCop.Diagnostics;
     using StyleCop.ReSharper.Extensions;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Spacing rules.
@@ -82,10 +80,10 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
             List<TokenNodeType> tokensThatCanBeRightSideOfComma = new List<TokenNodeType>
                                                                       {
                                                                           CSharpTokenType.NEW_LINE,
-                                                                          CSharpTokenType.WHITE_SPACE, 
-                                                                          CSharpTokenType.RBRACKET, 
-                                                                          CSharpTokenType.GT, 
-                                                                          CSharpTokenType.COMMA, 
+                                                                          CSharpTokenType.WHITE_SPACE,
+                                                                          CSharpTokenType.RBRACKET,
+                                                                          CSharpTokenType.GT,
+                                                                          CSharpTokenType.COMMA,
                                                                           CSharpTokenType.RPARENTH
                                                                       };
 
@@ -312,9 +310,9 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
         {
             List<TokenNodeType> tokensThatCanBeLeftSideOfEquals = new List<TokenNodeType>
                                                                       {
-                                                                          CSharpTokenType.WHITE_SPACE, 
-                                                                          CSharpTokenType.NE, 
-                                                                          CSharpTokenType.LT, 
+                                                                          CSharpTokenType.WHITE_SPACE,
+                                                                          CSharpTokenType.NE,
+                                                                          CSharpTokenType.LT,
                                                                           CSharpTokenType.GT
                                                                       };
 

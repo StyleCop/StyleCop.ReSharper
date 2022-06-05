@@ -18,15 +18,7 @@
 
 namespace StyleCop.ReSharper.CodeCleanup.Rules
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Globalization;
-    using System.Xml;
-
     using JetBrains.Application.Settings;
-    using JetBrains.DataFlow;
     using JetBrains.Lifetimes;
     using JetBrains.ProjectModel;
     using JetBrains.ReSharper.Psi;
@@ -35,11 +27,16 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
     using JetBrains.ReSharper.Psi.ExtensionsAPI;
     using JetBrains.ReSharper.Psi.Impl.Types;
     using JetBrains.ReSharper.Psi.Tree;
-
     using StyleCop.Diagnostics;
     using StyleCop.ReSharper.Core;
     using StyleCop.ReSharper.Options;
     using StyleCop.ReSharper.ShellComponents;
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Globalization;
+    using System.Xml;
 
     /// <summary>
     /// Declaration comments fixes SA1600, SA1602, SA1611, SA1615, SA1617, SA1642.
@@ -1151,7 +1148,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
                 return;
             }
 
-             DeclaredTypeFromCLRName declaredTypeFromClrName = methodDeclaration.DeclaredParametersOwner.ReturnType as DeclaredTypeFromCLRName;
+            DeclaredTypeFromCLRName declaredTypeFromClrName = methodDeclaration.DeclaredParametersOwner.ReturnType as DeclaredTypeFromCLRName;
 
             if (removeReturnTagOnVoidElementsOption && !Utils.IsRuleSuppressed(methodDeclaration, StyleCopRules.SA1617))
             {

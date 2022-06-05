@@ -17,16 +17,12 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace StyleCop.ReSharper.Core
 {
-    using System.Reflection;
-    using System.Runtime.CompilerServices;
-
-    using JetBrains.DataFlow;
     using JetBrains.Diagnostics;
     using JetBrains.Lifetimes;
     using JetBrains.ProjectModel;
-    using JetBrains.Util;
-
     using StyleCop.ReSharper.ShellComponents;
+    using System.Reflection;
+    using System.Runtime.CompilerServices;
 
     /// <summary>
     /// Loaded and cached code strings used within the DocumentationRules analyzer.

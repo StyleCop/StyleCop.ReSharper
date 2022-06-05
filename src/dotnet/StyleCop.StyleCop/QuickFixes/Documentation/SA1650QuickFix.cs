@@ -17,17 +17,15 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace StyleCop.ReSharper.QuickFixes.Documentation
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-
     using JetBrains.ReSharper.Feature.Services.Bulbs;
     using JetBrains.ReSharper.Feature.Services.QuickFixes;
-
     using StyleCop.ReSharper.BulbItems.Documentation;
     using StyleCop.ReSharper.QuickFixes.Framework;
     using StyleCop.ReSharper.Violations;
     using StyleCop.Spelling;
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
 
     /// <summary>
     /// QuickFix for SA1650 : ElementDocumentationMustBeSpelledCorrectly.
@@ -78,11 +76,11 @@ namespace StyleCop.ReSharper.QuickFixes.Documentation
                             "Change spelling of '{0}' to '{1}' [StyleCop Rule: {2}]", trimmedWord, preferredAlternateForDeprecatedWord, this.Highlighting.CheckId);
                         this.BulbItems.Add(
                             new SA1650ElementDocumentationMustBeSpelledCorrectlyBulbItem
-                                {
-                                    Description = description, 
-                                    DeprecatedWord = trimmedWord, 
-                                    AlternateWord = preferredAlternateForDeprecatedWord
-                                });
+                            {
+                                Description = description,
+                                DeprecatedWord = trimmedWord,
+                                AlternateWord = preferredAlternateForDeprecatedWord
+                            });
                     }
                 }
             }

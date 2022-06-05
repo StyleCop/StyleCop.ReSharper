@@ -17,16 +17,14 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace StyleCop.ReSharper.CodeCleanup.Rules
 {
-    using System;
-    using System.Collections.Generic;
-
     using JetBrains.ReSharper.Psi;
     using JetBrains.ReSharper.Psi.CSharp;
     using JetBrains.ReSharper.Psi.CSharp.Tree;
     using JetBrains.ReSharper.Psi.Tree;
-
     using StyleCop.Diagnostics;
     using StyleCop.ReSharper.Extensions;
+    using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Fixes SA1208, SA1209, SA1210, and SA1211.
@@ -120,9 +118,9 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
         }
 
         private static void ProcessImports(
-            IList<IUsingDirective> originalImportsList, 
-            bool organiseUsings, 
-            bool expandUsings, 
+            IList<IUsingDirective> originalImportsList,
+            bool organiseUsings,
+            bool expandUsings,
             ICSharpTypeAndNamespaceHolderDeclaration declaration)
         {
             if (originalImportsList == null || originalImportsList.Count == 0)
@@ -311,8 +309,8 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
                 }
 
                 return string.Compare(
-                    usingNamespaceDirectiveAQualifiedNamespace.SubstringBefore(';'), 
-                    usingNamespaceDirectiveBQualifiedNamespace.SubstringBefore(';'), 
+                    usingNamespaceDirectiveAQualifiedNamespace.SubstringBefore(';'),
+                    usingNamespaceDirectiveBQualifiedNamespace.SubstringBefore(';'),
                     StringComparison.OrdinalIgnoreCase);
             }
         }

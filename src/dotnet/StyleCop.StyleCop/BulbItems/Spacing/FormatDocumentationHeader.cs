@@ -17,12 +17,10 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace StyleCop.ReSharper.BulbItems.Spacing
 {
-    using System.Text.RegularExpressions;
-
     using JetBrains.ProjectModel;
     using JetBrains.TextControl;
-
     using StyleCop.ReSharper.BulbItems.Framework;
+    using System.Text.RegularExpressions;
 
     /// <summary>
     /// BulbItem - FormatDocumentationHeader : Fixes documentation headers.

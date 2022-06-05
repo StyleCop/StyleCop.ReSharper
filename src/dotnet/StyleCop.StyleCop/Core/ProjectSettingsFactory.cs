@@ -17,18 +17,15 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace StyleCop.ReSharper.Core
 {
+    using JetBrains.Application.FileSystemTracker;
+    using JetBrains.Lifetimes;
+    using JetBrains.Util;
+    using StyleCop.Diagnostics;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Security;
     using System.Xml;
-
-    using JetBrains.Application.FileSystemTracker;
-    using JetBrains.DataFlow;
-    using JetBrains.Lifetimes;
-    using JetBrains.Util;
-
-    using StyleCop.Diagnostics;
 
     /// <summary>
     /// The project settings factory.

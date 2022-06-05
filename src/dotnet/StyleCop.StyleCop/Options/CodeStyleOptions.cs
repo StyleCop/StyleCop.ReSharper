@@ -18,13 +18,6 @@
 
 namespace StyleCop.ReSharper.Options
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Reflection;
-
     using JetBrains.Application.Settings;
     using JetBrains.ReSharper.Daemon.CSharp.CodeCleanup;
     using JetBrains.ReSharper.Feature.Services.CodeCleanup;
@@ -35,8 +28,13 @@ namespace StyleCop.ReSharper.Options
     using JetBrains.ReSharper.Psi.CSharp.Naming2;
     using JetBrains.ReSharper.Psi.Naming.Settings;
     using JetBrains.ReSharper.Resources.Shell;
-
     using StyleCop.ReSharper.CodeCleanup;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.IO;
+    using System.Linq;
+    using System.Reflection;
 
     /// <summary>
     /// Options for code style
@@ -1408,7 +1406,7 @@ namespace StyleCop.ReSharper.Options
             }
 
             var fixViolations = styleCopProfile.GetSetting(StyleCopCodeCleanupModule.FIX_VIOLATIONS);
-            var createXmlDocStubs = styleCopProfile.GetSetting (StyleCopCodeCleanupModule.CREATE_XML_DOC_STUB);
+            var createXmlDocStubs = styleCopProfile.GetSetting(StyleCopCodeCleanupModule.CREATE_XML_DOC_STUB);
             if (!fixViolations || createXmlDocStubs)
             {
                 return false;

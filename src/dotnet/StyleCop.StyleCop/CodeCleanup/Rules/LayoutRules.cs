@@ -18,8 +18,6 @@
 
 namespace StyleCop.ReSharper.CodeCleanup.Rules
 {
-    using System.Collections.Generic;
-
     using JetBrains.DocumentModel;
     using JetBrains.ReSharper.Psi;
     using JetBrains.ReSharper.Psi.CodeStyle;
@@ -30,10 +28,10 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
     using JetBrains.ReSharper.Psi.Impl.CodeStyle;
     using JetBrains.ReSharper.Psi.Parsing;
     using JetBrains.ReSharper.Psi.Tree;
-
     using StyleCop.Diagnostics;
     using StyleCop.ReSharper.Core;
     using StyleCop.ReSharper.Extensions;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Layout rules.
@@ -58,35 +56,35 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
             // preprocessor directives
             List<TokenNodeType> tokensThatFollowClosingCurlyBracketWithoutNewLine = new List<TokenNodeType>
                                                                                         {
-                                                                                            CSharpTokenType.RBRACE, 
-                                                                                            CSharpTokenType.DO_KEYWORD, 
-                                                                                            CSharpTokenType.ELSE_KEYWORD, 
-                                                                                            CSharpTokenType.CATCH_KEYWORD, 
+                                                                                            CSharpTokenType.RBRACE,
+                                                                                            CSharpTokenType.DO_KEYWORD,
+                                                                                            CSharpTokenType.ELSE_KEYWORD,
+                                                                                            CSharpTokenType.CATCH_KEYWORD,
                                                                                             CSharpTokenType.FINALLY_KEYWORD
                                                                                         };
 
             List<TokenNodeType> objectInitializerFollowers = new List<TokenNodeType>
                                                                  {
-                                                                     CSharpTokenType.AS_KEYWORD, 
-                                                                     CSharpTokenType.IS_KEYWORD, 
-                                                                     CSharpTokenType.COMMA, 
-                                                                     CSharpTokenType.SEMICOLON, 
-                                                                     CSharpTokenType.DOT, 
-                                                                     CSharpTokenType.QUEST, 
-                                                                     CSharpTokenType.COLON, 
-                                                                     CSharpTokenType.RPARENTH, 
-                                                                     CSharpTokenType.EQEQ, 
-                                                                     CSharpTokenType.GE, 
-                                                                     CSharpTokenType.GT, 
-                                                                     CSharpTokenType.LE, 
-                                                                     CSharpTokenType.LT, 
-                                                                     CSharpTokenType.NE, 
-                                                                     CSharpTokenType.MINUS, 
-                                                                     CSharpTokenType.PLUS, 
-                                                                     CSharpTokenType.DIV, 
-                                                                     CSharpTokenType.ASTERISK, 
-                                                                     CSharpTokenType.PERC, 
-                                                                     CSharpTokenType.MINUSMINUS, 
+                                                                     CSharpTokenType.AS_KEYWORD,
+                                                                     CSharpTokenType.IS_KEYWORD,
+                                                                     CSharpTokenType.COMMA,
+                                                                     CSharpTokenType.SEMICOLON,
+                                                                     CSharpTokenType.DOT,
+                                                                     CSharpTokenType.QUEST,
+                                                                     CSharpTokenType.COLON,
+                                                                     CSharpTokenType.RPARENTH,
+                                                                     CSharpTokenType.EQEQ,
+                                                                     CSharpTokenType.GE,
+                                                                     CSharpTokenType.GT,
+                                                                     CSharpTokenType.LE,
+                                                                     CSharpTokenType.LT,
+                                                                     CSharpTokenType.NE,
+                                                                     CSharpTokenType.MINUS,
+                                                                     CSharpTokenType.PLUS,
+                                                                     CSharpTokenType.DIV,
+                                                                     CSharpTokenType.ASTERISK,
+                                                                     CSharpTokenType.PERC,
+                                                                     CSharpTokenType.MINUSMINUS,
                                                                      CSharpTokenType.PLUSPLUS
                                                                  };
 

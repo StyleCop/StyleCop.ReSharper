@@ -17,14 +17,12 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace StyleCop.ReSharper.QuickFixes.Spacing
 {
-    using System.Collections.Generic;
-
     using JetBrains.ReSharper.Feature.Services.Bulbs;
     using JetBrains.ReSharper.Feature.Services.QuickFixes;
-
     using StyleCop.ReSharper.BulbItems.Readability;
     using StyleCop.ReSharper.QuickFixes.Framework;
     using StyleCop.ReSharper.Violations;
+    using System.Collections.Generic;
 
     /// <summary>
     /// QuickFix - SA1000: KeywordsMustBeSpacedCorrectly.
@@ -55,7 +53,7 @@ namespace StyleCop.ReSharper.QuickFixes.Spacing
                                  {
                                      new FormatLineBulbItem
                                          {
-                                             Description = "Fix Spacing : " + this.Highlighting.ToolTip, 
+                                             Description = "Fix Spacing : " + this.Highlighting.ToolTip,
                                              DocumentRange = this.Highlighting.CalculateRange()
                                          }
                                  };

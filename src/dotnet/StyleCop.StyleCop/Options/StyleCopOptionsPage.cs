@@ -20,11 +20,6 @@ using JetBrains.Platform.VisualStudio.Protocol.Common.Shell;
 
 namespace StyleCop.ReSharper.Options
 {
-    using System;
-    using System.Diagnostics;
-    using System.Drawing;
-    using System.Reflection;
-
     using JetBrains.Application.Components;
     using JetBrains.Application.Settings;
     using JetBrains.Application.UI.Commands;
@@ -38,12 +33,12 @@ namespace StyleCop.ReSharper.Options
     using JetBrains.ReSharper.Feature.Services.Daemon;
     using JetBrains.ReSharper.Resources.Shell;
     using JetBrains.UI.Controls;
-    using JetBrains.UI.RichText;
     using JetBrains.Util;
-    using JetBrains.VsIntegration.Shell;
-
     using StyleCop.ReSharper.Resources;
     using StyleCop.ReSharper.ShellComponents;
+    using System;
+    using System.Diagnostics;
+    using System.Reflection;
 
     /// <summary>
     /// Options page to allow the plugins options to be set from within the ReSharper Options window.

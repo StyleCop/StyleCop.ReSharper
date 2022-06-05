@@ -16,24 +16,19 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using JetBrains.ReSharper.Feature.Services.Daemon;
-
 namespace StyleCop.ReSharper.Options
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text.RegularExpressions;
-
     using JetBrains.Application;
     using JetBrains.Application.FileSystemTracker;
     using JetBrains.Application.Settings;
-    using JetBrains.DataFlow;
     using JetBrains.Lifetimes;
     using JetBrains.ReSharper.Feature.Services.Daemon;
     using JetBrains.ReSharper.Psi;
     using JetBrains.ReSharper.Psi.CSharp;
-
     using StyleCop.ReSharper.Core;
+    using System;
+    using System.Collections.Generic;
+    using System.Text.RegularExpressions;
 
     /// <summary>
     /// Registers StyleCop Highlighters to allow their severity to be set.

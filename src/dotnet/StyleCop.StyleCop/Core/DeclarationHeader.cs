@@ -17,13 +17,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace StyleCop.ReSharper.Core
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Text;
-    using System.Xml;
-
     using JetBrains.Application.Settings;
     using JetBrains.ReSharper.Psi;
     using JetBrains.ReSharper.Psi.CSharp;
@@ -31,10 +24,15 @@ namespace StyleCop.ReSharper.Core
     using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
     using JetBrains.ReSharper.Psi.Tree;
     using JetBrains.ReSharper.Resources.Shell;
-
     using StyleCop.ReSharper.CodeCleanup.Rules;
     using StyleCop.ReSharper.Extensions;
     using StyleCop.ReSharper.Options;
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Text;
+    using System.Xml;
 
     /// <summary>
     /// Provides a wrapper for a declaration elements documentation comments.
@@ -60,7 +58,7 @@ namespace StyleCop.ReSharper.Core
                 new ArrayList(
                     new[]
                         {
-                            "code", "event", "example", "exception", "item", "list", "listheader", "note", "overloads", "para", "param", "permission", "preliminary", 
+                            "code", "event", "example", "exception", "item", "list", "listheader", "note", "overloads", "para", "param", "permission", "preliminary",
                             "remarks", "returns", "summary", "typeparam", "value"
                         });
         }

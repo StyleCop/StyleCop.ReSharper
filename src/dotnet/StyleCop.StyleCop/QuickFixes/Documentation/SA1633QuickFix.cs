@@ -17,14 +17,12 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace StyleCop.ReSharper.QuickFixes.Documentation
 {
-    using System.Collections.Generic;
-
     using JetBrains.ReSharper.Feature.Services.Bulbs;
     using JetBrains.ReSharper.Feature.Services.QuickFixes;
-
     using StyleCop.ReSharper.BulbItems.Documentation;
     using StyleCop.ReSharper.QuickFixes.Framework;
     using StyleCop.ReSharper.Violations;
+    using System.Collections.Generic;
 
     /// <summary>
     /// QuickFix - SA1633: FileMustHaveHeader.
@@ -55,7 +53,7 @@ namespace StyleCop.ReSharper.QuickFixes.Documentation
                                  {
                                      new SA1633FileMustHaveHeaderBulbItem
                                          {
-                                             DocumentRange = this.Highlighting.CalculateRange(), 
+                                             DocumentRange = this.Highlighting.CalculateRange(),
                                              Description = "Insert/replace header : " + this.Highlighting.ToolTip
                                          }
                                  };
