@@ -1,0 +1,9 @@
+[
+  {
+    "name": "StyleCop.CSharp.Rules",
+    "version": "6.1.0",
+    "url": "https://github.com/StyleCop/StyleCop",
+    "license": "Microsoft Public License",
+    "licenseUrl": "https://github.com/StyleCop/StyleCop/blob/7da86d484c6487c5fff1ae84cbd41c03c5c212d8/License.html"
+  }
+]
