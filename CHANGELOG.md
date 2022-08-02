@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## vNext
+## 2022.2.0
 - Added support for ReSharper 2022.2
 
 ## 2022.1.0
@@ -140,5 +140,3 @@ Thanks @SanjayGuntur for the PR!
 [2016.1.2]: https://github.com/StyleCop/StyleCop.ReSharper/compare/2016.1.1...2016.1.2
 [2016.1.1]: https://github.com/StyleCop/StyleCop.ReSharper/compare/Previous...2016.1.1
 [Previous]: https://github.com/StyleCop/StyleCop.ReSharper/tree/Previous
-
-
