@@ -6,6 +6,7 @@ output
 .gradle
 .tmp
 packages
+.nuke
 
 # User-specific files
 *.suo
