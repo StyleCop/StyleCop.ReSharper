@@ -26,8 +26,7 @@
         <PackageReference Include="StyleCop.CSharp.Rules" Version="6.1.0" />
         <PackageReference Include="VSLangProj140" Version="14.0.25030" />
         <PackageReference Include="VSSDK.VSLangProj.11" Version="11.0.4" />
-        <!-- TODO: https://github.com/NuGet/Home/issues/7154 -->
-        <PackageReference Include="Wave" Version="[$(WaveVersion),$(UpperWaveVersion))" PrivateAssets="none" />
+        <PackageReference Include="Wave" Version="$(WaveVersion)" PrivateAssets="none" />
     </ItemGroup>
 
     <ItemGroup>
