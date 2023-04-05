@@ -244,9 +244,7 @@ namespace StyleCop.ReSharper.Options
                 NamingPolicy policy = settingsStore.GetIndexedValue<CSharpNamingSettings, NamedElementKinds, NamingPolicy>(
                     key => key.PredefinedNamingRules, kindOfElement) ?? ClrPolicyProviderBase.GetDefaultPolicy(kindOfElement);
 
-                NamingRule rule = policy.NamingRule;
-
-                rule.Suffix = string.Empty;
+                NamingRule rule = policy.NamingRule with { Suffix = string.Empty };
 
                 switch (kindOfElement)
                 {
@@ -254,22 +252,20 @@ namespace StyleCop.ReSharper.Options
                     case NamedElementKinds.Parameters:
                     case NamedElementKinds.PrivateInstanceFields:
                     case NamedElementKinds.PrivateStaticFields:
-                        rule.Prefix = string.Empty;
-                        rule.NamingStyleKind = NamingStyleKinds.aaBb;
+                        rule = rule with { Prefix = string.Empty, NamingStyleKind = NamingStyleKinds.aaBb };
                         break;
                     case NamedElementKinds.Interfaces:
-                        rule.Prefix = "I";
-                        rule.NamingStyleKind = NamingStyleKinds.AaBb;
+                        rule = rule with { Prefix = "I", NamingStyleKind = NamingStyleKinds.AaBb };
                         break;
                     case NamedElementKinds.TypeParameters:
-                        rule.Prefix = "T";
-                        rule.NamingStyleKind = NamingStyleKinds.AaBb;
+                        rule = rule with { Prefix = "T", NamingStyleKind = NamingStyleKinds.AaBb };
                         break;
                     default:
-                        rule.Prefix = string.Empty;
-                        rule.NamingStyleKind = NamingStyleKinds.AaBb;
+                        rule = rule with { Prefix = string.Empty, NamingStyleKind = NamingStyleKinds.AaBb };
                         break;
                 }
+
+                policy = policy with { NamingRule = rule };
 
                 settingsStore.SetIndexedValue<CSharpNamingSettings, NamedElementKinds, NamingPolicy>(key => key.PredefinedNamingRules, kindOfElement, policy);
             }
@@ -310,7 +306,7 @@ namespace StyleCop.ReSharper.Options
 
                         profiles.Add(clone);
 
-                        if (clone.Name == "StyleCop")
+                        if (clone.ShortName == "StyleCop")
                         {
                             styleCopProfile = clone;
                         }
@@ -343,7 +339,7 @@ namespace StyleCop.ReSharper.Options
                 styleCopProfile.SetSetting(StyleCopCodeCleanupModule.CREATE_XML_DOC_STUB, value: false);
 
                 codeCleanupSettings.SetProfiles(profiles, settingsStore);
-                codeCleanupSettings.SetSilentCleanupProfileName(settingsStore, styleCopProfile.Name);
+                codeCleanupSettings.SetSilentCleanupProfileId(settingsStore, styleCopProfile.ShortName);
             }
         }
 
@@ -1352,7 +1348,7 @@ namespace StyleCop.ReSharper.Options
             {
                 if (!profile.IsDefault)
                 {
-                    if (profile.Name == "StyleCop")
+                    if (profile.ShortName == "StyleCop")
                     {
                         styleCopProfile = profile;
                     }
