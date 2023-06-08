@@ -16,7 +16,6 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using JetBrains.Platform.VisualStudio.Protocol.Common.Shell;
 
 namespace StyleCop.ReSharper.Options
 {
@@ -40,6 +39,7 @@ namespace StyleCop.ReSharper.Options
     using JetBrains.UI.Controls;
     using JetBrains.UI.RichText;
     using JetBrains.Util;
+    using JetBrains.Util.DevEnv;
     using JetBrains.VsIntegration.Shell;
 
     using StyleCop.ReSharper.Resources;

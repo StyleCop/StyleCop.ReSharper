@@ -16,12 +16,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using JetBrains.Platform.RdFramework;
 
 namespace StyleCop.ReSharper.ShellComponents.VisualStudio2015
 {
     using JetBrains.Application.BuildScript.Application.Zones;
-    using JetBrains.VsIntegration.Shell.Zones;
+    using JetBrains.Platform.RdFramework;
+    using JetBrains.VsIntegration.Zones;
 
     /// <summary>
     /// Zone marker for the Visual Studio specific components

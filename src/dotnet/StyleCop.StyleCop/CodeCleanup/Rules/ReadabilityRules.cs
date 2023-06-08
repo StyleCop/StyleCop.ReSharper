@@ -214,7 +214,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
                         IAttribute attribute = tokenNode.GetContainingNode<IAttribute>(true);
                         ISwitchCaseLabel switchLabelStatement = tokenNode.GetContainingNode<ISwitchCaseLabel>(true);
                         IConstantDeclaration constantDeclaration = tokenNode.GetContainingNode<IConstantDeclaration>(true);
-                        IRegularParameterDeclaration parameterDeclaration = tokenNode.GetContainingNode<IRegularParameterDeclaration>(true);
+                        ILocalRegularParameterDeclaration parameterDeclaration = tokenNode.GetContainingNode<ILocalRegularParameterDeclaration>(true);
 
                         // Not for attributes, switch labels, constant declarations, or parameter declarations
                         if (attribute == null && switchLabelStatement == null && constantDeclaration == null && parameterDeclaration == null)
