@@ -1,7 +1,7 @@
 ![Obsolete](https://jb.gg/badges/obsolete-plastic.svg)
 
-> **Warning**<br/>
-> This extension won't receive any updates (except for compatibility) due to the discontinuation of the original [StyleCop project](https://github.com/StyleCop/StyleCop). Please visit their repository for [further considerations](https://github.com/StyleCop/StyleCop#considerations).
+> [!WARNING]
+> This extension is deprecated and won't receive any updates (except for compatibility) due to the discontinuation of the original [StyleCop project](https://github.com/StyleCop/StyleCop). Please visit their repository for [further considerations](https://github.com/StyleCop/StyleCop#considerations).
 
 # StyleCop for ReSharper
 
