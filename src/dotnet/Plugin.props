@@ -2,8 +2,10 @@
   <PropertyGroup>
     <SdkVersion>2023.3.0</SdkVersion>
 
-    <Title>StyleCop by JetBrains</Title>
-    <Description>StyleCop analyzes C# source code to enforce a set of style and consistency rules. This plugin is compatible with StyleCop 6.1.0, and maintained by JetBrains.</Description>
+    <Title>StyleCop by JetBrains [DEPRECATED]</Title>
+    <Description>This extension is deprecated and won't receive updates, except for compatibility, due to the discontinuation of the original StyleCop project. Note that using it may cause performance issues and syntax failures starting with C# 7 and beyond.
+
+      StyleCop analyzes C# source code to enforce a set of style and consistency rules. This plugin is compatible with StyleCop 6.1.0, and maintained by JetBrains.</Description>
 
     <Authors>Matt Ellis, Andy Reeves</Authors>
     <Copyright>Copyright $([System.DateTime]::Now.Year) Maintainers of StyleCop</Copyright>
