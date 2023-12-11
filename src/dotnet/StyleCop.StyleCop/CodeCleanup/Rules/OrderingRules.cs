@@ -151,7 +151,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
                 IUsingAliasDirective aliasDirective = originalImportsList[i] as IUsingAliasDirective;
                 if (aliasDirective != null)
                 {
-                    if (aliasDirective.ImportedSymbolName.GetText() != aliasDirective.GetFullyQualifiedNamespace())
+                    if (aliasDirective.AliasName != aliasDirective.GetFullyQualifiedNamespace())
                     {
                         alreadyExpanded = false;
                         break;
@@ -176,7 +176,7 @@ namespace StyleCop.ReSharper.CodeCleanup.Rules
                                                 .CreateUsingDirective(aliasDirective.AliasName + " = " + directive.GetFullyQualifiedNamespace());
 
                         IUsingAliasDirective n = newUsingDirective as IUsingAliasDirective;
-                        n.SetImportedSymbolName(aliasDirective.ImportedSymbolName);
+                        n.SetNamespaceOrType(aliasDirective.NamespaceOrType);
                     }
                     else
                     {

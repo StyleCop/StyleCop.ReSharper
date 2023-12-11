@@ -45,7 +45,7 @@ namespace StyleCop.ReSharper.CodeCleanup
     ///   Custom StyleCop CodeCleanUp module to fix StyleCop violations.
     ///   We ensure that most of the ReSharper modules are run before we are.
     /// </summary>
-    [CodeCleanupModule(ModulesBefore = new[] { typeof(UpdateFileHeader), typeof(CSharpHighlightingCleanupModule), typeof(ReformatCode) })]
+    [CodeCleanupModule(ModulesBefore = new[] { typeof(UpdateFileHeader), typeof(CSharpHighlightingCleanupModule), typeof(CSharpReformatCodeCleanupModule) })]
     public class StyleCopCodeCleanupModule : ICodeCleanupModule
     {
         /// <summary>

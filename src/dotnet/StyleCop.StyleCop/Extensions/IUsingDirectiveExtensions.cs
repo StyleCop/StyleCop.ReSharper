@@ -18,6 +18,7 @@
 namespace StyleCop.ReSharper.Extensions
 {
     using JetBrains.ReSharper.Psi;
+    using JetBrains.ReSharper.Psi.CSharp;
     using JetBrains.ReSharper.Psi.CSharp.Tree;
 
     /// <summary>
@@ -36,20 +37,17 @@ namespace StyleCop.ReSharper.Extensions
         /// </returns>
         internal static string GetFullyQualifiedNamespace(this IUsingDirective directive)
         {
-            if (directive is IUsingAliasDirective)
+            if (directive is IUsingAliasDirective aliasDirective)
             {
-                IUsingAliasDirective aliasDirective = directive as IUsingAliasDirective;
-
-                DeclaredElementInstance<IDeclaredElement> declaredElementInstance = aliasDirective.DeclaredElement.GetAliasedSymbol();
-
-                INamespace aliasedNamespace = declaredElementInstance == null ? null : declaredElementInstance.Element as INamespace;
-
-                string returnValue = aliasedNamespace == null ? aliasDirective.ImportedSymbolName.QualifiedName : aliasedNamespace.QualifiedName;
-
-                return returnValue;
+                return aliasDirective.DeclaredElement.AliasedSymbol switch
+                {
+                    { Namespace: { } ns } => ns.QualifiedName,
+                    { Type: { } type } => type.GetPresentableName(CSharpLanguage.Instance)
+                };
             }
 
-            return directive.ImportedSymbolName.QualifiedName;
+            var usingSymbol = (IUsingSymbolDirective)directive;
+            return usingSymbol.ImportedSymbolName.QualifiedName;
         }
     }
 }
