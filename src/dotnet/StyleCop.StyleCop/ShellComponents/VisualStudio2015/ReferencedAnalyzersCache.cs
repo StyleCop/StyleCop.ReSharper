@@ -115,7 +115,7 @@ namespace StyleCop.ReSharper.ShellComponents.VisualStudio2015
                             this.packageInstallerEvents.PackageInstalled -= this.ResetAnalyzersCache;
                             this.packageInstallerEvents.PackageUninstalled -= this.ResetAnalyzersCache;
                         });
-                solutionLoadTasksScheduler.EnqueueTask(new SolutionLoadTask("StyleCop.ReferencedAnalyzersCache", SolutionLoadTaskKinds.AfterDone,
+                solutionLoadTasksScheduler.EnqueueTask(new SolutionLoadTask(typeof(ReferencedAnalyzersCache), SolutionLoadTaskKinds.AfterDone,
                     () =>
                         {
                             this.ResetAnalyzersCache(null);
