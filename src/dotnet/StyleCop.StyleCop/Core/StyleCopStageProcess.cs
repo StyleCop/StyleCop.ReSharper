@@ -155,7 +155,6 @@ namespace StyleCop.ReSharper.Core
                                 // This filters the highlights, based on "ReSharper disable" comments, etc.
                                 var defaultConsumer = new DefaultHighlightingConsumer(this.daemonProcess.SourceFile);
                                 var filteringConsumer = new FilteringHighlightingConsumer(
-                                    defaultConsumer,
                                     this.daemonProcess.SourceFile,
                                     this.file,
                                     this.settings);
@@ -164,7 +163,7 @@ namespace StyleCop.ReSharper.Core
                                     filteringConsumer.ConsumeHighlighting(highlightingInfo);
                                 }
 
-                                committer(new DaemonStageResult(filteringConsumer.Highlightings));
+                                committer(new DaemonStageResult(filteringConsumer.CollectHighlightings()));
                             });
                 }
                 else
