@@ -16,6 +16,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using JetBrains.Application.Parts;
+
 namespace StyleCop.ReSharper.ShellComponents.VisualStudio2015
 {
     using System;
@@ -41,7 +43,7 @@ namespace StyleCop.ReSharper.ShellComponents.VisualStudio2015
     /// <summary>
     /// Cache of referenced analyzers
     /// </summary>
-    [SolutionComponent]
+    [SolutionComponent(Instantiation.LaterAsyncAnyThreadSafe)]
     public class ReferencedAnalyzersCache : PreRoslynReferencedAnalyzersCache
     {
         private readonly ISolution solution;

@@ -16,6 +16,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using JetBrains.Application.Parts;
+
 namespace StyleCop.ReSharper.ShellComponents
 {
     using JetBrains.ProjectModel;
@@ -41,7 +43,7 @@ namespace StyleCop.ReSharper.ShellComponents
     /// <summary>
     /// Default analyzer reference cache for pre-Visual Studio 2015
     /// </summary>
-    [SolutionComponent]
+    [SolutionComponent(Instantiation.LaterAsyncAnyThreadSafe)]
     public class PreRoslynReferencedAnalyzersCache : IReferencedAnalyzersCache
     {
         /// <summary>

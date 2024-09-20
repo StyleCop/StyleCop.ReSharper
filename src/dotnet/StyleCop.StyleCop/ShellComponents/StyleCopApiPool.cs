@@ -16,6 +16,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using JetBrains.Application.Parts;
+
 namespace StyleCop.ReSharper.ShellComponents
 {
     using System;
@@ -33,7 +35,7 @@ namespace StyleCop.ReSharper.ShellComponents
     /// The style cop API pool. Needs to be a solution component, because the API caches settings
     /// per solution
     /// </summary>
-    [SolutionComponent]
+    [SolutionComponent(Instantiation.LaterAsyncAnyThreadSafe)]
     public class StyleCopApiPool
     {
         private readonly Lifetime componentLifetime;
