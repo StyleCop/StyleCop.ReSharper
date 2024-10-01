@@ -27,6 +27,7 @@ namespace StyleCop.ReSharper.Options
 
     using JetBrains.Application.Settings;
     using JetBrains.ReSharper.Daemon.CSharp.CodeCleanup;
+    using JetBrains.ReSharper.Daemon.CSharp.CodeCleanup.CodeStyles;
     using JetBrains.ReSharper.Feature.Services.CodeCleanup;
     using JetBrains.ReSharper.Psi.CodeStyle;
     using JetBrains.ReSharper.Psi.CSharp.CodeStyle;
@@ -315,11 +316,11 @@ namespace StyleCop.ReSharper.Options
 
                 if (styleCopProfile == null)
                 {
-                    styleCopProfile = codeCleanupSettings.CreateEmptyProfile("StyleCop");
+                    styleCopProfile = CodeCleanupSettingsComponent.CreateEmptyProfile("StyleCop");
                     profiles.Add(styleCopProfile);
                 }
 
-                styleCopProfile.SetSetting(CSharpHighlightingCleanupModule.ARRANGE_QUALIFIERS_DESCRIPTOR, true);
+                styleCopProfile.SetSetting(CodeStylesCleanupModule.ARRANGE_QUALIFIERS, true);
 
                 SetCodeCleanupProfileSetting(styleCopProfile, "CSUpdateFileHeader", null, false);
 
@@ -1360,7 +1361,7 @@ namespace StyleCop.ReSharper.Options
                 return false;
             }
 
-            if (!styleCopProfile.GetSetting(CSharpHighlightingCleanupModule.ARRANGE_QUALIFIERS_DESCRIPTOR))
+            if (!styleCopProfile.GetSetting(CodeStylesCleanupModule.ARRANGE_QUALIFIERS))
             {
                 return false;
             }
