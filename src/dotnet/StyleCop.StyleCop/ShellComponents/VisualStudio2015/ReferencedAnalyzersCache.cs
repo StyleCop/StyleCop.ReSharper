@@ -43,8 +43,8 @@ namespace StyleCop.ReSharper.ShellComponents.VisualStudio2015
     /// <summary>
     /// Cache of referenced analyzers
     /// </summary>
-    [SolutionComponent(Instantiation.LaterAsyncAnyThreadSafe)]
-    public class ReferencedAnalyzersCache : PreRoslynReferencedAnalyzersCache
+    [SolutionComponent(Instantiation.DemandAnyThreadSafe)]
+    public class ReferencedAnalyzersCache : PreRoslynReferencedAnalyzersCache, IStartupActivity
     {
         private readonly ISolution solution;
 

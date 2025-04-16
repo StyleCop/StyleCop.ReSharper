@@ -3,12 +3,12 @@
 //   MS-PL
 // </copyright>
 // <license>
-//   This source code is subject to terms and conditions of the Microsoft 
-//   Public License. A copy of the license can be found in the License.html 
-//   file at the root of this distribution. If you cannot locate the  
-//   Microsoft Public License, please send an email to dlr@microsoft.com. 
-//   By using this source code in any fashion, you are agreeing to be bound 
-//   by the terms of the Microsoft Public License. You must not remove this 
+//   This source code is subject to terms and conditions of the Microsoft
+//   Public License. A copy of the license can be found in the License.html
+//   file at the root of this distribution. If you cannot locate the
+//   Microsoft Public License, please send an email to dlr@microsoft.com.
+//   By using this source code in any fashion, you are agreeing to be bound
+//   by the terms of the Microsoft Public License. You must not remove this
 //   notice, or any other, from this software.
 // </license>
 // <summary>
@@ -16,6 +16,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using JetBrains.Application.Components;
 using JetBrains.Application.Parts;
 
 namespace StyleCop.ReSharper.ShellComponents
@@ -43,8 +44,8 @@ namespace StyleCop.ReSharper.ShellComponents
     /// <summary>
     /// Default analyzer reference cache for pre-Visual Studio 2015
     /// </summary>
-    [SolutionComponent(Instantiation.LaterAsyncAnyThreadSafe)]
-    public class PreRoslynReferencedAnalyzersCache : IReferencedAnalyzersCache
+    [SolutionComponent(Instantiation.DemandAnyThreadSafe)]
+    public class PreRoslynReferencedAnalyzersCache : IStartupActivity, IReferencedAnalyzersCache
     {
         /// <summary>
         /// Returns true if the specified analyzer is referenced
