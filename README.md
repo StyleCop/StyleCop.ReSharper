@@ -1,7 +1,9 @@
 ![Obsolete](https://jb.gg/badges/obsolete-plastic.svg)
 
 > [!WARNING]
-> This extension is deprecated and won't receive any updates (except for compatibility) due to the discontinuation of the original [StyleCop project](https://github.com/StyleCop/StyleCop). Please visit their repository for [further considerations](https://github.com/StyleCop/StyleCop#considerations).
+> This extension is deprecated and won't receive any updates due to the discontinuation of the original [StyleCop project](https://github.com/StyleCop/StyleCop).
+> 
+> The Roslyn-based [StyleCopAnalyzers](https://github.com/DotNetAnalyzers/StyleCopAnalyzers) project is recommended as a replacement.
 
 # StyleCop for ReSharper
 
